@@ -1,0 +1,1352 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>青山生态农家乐_北京怀柔采摘住宿一日游_电话_价格_地址 - 农家乐.cn</title>
+    <meta name="description" content="青山生态农家乐位于北京怀柔，提供农家土菜、果蔬采摘、休闲垂钓、民宿住宿，适合家庭出游、朋友聚会、公司团建。人均128元起，免费停车，支持在线预订。">
+    <link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Sans+SC:wght@300;400;500;700;900&display=swap">
+    <style>
+        :root {
+            --primary: #2E7D32;
+            --primary-light: #4CAF50;
+            --primary-bg: #E8F5E9;
+            --secondary: #FF9800;
+            --secondary-light: #FFB74D;
+            --bg: #FAF8F5;
+            --card: #FFFFFF;
+            --text: #2C2C2C;
+            --text-light: #666666;
+            --text-muted: #999999;
+            --border: #E8E4DE;
+            --danger: #E53935;
+            --radius: 12px;
+            --shadow: 0 2px 12px rgba(0,0,0,0.06);
+            --shadow-lg: 0 8px 24px rgba(0,0,0,0.1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+        button { cursor: pointer; font-family: inherit; border: none; background: none; }
+        input, select, textarea { font-family: inherit; font-size: 14px; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+
+        /* ===== 顶部导航 ===== */
+        .header {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+        }
+        .header-inner {
+            display: flex; align-items: center; justify-content: space-between;
+            height: 56px; padding: 0 16px; max-width: 1200px; margin: 0 auto;
+        }
+        .logo { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 18px; color: var(--primary); }
+        .logo svg { width: 24px; height: 24px; }
+        .logo span { color: var(--secondary); }
+        .nav-links { display: none; gap: 24px; font-size: 14px; }
+        .nav-links a { color: var(--text-light); transition: color 0.2s; }
+        .nav-links a:hover { color: var(--primary); }
+        .back-btn { display: flex; align-items: center; gap: 4px; color: var(--text); font-size: 14px; }
+
+        @media (min-width: 768px) {
+            .nav-links { display: flex; }
+            .back-btn { display: none; }
+        }
+
+        /* ===== 锚点快捷导航 ===== */
+        .anchor-nav {
+            position: sticky; top: 56px; z-index: 90;
+            background: var(--card); border-bottom: 1px solid var(--border);
+            overflow-x: auto; -webkit-overflow-scrolling: touch;
+        }
+        .anchor-nav::-webkit-scrollbar { display: none; }
+        .anchor-nav-inner {
+            display: flex; gap: 0; min-width: max-content;
+            max-width: 1200px; margin: 0 auto; padding: 0 16px;
+        }
+        .anchor-nav a {
+            padding: 12px 16px; font-size: 14px; color: var(--text-light);
+            white-space: nowrap; border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+        }
+        .anchor-nav a:hover, .anchor-nav a.active {
+            color: var(--primary); border-bottom-color: var(--primary);
+        }
+
+        /* ===== 图片画廊 ===== */
+        .gallery {
+            display: grid; grid-template-columns: 2fr 1fr; grid-template-rows: 200px 200px;
+            gap: 4px; margin-top: 56px;
+        }
+        .gallery-item {
+            position: relative; overflow: hidden; cursor: pointer;
+            background: #ddd;
+        }
+        .gallery-item img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .gallery-item:hover img { transform: scale(1.05); }
+        .gallery-item.main { grid-row: span 2; }
+        .gallery-tag {
+            position: absolute; bottom: 8px; left: 8px;
+            background: rgba(0,0,0,0.6); color: #fff;
+            font-size: 12px; padding: 3px 8px; border-radius: 4px;
+        }
+        .gallery-more {
+            position: absolute; bottom: 8px; right: 8px;
+            background: rgba(0,0,0,0.6); color: #fff;
+            font-size: 12px; padding: 3px 8px; border-radius: 4px;
+            display: flex; align-items: center; gap: 4px;
+        }
+
+        @media (max-width: 767px) {
+            .gallery { grid-template-columns: 1fr 1fr; grid-template-rows: 180px 90px 90px; }
+            .gallery-item.main { grid-column: span 2; grid-row: span 1; }
+        }
+
+        /* ===== 核心信息区 ===== */
+        .info-section { background: var(--card); padding: 20px 0; border-bottom: 1px solid var(--border); }
+        .info-title-row {
+            display: flex; align-items: flex-start; justify-content: space-between;
+            gap: 12px; margin-bottom: 12px; flex-wrap: wrap;
+        }
+        .info-title { font-size: 22px; font-weight: 700; line-height: 1.3; }
+        .score-badge {
+            display: flex; align-items: center; gap: 6px;
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            color: #fff; padding: 4px 12px; border-radius: 20px;
+            font-size: 14px; font-weight: 600; flex-shrink: 0;
+        }
+        .score-stars { display: flex; align-items: center; gap: 4px; margin-bottom: 12px; }
+        .score-stars .stars { color: var(--secondary); font-size: 14px; letter-spacing: 2px; }
+        .score-stars .count { font-size: 13px; color: var(--text-muted); margin-left: 4px; }
+
+        .info-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+        .info-tag {
+            font-size: 12px; padding: 4px 10px; border-radius: 4px;
+            background: var(--primary-bg); color: var(--primary); font-weight: 500;
+        }
+        .info-tag.warn { background: #FFF3E0; color: #E65100; }
+
+        .info-address {
+            display: flex; align-items: center; gap: 6px;
+            font-size: 14px; color: var(--text-light); margin-bottom: 8px;
+        }
+        .info-address svg { width: 16px; height: 16px; flex-shrink: 0; color: var(--secondary); }
+        .info-distance { font-size: 13px; color: var(--text-muted); margin-bottom: 16px; }
+
+        .info-meta {
+            display: flex; flex-wrap: wrap; gap: 16px;
+            padding-top: 14px; border-top: 1px solid var(--border);
+        }
+        .info-meta-item { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-light); }
+        .info-meta-item svg { width: 16px; height: 16px; color: var(--primary); }
+
+        /* ===== 主体布局 ===== */
+        .main-layout {
+            display: grid; grid-template-columns: 1fr 340px; gap: 24px;
+            padding: 24px 0 100px;
+        }
+        @media (max-width: 991px) {
+            .main-layout { grid-template-columns: 1fr; }
+        }
+
+        .content-col { min-width: 0; }
+        .sidebar-col { position: relative; }
+
+        .section-card {
+            background: var(--card); border-radius: var(--radius);
+            padding: 20px; margin-bottom: 16px; box-shadow: var(--shadow);
+        }
+        .section-title {
+            font-size: 18px; font-weight: 700; margin-bottom: 16px;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .section-title::before {
+            content: ''; width: 4px; height: 18px;
+            background: var(--primary); border-radius: 2px;
+        }
+
+        /* ===== 套餐模块 ===== */
+        .package-list { display: flex; flex-direction: column; gap: 12px; }
+        .package-card {
+            border: 1px solid var(--border); border-radius: 10px;
+            padding: 16px; transition: all 0.2s; cursor: pointer;
+            position: relative;
+        }
+        .package-card:hover, .package-card.selected {
+            border-color: var(--primary); box-shadow: 0 0 0 2px rgba(46,125,50,0.1);
+        }
+        .package-card.selected::after {
+            content: '已选'; position: absolute; top: 0; right: 0;
+            background: var(--primary); color: #fff; font-size: 11px;
+            padding: 2px 8px; border-radius: 0 10px 0 8px;
+        }
+        .package-header {
+            display: flex; justify-content: space-between; align-items: flex-start;
+            margin-bottom: 10px; gap: 8px;
+        }
+        .package-name { font-size: 16px; font-weight: 600; }
+        .package-price { color: var(--danger); font-size: 20px; font-weight: 700; white-space: nowrap; }
+        .package-price small { font-size: 12px; font-weight: 400; color: var(--text-muted); }
+        .package-desc { font-size: 13px; color: var(--text-light); margin-bottom: 10px; }
+        .package-includes { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+        .include-tag {
+            font-size: 12px; padding: 2px 8px; border-radius: 4px;
+            background: #E8F5E9; color: var(--primary);
+        }
+        .include-tag.no { background: #FFEBEE; color: #C62828; }
+        .package-notice {
+            font-size: 12px; color: var(--text-muted);
+            display: flex; align-items: flex-start; gap: 4px;
+        }
+        .package-notice svg { width: 14px; height: 14px; flex-shrink: 0; margin-top: 2px; }
+
+        /* ===== 简介 ===== */
+        .intro-text { font-size: 14px; color: var(--text-light); line-height: 1.8; }
+        .intro-highlights {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 12px; margin-top: 16px;
+        }
+        .highlight-item {
+            text-align: center; padding: 12px 8px;
+            background: var(--bg); border-radius: 8px;
+        }
+        .highlight-item .num { font-size: 22px; font-weight: 700; color: var(--primary); }
+        .highlight-item .label { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+        .business-hours {
+            margin-top: 16px; padding: 12px 16px;
+            background: var(--bg); border-radius: 8px;
+            font-size: 13px; color: var(--text-light);
+        }
+        .business-hours p { margin-bottom: 4px; }
+        .business-hours p:last-child { margin-bottom: 0; }
+
+        /* ===== 设施清单 ===== */
+        .facility-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 12px;
+        }
+        .facility-item {
+            display: flex; flex-direction: column; align-items: center; gap: 6px;
+            padding: 12px 8px; border-radius: 8px; text-align: center;
+            transition: background 0.2s;
+        }
+        .facility-item:hover { background: var(--bg); }
+        .facility-item svg { width: 24px; height: 24px; color: var(--primary); }
+        .facility-item span { font-size: 12px; color: var(--text-light); }
+        .facility-item.unavailable svg { color: #ccc; }
+        .facility-item.unavailable span { color: var(--text-muted); text-decoration: line-through; }
+
+        /* ===== 地图 ===== */
+        .map-container {
+            width: 100%; height: 280px; border-radius: 10px;
+            overflow: hidden; background: #e0e0e0; position: relative;
+            margin-bottom: 14px;
+        }
+        .map-placeholder {
+            width: 100%; height: 100%; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; gap: 8px;
+            background: linear-gradient(135deg, #E8F5E9, #C8E6C9);
+            color: var(--primary);
+        }
+        .map-placeholder svg { width: 48px; height: 48px; }
+        .map-placeholder p { font-size: 14px; font-weight: 500; }
+        .map-placeholder small { font-size: 12px; color: var(--text-muted); }
+
+        .map-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+        .map-btn {
+            flex: 1; min-width: 120px; display: flex; align-items: center; justify-content: center;
+            gap: 6px; padding: 10px 16px; border-radius: 8px;
+            font-size: 14px; font-weight: 500; transition: all 0.2s;
+        }
+        .map-btn.primary { background: var(--primary); color: #fff; }
+        .map-btn.primary:hover { background: #1B5E20; }
+        .map-btn.outline { border: 1px solid var(--border); color: var(--text); background: var(--card); }
+        .map-btn.outline:hover { border-color: var(--primary); color: var(--primary); }
+        .map-btn svg { width: 16px; height: 16px; }
+
+        .map-info {
+            margin-top: 14px; padding: 12px 16px;
+            background: var(--bg); border-radius: 8px; font-size: 13px;
+        }
+        .map-info p { display: flex; align-items: flex-start; gap: 6px; margin-bottom: 6px; color: var(--text-light); }
+        .map-info p:last-child { margin-bottom: 0; }
+        .map-info svg { width: 14px; height: 14px; flex-shrink: 0; margin-top: 3px; color: var(--secondary); }
+
+        /* ===== 评价模块 ===== */
+        .review-summary {
+            display: flex; gap: 24px; padding: 16px;
+            background: var(--bg); border-radius: 10px; margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+        .review-score-main {
+            text-align: center; padding-right: 24px;
+            border-right: 1px solid var(--border);
+        }
+        .review-score-main .score {
+            font-size: 36px; font-weight: 700; color: var(--secondary); line-height: 1;
+        }
+        .review-score-main .stars { color: var(--secondary); font-size: 14px; margin: 6px 0; letter-spacing: 2px; }
+        .review-score-main .count { font-size: 12px; color: var(--text-muted); }
+
+        .review-dims { flex: 1; min-width: 200px; display: flex; flex-direction: column; gap: 8px; }
+        .dim-row { display: flex; align-items: center; gap: 10px; font-size: 13px; }
+        .dim-label { width: 48px; color: var(--text-light); flex-shrink: 0; }
+        .dim-bar {
+            flex: 1; height: 6px; background: #e0e0e0; border-radius: 3px; overflow: hidden;
+        }
+        .dim-bar-fill { height: 100%; background: var(--secondary); border-radius: 3px; }
+        .dim-value { width: 32px; text-align: right; color: var(--text); font-weight: 500; }
+
+        .review-filters {
+            display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;
+        }
+        .filter-btn {
+            padding: 6px 14px; border-radius: 20px; font-size: 13px;
+            background: var(--bg); color: var(--text-light); transition: all 0.2s;
+        }
+        .filter-btn:hover { background: var(--primary-bg); color: var(--primary); }
+        .filter-btn.active { background: var(--primary); color: #fff; }
+
+        .review-list { display: flex; flex-direction: column; gap: 16px; }
+        .review-item {
+            padding-bottom: 16px; border-bottom: 1px solid var(--border);
+        }
+        .review-item:last-child { border-bottom: none; padding-bottom: 0; }
+        .review-header {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 8px; flex-wrap: wrap; gap: 8px;
+        }
+        .review-user { display: flex; align-items: center; gap: 10px; }
+        .review-avatar {
+            width: 36px; height: 36px; border-radius: 50%;
+            background: var(--primary-bg); color: var(--primary);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 14px; font-weight: 600;
+        }
+        .review-user-info .name { font-size: 14px; font-weight: 500; }
+        .review-user-info .meta { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+        .review-stars { color: var(--secondary); font-size: 13px; letter-spacing: 1px; }
+        .review-content { font-size: 14px; color: var(--text-light); line-height: 1.7; margin-bottom: 8px; }
+        .review-images { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
+        .review-img {
+            width: 80px; height: 80px; border-radius: 6px; overflow: hidden;
+            background: #eee; cursor: pointer;
+        }
+        .review-img img { width: 100%; height: 100%; object-fit: cover; }
+        .review-reply {
+            margin-top: 10px; padding: 10px 14px;
+            background: var(--bg); border-radius: 8px;
+            border-left: 3px solid var(--primary);
+        }
+        .review-reply .reply-label {
+            font-size: 12px; color: var(--primary); font-weight: 600; margin-bottom: 4px;
+        }
+        .review-reply .reply-text { font-size: 13px; color: var(--text-light); line-height: 1.6; }
+
+        .load-more-btn {
+            width: 100%; padding: 12px; margin-top: 16px;
+            border: 1px solid var(--border); border-radius: 8px;
+            font-size: 14px; color: var(--text-light); background: var(--card);
+            transition: all 0.2s;
+        }
+        .load-more-btn:hover { border-color: var(--primary); color: var(--primary); }
+
+        /* ===== 发表评价 ===== */
+        .review-form { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border); }
+        .form-group { margin-bottom: 14px; }
+        .form-label { display: block; font-size: 14px; font-weight: 500; margin-bottom: 6px; color: var(--text); }
+        .form-input, .form-select, .form-textarea {
+            width: 100%; padding: 10px 14px; border: 1px solid var(--border);
+            border-radius: 8px; font-size: 14px; color: var(--text);
+            background: var(--card); transition: border-color 0.2s;
+            outline: none;
+        }
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            border-color: var(--primary); box-shadow: 0 0 0 2px rgba(46,125,50,0.1);
+        }
+        .form-textarea { resize: vertical; min-height: 80px; }
+        .star-rating { display: flex; gap: 4px; font-size: 28px; cursor: pointer; }
+        .star-rating .star { color: #ddd; transition: color 0.15s; }
+        .star-rating .star.active, .star-rating .star:hover { color: var(--secondary); }
+        .submit-btn {
+            padding: 10px 24px; background: var(--primary); color: #fff;
+            border-radius: 8px; font-size: 14px; font-weight: 500; transition: background 0.2s;
+        }
+        .submit-btn:hover { background: #1B5E20; }
+
+        /* ===== FAQ ===== */
+        .faq-list { display: flex; flex-direction: column; gap: 10px; }
+        .faq-item {
+            border: 1px solid var(--border); border-radius: 8px;
+            overflow: hidden; transition: all 0.2s;
+        }
+        .faq-item.open { border-color: var(--primary); }
+        .faq-question {
+            width: 100%; display: flex; align-items: center; justify-content: space-between;
+            padding: 14px 16px; font-size: 14px; font-weight: 500;
+            color: var(--text); text-align: left; gap: 10px;
+        }
+        .faq-question svg {
+            width: 16px; height: 16px; flex-shrink: 0; color: var(--text-muted);
+            transition: transform 0.2s;
+        }
+        .faq-item.open .faq-question svg { transform: rotate(180deg); color: var(--primary); }
+        .faq-answer {
+            max-height: 0; overflow: hidden; transition: max-height 0.3s ease;
+        }
+        .faq-answer-inner {
+            padding: 0 16px 14px; font-size: 13px; color: var(--text-light); line-height: 1.7;
+        }
+
+        /* ===== 侧边预订卡片 ===== */
+        .booking-card {
+            background: var(--card); border-radius: var(--radius);
+            padding: 20px; box-shadow: var(--shadow-lg);
+            position: sticky; top: 120px;
+        }
+        @media (max-width: 991px) {
+            .booking-card { position: static; }
+        }
+        .booking-title {
+            font-size: 16px; font-weight: 700; margin-bottom: 16px;
+            padding-bottom: 12px; border-bottom: 1px solid var(--border);
+        }
+        .booking-price-row {
+            display: flex; align-items: baseline; gap: 4px; margin-bottom: 16px;
+        }
+        .booking-price { font-size: 28px; font-weight: 700; color: var(--danger); }
+        .booking-price-unit { font-size: 13px; color: var(--text-muted); }
+
+        .booking-form .form-group { margin-bottom: 12px; }
+        .booking-form .form-label { font-size: 13px; }
+        .booking-form .form-input, .booking-form .form-select { padding: 9px 12px; font-size: 13px; }
+
+        .people-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        .booking-notice {
+            margin-top: 14px; padding: 10px 12px;
+            background: #FFF8E1; border-radius: 6px;
+            font-size: 12px; color: #F57F17; line-height: 1.6;
+            display: flex; gap: 6px; align-items: flex-start;
+        }
+        .booking-notice svg { width: 14px; height: 14px; flex-shrink: 0; margin-top: 1px; }
+
+        .booking-submit {
+            width: 100%; padding: 12px; margin-top: 16px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: #fff; border-radius: 8px; font-size: 15px; font-weight: 600;
+            transition: all 0.2s;
+        }
+        .booking-submit:hover { box-shadow: 0 4px 12px rgba(46,125,50,0.3); transform: translateY(-1px); }
+
+        .booking-contact {
+            margin-top: 12px; text-align: center; font-size: 13px; color: var(--text-light);
+        }
+        .booking-contact a { color: var(--primary); font-weight: 500; }
+
+        /* ===== 移动端底部操作栏 ===== */
+        .mobile-bottom-bar {
+            display: none; position: fixed; bottom: 0; left: 0; right: 0;
+            background: var(--card); border-top: 1px solid var(--border);
+            padding: 10px 16px; z-index: 99;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.08);
+            gap: 10px;
+        }
+        @media (max-width: 991px) {
+            .mobile-bottom-bar { display: flex; }
+        }
+        .mobile-bar-btn {
+            flex: 1; display: flex; flex-direction: column; align-items: center;
+            justify-content: center; gap: 2px; padding: 6px;
+            font-size: 11px; color: var(--text-light);
+        }
+        .mobile-bar-btn svg { width: 20px; height: 20px; }
+        .mobile-bar-btn.call { border-right: 1px solid var(--border); }
+        .mobile-bar-book {
+            flex: 2; display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: #fff; border-radius: 8px; font-size: 15px; font-weight: 600;
+            gap: 6px;
+        }
+        .mobile-bar-book svg { width: 18px; height: 18px; }
+
+        /* ===== 信任提示 ===== */
+        .trust-bar {
+            display: flex; flex-wrap: wrap; gap: 16px; padding: 14px 16px;
+            background: var(--primary-bg); border-radius: 8px; margin-bottom: 16px;
+        }
+        .trust-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--primary); }
+        .trust-item svg { width: 16px; height: 16px; }
+
+        /* ===== 页脚 ===== */
+        .footer {
+            background: #2C2C2C; color: #aaa; padding: 32px 0;
+            margin-top: 40px;
+        }
+        .footer-inner { text-align: center; font-size: 13px; line-height: 2; }
+        .footer a { color: #ccc; }
+        .footer a:hover { color: #fff; }
+
+        /* ===== Toast ===== */
+        .toast {
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.8); color: #fff; padding: 12px 24px;
+            border-radius: 8px; font-size: 14px; z-index: 9999;
+            opacity: 0; pointer-events: none; transition: opacity 0.3s;
+        }
+        .toast.show { opacity: 1; }
+
+        /* ===== 响应式微调 ===== */
+        @media (max-width: 767px) {
+            .info-title { font-size: 19px; }
+            .section-card { padding: 16px; }
+            .section-title { font-size: 16px; }
+            .review-summary { gap: 16px; }
+            .review-score-main { padding-right: 16px; }
+            .review-score-main .score { font-size: 28px; }
+            .map-container { height: 220px; }
+            .package-price { font-size: 18px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== 顶部导航 ===== -->
+<header class="header">
+    <div class="header-inner">
+        <a href="index.html" class="logo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+            农家乐<span>.cn</span>
+        </a>
+        <nav class="nav-links">
+            <a href="index.html">首页</a>
+            <a href="#packages">套餐价格</a>
+            <a href="#facilities">设施服务</a>
+            <a href="#map">位置导航</a>
+            <a href="#reviews">用户评价</a>
+            <a href="#faq">常见问题</a>
+        </nav>
+        <a href="index.html" class="back-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+            返回
+        </a>
+    </div>
+</header>
+
+<!-- ===== 锚点快捷导航 ===== -->
+<nav class="anchor-nav">
+    <div class="anchor-nav-inner">
+        <a href="#packages" class="active">套餐价格</a>
+        <a href="#intro">商家介绍</a>
+        <a href="#facilities">设施服务</a>
+        <a href="#map">位置导航</a>
+        <a href="#reviews">用户评价</a>
+        <a href="#faq">常见问题</a>
+        <a href="#booking">在线预订</a>
+    </div>
+</nav>
+
+<!-- ===== 图片画廊 ===== -->
+<div class="gallery">
+    <div class="gallery-item main">
+        <img src="https://picsum.photos/id/1058/1200/800" alt="青山生态农家乐全景" loading="eager">
+        <span class="gallery-tag">院子全景</span>
+    </div>
+    <div class="gallery-item">
+        <img src="https://picsum.photos/id/1060/600/400" alt="农家客房" loading="lazy">
+        <span class="gallery-tag">客房实拍</span>
+    </div>
+    <div class="gallery-item">
+        <img src="https://picsum.photos/id/292/600/400" alt="农家菜品" loading="lazy">
+        <span class="gallery-tag">农家土菜</span>
+    </div>
+    <div class="gallery-item">
+        <img src="https://picsum.photos/id/1061/600/400" alt="采摘园" loading="lazy">
+        <span class="gallery-tag">采摘园</span>
+        <span class="gallery-more">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="12" height="12"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+            共36张
+        </span>
+    </div>
+</div>
+
+<!-- ===== 核心信息区 ===== -->
+<section class="info-section">
+    <div class="container">
+        <div class="info-title-row">
+            <h1 class="info-title">青山生态农家乐</h1>
+            <div class="score-badge">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                4.9分
+            </div>
+        </div>
+        <div class="score-stars">
+            <span class="stars">★★★★★</span>
+            <span class="count">基于126条真实评价</span>
+        </div>
+        <div class="info-tags">
+            <span class="info-tag">可接待团建</span>
+            <span class="info-tag">亲子友好</span>
+            <span class="info-tag">免费停车</span>
+            <span class="info-tag">允许宠物</span>
+            <span class="info-tag">三餐供应</span>
+            <span class="info-tag warn">节假日需提前预约</span>
+        </div>
+        <div class="info-address">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            北京市怀柔区渤海镇XX村XX号
+        </div>
+        <div class="info-distance">距慕田峪长城约8公里，驾车约15分钟 | 距怀柔城区约20公里</div>
+        <div class="info-meta">
+            <div class="info-meta-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                营业时间：08:00 - 22:00
+            </div>
+            <div class="info-meta-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                联系电话：010-XXXXXXX
+            </div>
+            <div class="info-meta-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                最大接待：80人
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== 主体内容 ===== -->
+<div class="container">
+    <div class="main-layout">
+        <!-- 左侧内容 -->
+        <div class="content-col">
+
+            <!-- 信任提示 -->
+            <div class="trust-bar">
+                <div class="trust-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    平台认证商家
+                </div>
+                <div class="trust-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    真实用户评价
+                </div>
+                <div class="trust-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                    在线预订免定金
+                </div>
+                <div class="trust-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    免费取消（提前24小时）
+                </div>
+            </div>
+
+            <!-- 套餐价格 -->
+            <section class="section-card" id="packages">
+                <h2 class="section-title">套餐价格</h2>
+                <div class="package-list">
+                    <div class="package-card selected" data-package="food">
+                        <div class="package-header">
+                            <div class="package-name">农家餐饮一日游套餐</div>
+                            <div class="package-price">¥128<small>/人</small></div>
+                        </div>
+                        <div class="package-desc">适合家庭短途一日游，品尝地道农家菜，体验田园乐趣</div>
+                        <div class="package-includes">
+                            <span class="include-tag">含农家午餐</span>
+                            <span class="include-tag">含采摘体验</span>
+                            <span class="include-tag">免费停车</span>
+                            <span class="include-tag no">不含住宿</span>
+                            <span class="include-tag no">不含渔具租赁</span>
+                        </div>
+                        <div class="package-notice">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                            周末及节假日建议提前2天预订，10人以上团体可享9折优惠
+                        </div>
+                    </div>
+
+                    <div class="package-card" data-package="stay">
+                        <div class="package-header">
+                            <div class="package-name">住宿+三餐套餐</div>
+                            <div class="package-price">¥268<small>/人</small></div>
+                        </div>
+                        <div class="package-desc">适合2天1夜深度体验，含客房住宿+早餐+午餐+晚餐</div>
+                        <div class="package-includes">
+                            <span class="include-tag">客房1晚</span>
+                            <span class="include-tag">含三餐</span>
+                            <span class="include-tag">含采摘</span>
+                            <span class="include-tag">免费垂钓</span>
+                            <span class="include-tag no">不含往返交通</span>
+                        </div>
+                        <div class="package-notice">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                            节假日价格上浮30%-50%，以商家电话确认为准；入住时间14:00后，退房12:00前
+                        </div>
+                    </div>
+
+                    <div class="package-card" data-package="team">
+                        <div class="package-header">
+                            <div class="package-name">团建团体套餐（10人起）</div>
+                            <div class="package-price">面议</div>
+                        </div>
+                        <div class="package-desc">适合公司团建、朋友聚会，可定制活动方案，最多接待80人</div>
+                        <div class="package-includes">
+                            <span class="include-tag">定制餐饮</span>
+                            <span class="include-tag">团建场地</span>
+                            <span class="include-tag">KTV/麻将</span>
+                            <span class="include-tag">烧烤场地</span>
+                            <span class="include-tag">专属服务</span>
+                        </div>
+                        <div class="package-notice">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                            请提前3-7天联系商家沟通方案，可开具增值税普通发票
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 商家介绍 -->
+            <section class="section-card" id="intro">
+                <h2 class="section-title">商家介绍</h2>
+                <p class="intro-text">
+                    青山生态农家乐坐落于北京怀柔渤海镇，依山傍水，环境清幽。院子占地约5亩，拥有客房12间，可同时接待80人用餐。食材以本地自产为主，蔬菜自种、禽畜自养，坚持农家土灶烹饪，还原地道乡村味道。
+                </p>
+                <p class="intro-text" style="margin-top:10px;">
+                    配套采摘园（草莓、樱桃、桃子、苹果四季轮换）、垂钓池、麻将室、KTV、儿童游乐区。适合家庭出游、朋友聚会、公司团建、亲子研学。院内免费停车，支持小型宠物入住。
+                </p>
+                <div class="intro-highlights">
+                    <div class="highlight-item">
+                        <div class="num">5亩</div>
+                        <div class="label">院子面积</div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="num">12间</div>
+                        <div class="label">客房数量</div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="num">80人</div>
+                        <div class="label">最大接待</div>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="num">8年</div>
+                        <div class="label">经营年限</div>
+                    </div>
+                </div>
+                <div class="business-hours">
+                    <p><strong>营业时间：</strong>全年无休 08:00 - 22:00</p>
+                    <p><strong>入住时间：</strong>14:00 后 | 退房时间：12:00 前</p>
+                    <p><strong>用餐时间：</strong>早餐 07:30-09:00 | 午餐 11:30-13:30 | 晚餐 17:30-20:00</p>
+                </div>
+            </section>
+
+            <!-- 设施服务 -->
+            <section class="section-card" id="facilities">
+                <h2 class="section-title">设施与服务</h2>
+                <div class="facility-grid">
+                    <div class="facility-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        <span>免费停车</span>
+                    </div>
+                    <div class="facility-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 0 1 2 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>
+                        <span>客房住宿</span>
+                    </div>
+                    <div class="facility-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+                        <span>农家餐饮</span>
+                    </div>
+                    <div class="facility-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+                        <span>果蔬采摘</span>
+                    </div>
+                    <div class="facility-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12c0 1.66-1.34 3-3 3S3 13.66 3 12s1.34-3 3-3 3 1.34 3 3z"/><path d="M21 12c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3z"/><path d="M3 12v2c0 2.21 1.79 4 4 4h2"/><path d="M21 12v2c0 2.21-1.79 4-4 4h-2"/><path d="M9 12h6"/></svg>
+                        <span>休闲垂钓</span>
+                    </div>
+                    <div class="facility-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        <span>亲子游乐</span>
+                    </div>
+                    <div class="facility-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        <span>免费WiFi</span>
+                    </div>
+                    <div class="facility-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h20"/><path d="M5 12V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v5"/><path d="M3 12v7a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-7"/></svg>
+                        <span>空调暖气</span>
+                    </div>
+                    <div class="facility-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M3 10h18"/></svg>
+                        <span>独立卫浴</span>
+                    </div>
+                    <div class="facility-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                        <span>KTV娱乐</span>
+                    </div>
+                    <div class="facility-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h.01M10 12h.01M14 12h.01M18 12h.01"/></svg>
+                        <span>麻将室</span>
+                    </div>
+                    <div class="facility-item">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        <span>可开发票</span>
+                    </div>
+                    <div class="facility-item unavailable">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>
+                        <span>接送服务</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 位置导航 -->
+            <section class="section-card" id="map">
+                <h2 class="section-title">位置与导航</h2>
+                <div class="map-container">
+                    <div class="map-placeholder">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <p>北京市怀柔区渤海镇XX村XX号</p>
+                        <small>接入百度地图后显示真实位置</small>
+                    </div>
+                </div>
+                <div class="map-actions">
+                    <button class="map-btn primary" onclick="openNavigation()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+                        一键导航
+                    </button>
+                    <button class="map-btn outline" onclick="copyAddress()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                        复制地址
+                    </button>
+                    <a href="tel:010-XXXXXXX" class="map-btn outline">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                        拨打电话
+                    </a>
+                </div>
+                <div class="map-info">
+                    <p>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        <strong>自驾路线：</strong>京承高速怀柔出口出，沿怀黄路行驶约25公里，导航搜索"青山生态农家乐"即可到达
+                    </p>
+                    <p>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        <strong>停车信息：</strong>院内免费停车场，约20个车位，大巴车可停院外
+                    </p>
+                    <p>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+                        <strong>公交路线：</strong>怀柔汽车站乘H23路至XX站下车，步行约800米（建议自驾前往）
+                    </p>
+                </div>
+            </section>
+
+            <!-- 用户评价 -->
+            <section class="section-card" id="reviews">
+                <h2 class="section-title">用户评价 <span style="font-size:14px;font-weight:400;color:var(--text-muted);">（126条）</span></h2>
+
+                <div class="review-summary">
+                    <div class="review-score-main">
+                        <div class="score">4.9</div>
+                        <div class="stars">★★★★★</div>
+                        <div class="count">126条评价</div>
+                    </div>
+                    <div class="review-dims">
+                        <div class="dim-row">
+                            <span class="dim-label">服务</span>
+                            <div class="dim-bar"><div class="dim-bar-fill" style="width:98%"></div></div>
+                            <span class="dim-value">4.9</span>
+                        </div>
+                        <div class="dim-row">
+                            <span class="dim-label">环境</span>
+                            <div class="dim-bar"><div class="dim-bar-fill" style="width:96%"></div></div>
+                            <span class="dim-value">4.8</span>
+                        </div>
+                        <div class="dim-row">
+                            <span class="dim-label">餐饮</span>
+                            <div class="dim-bar"><div class="dim-bar-fill" style="width:98%"></div></div>
+                            <span class="dim-value">4.9</span>
+                        </div>
+                        <div class="dim-row">
+                            <span class="dim-label">卫生</span>
+                            <div class="dim-bar"><div class="dim-bar-fill" style="width:94%"></div></div>
+                            <span class="dim-value">4.7</span>
+                        </div>
+                        <div class="dim-row">
+                            <span class="dim-label">性价比</span>
+                            <div class="dim-bar"><div class="dim-bar-fill" style="width:96%"></div></div>
+                            <span class="dim-value">4.8</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-filters">
+                    <button class="filter-btn active">全部(126)</button>
+                    <button class="filter-btn">有图(45)</button>
+                    <button class="filter-btn">服务好(68)</button>
+                    <button class="filter-btn">饭菜香(52)</button>
+                    <button class="filter-btn">环境好(41)</button>
+                    <button class="filter-btn">亲子(23)</button>
+                    <button class="filter-btn">团建(18)</button>
+                </div>
+
+                <div class="review-list">
+                    <div class="review-item">
+                        <div class="review-header">
+                            <div class="review-user">
+                                <div class="review-avatar">李</div>
+                                <div class="review-user-info">
+                                    <div class="name">李女士</div>
+                                    <div class="meta">2026-08-20 · 家庭出游 · 住宿套餐</div>
+                                </div>
+                            </div>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                        <div class="review-content">
+                            农家菜味道特别正宗，土鸡汤鲜得不行，柴鸡蛋也很香。采摘的桃子又大又甜，小孩玩得特别开心。院子干净整洁，房间虽然不豪华但很温馨，老板一家人都很热情。周末人有点多，建议错峰来。
+                        </div>
+                        <div class="review-images">
+                            <div class="review-img"><img src="https://picsum.photos/id/292/200/200" alt="评价图" loading="lazy"></div>
+                            <div class="review-img"><img src="https://picsum.photos/id/1060/200/200" alt="评价图" loading="lazy"></div>
+                            <div class="review-img"><img src="https://picsum.photos/id/1061/200/200" alt="评价图" loading="lazy"></div>
+                        </div>
+                        <div class="review-reply">
+                            <div class="reply-label">商家回复</div>
+                            <div class="reply-text">感谢李女士的好评！我们家的土鸡都是散养的，桃子也是自家果园种的。欢迎您秋天再来摘苹果和柿子，到时候给您优惠！</div>
+                        </div>
+                    </div>
+
+                    <div class="review-item">
+                        <div class="review-header">
+                            <div class="review-user">
+                                <div class="review-avatar">王</div>
+                                <div class="review-user-info">
+                                    <div class="name">王先生</div>
+                                    <div class="meta">2026-08-15 · 公司团建 · 团体套餐</div>
+                                </div>
+                            </div>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                        <div class="review-content">
+                            公司20多人团建选的这里，场地够大，KTV和麻将室都有，烧烤也很方便。老板帮忙安排的团餐，量大实惠，味道也不错。可以开发票，报销没问题。唯一不足就是周末房间紧张，建议提前一周订。
+                        </div>
+                        <div class="review-reply">
+                            <div class="reply-label">商家回复</div>
+                            <div class="reply-text">感谢王经理的选择！团建提前预订确实更稳妥，我们可以根据人数提前准备食材和场地。下次再来提前打电话，给您安排最好的房间！</div>
+                        </div>
+                    </div>
+
+                    <div class="review-item">
+                        <div class="review-header">
+                            <div class="review-user">
+                                <div class="review-avatar">张</div>
+                                <div class="review-user-info">
+                                    <div class="name">张小姐</div>
+                                    <div class="meta">2026-08-10 · 情侣出游 · 一日游</div>
+                                </div>
+                            </div>
+                            <div class="review-stars">★★★★☆</div>
+                        </div>
+                        <div class="review-content">
+                            环境挺好的，依山傍水，拍照很出片。钓鱼很有意思，钓上来的鱼老板可以帮忙加工。饭菜分量很足，两个人点三个菜都吃不完。扣一星是因为节假日人太多，上菜稍微慢了点。
+                        </div>
+                    </div>
+
+                    <div class="review-item">
+                        <div class="review-header">
+                            <div class="review-user">
+                                <div class="review-avatar">陈</div>
+                                <div class="review-user-info">
+                                    <div class="name">陈先生</div>
+                                    <div class="meta">2026-08-05 · 带老人孩子 · 住宿套餐</div>
+                                </div>
+                            </div>
+                            <div class="review-stars">★★★★★</div>
+                        </div>
+                        <div class="review-content">
+                            带爸妈和孩子一起来的，三代人都很满意。老人喜欢这里的安静和农家菜，孩子喜欢采摘和小动物。房间有独立卫浴，热水很足，老人住着也方便。老板还特意给孩子送了自家种的黄瓜，很贴心。
+                        </div>
+                        <div class="review-images">
+                            <div class="review-img"><img src="https://picsum.photos/id/1058/200/200" alt="评价图" loading="lazy"></div>
+                            <div class="review-img"><img src="https://picsum.photos/id/1059/200/200" alt="评价图" loading="lazy"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="load-more-btn">加载更多评价</button>
+
+                <!-- 发表评价 -->
+                <div class="review-form">
+                    <h3 style="font-size:16px;font-weight:600;margin-bottom:14px;">发表评价</h3>
+                    <div class="form-group">
+                        <label class="form-label">总体评分</label>
+                        <div class="star-rating" id="starRating">
+                            <span class="star" data-value="1">★</span>
+                            <span class="star" data-value="2">★</span>
+                            <span class="star" data-value="3">★</span>
+                            <span class="star" data-value="4">★</span>
+                            <span class="star" data-value="5">★</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">评价内容</label>
+                        <textarea class="form-textarea" placeholder="分享您的游玩体验，帮助更多游客做出选择..."></textarea>
+                    </div>
+                    <button class="submit-btn" onclick="submitReview()">提交评价</button>
+                </div>
+            </section>
+
+            <!-- 常见问题 -->
+            <section class="section-card" id="faq">
+                <h2 class="section-title">常见问题</h2>
+                <div class="faq-list">
+                    <div class="faq-item open">
+                        <button class="faq-question">
+                            <span>儿童怎么收费？</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
+                        <div class="faq-answer" style="max-height:200px;">
+                            <div class="faq-answer-inner">
+                                1.2米以下儿童免费（不占床位、不含餐位）；1.2-1.4米儿童半价，含餐位不含床位；1.4米以上按成人收费。住宿套餐儿童占床按成人价，不占床减免80元/人。
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>可以带宠物吗？</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                允许携带小型宠物（体重10kg以下），需提前告知商家。大型犬、烈性犬暂不接待。宠物不得进入餐厅和客房床铺，需自带宠物用品。院内有宠物活动区域。
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>需要自带渔具吗？</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                可以现场租赁渔具，租金20元/套（含鱼竿、鱼漂、鱼饵）。也可以自带渔具。钓上来的鱼按斤称重收费（草鱼15元/斤，鲤鱼12元/斤），可免费帮忙加工（清蒸/红烧）。
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>最多可以接待多少人？可以团建吗？</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                最多可同时接待80人用餐，住宿可容纳30人左右。非常适合公司团建、朋友聚会，可提供KTV、麻将室、烧烤场地、团建游戏道具等。10人以上团体可享9折优惠，可开具增值税普通发票。建议提前3-7天预订。
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>下雨天采摘还能进行吗？</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                露天采摘园雨天暂停，但院内有室内休息区和麻将室、KTV等娱乐项目不受影响。部分季节有大棚采摘（草莓季1-5月），雨天也可进行。建议出行前查看天气预报，雨天可改期或选择室内活动。
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>预订后可以取消吗？需要付定金吗？</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                在线预订无需支付定金，商家电话确认后才算预订成功。提前24小时取消不收取任何费用；24小时内取消可能影响商家安排，建议尽量提前告知。节假日及大型团体（20人以上）需支付少量定金，具体与商家协商。
+                            </div>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-question">
+                            <span>有哪些季节特色？什么时候去最好？</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                        </button>
+                        <div class="faq-answer">
+                            <div class="faq-answer-inner">
+                                春季（3-5月）：草莓采摘、踏青赏花；夏季（6-8月）：樱桃、桃子采摘，避暑纳凉；秋季（9-11月）：苹果、柿子、板栗采摘，赏红叶；冬季（12-2月）：农家火锅、杀年猪、年味体验。秋季天气最舒适，是最佳游玩季节。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- 右侧预订栏 -->
+        <div class="sidebar-col" id="booking">
+            <div class="booking-card">
+                <h3 class="booking-title">在线预订</h3>
+                <div class="booking-price-row">
+                    <span class="booking-price">¥128</span>
+                    <span class="booking-price-unit">/人起</span>
+                </div>
+                <form class="booking-form" id="bookingForm">
+                    <div class="form-group">
+                        <label class="form-label">选择套餐</label>
+                        <select class="form-select" id="packageSelect">
+                            <option value="food">农家餐饮一日游 ¥128/人</option>
+                            <option value="stay">住宿+三餐套餐 ¥268/人</option>
+                            <option value="team">团建团体套餐（面议）</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">到店日期</label>
+                        <input type="date" class="form-input" id="bookDate">
+                    </div>
+                    <div class="people-row">
+                        <div class="form-group">
+                            <label class="form-label">成人</label>
+                            <select class="form-select">
+                                <option>1人</option><option selected>2人</option><option>3人</option>
+                                <option>4人</option><option>5人</option><option>6人</option>
+                                <option>7人</option><option>8人</option><option>9人</option>
+                                <option>10人及以上</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">儿童</label>
+                            <select class="form-select">
+                                <option selected>0人</option><option>1人</option><option>2人</option>
+                                <option>3人</option><option>4人及以上</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">联系电话</label>
+                        <input type="tel" class="form-input" placeholder="请填写手机号" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">备注需求（选填）</label>
+                        <textarea class="form-textarea" placeholder="用餐偏好、房型要求、特殊需求等..." style="min-height:60px;"></textarea>
+                    </div>
+                    <div class="booking-notice">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                        提交预约不等于确认订单，商家电话联系后才算预订成功。节假日建议提前3-7天预约。提前24小时可免费取消。
+                    </div>
+                    <button type="submit" class="booking-submit">
+                        立即提交预订
+                    </button>
+                </form>
+                <div class="booking-contact">
+                    或直接拨打：<a href="tel:010-XXXXXXX">010-XXXXXXX</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== 移动端底部操作栏 ===== -->
+<div class="mobile-bottom-bar">
+    <a href="tel:010-XXXXXXX" class="mobile-bar-btn call">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        电话咨询
+    </a>
+    <button class="mobile-bar-btn" onclick="openNavigation()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+        导航
+    </button>
+    <a href="#booking" class="mobile-bar-book">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="23" y2="10"/></svg>
+        立即预订
+    </a>
+</div>
+
+<!-- ===== 页脚 ===== -->
+<footer class="footer">
+    <div class="container footer-inner">
+        <p><a href="index.html">农家乐.cn</a> - 专业农家乐导航平台</p>
+        <p>中文域名：农家乐.cn | 客服电话：400-XXX-XXXX</p>
+        <p style="margin-top:8px;color:#666;font-size:12px;">
+            平台仅提供信息展示，预订确认、价格变动以商家电话沟通为准
+        </p>
+    </div>
+</footer>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+    // ===== 套餐选择联动 =====
+    document.querySelectorAll('.package-card').forEach(function(card) {
+        card.addEventListener('click', function() {
+            document.querySelectorAll('.package-card').forEach(function(c) { c.classList.remove('selected'); });
+            this.classList.add('selected');
+            var pkg = this.getAttribute('data-package');
+            var select = document.getElementById('packageSelect');
+            if (select) select.value = pkg;
+        });
+    });
+
+    // ===== 评价筛选 =====
+    document.querySelectorAll('.filter-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+            this.classList.add('active');
+        });
+    });
+
+    // ===== 星级打分 =====
+    var stars = document.querySelectorAll('#starRating .star');
+    var currentRating = 0;
+    stars.forEach(function(star) {
+        star.addEventListener('click', function() {
+            currentRating = parseInt(this.getAttribute('data-value'));
+            updateStars(currentRating);
+        });
+        star.addEventListener('mouseenter', function() {
+            updateStars(parseInt(this.getAttribute('data-value')));
+        });
+    });
+    document.getElementById('starRating').addEventListener('mouseleave', function() {
+        updateStars(currentRating);
+    });
+    function updateStars(val) {
+        stars.forEach(function(s) {
+            if (parseInt(s.getAttribute('data-value')) <= val) {
+                s.classList.add('active');
+            } else {
+                s.classList.remove('active');
+            }
+        });
+    }
+
+    // ===== FAQ折叠 =====
+    document.querySelectorAll('.faq-question').forEach(function(q) {
+        q.addEventListener('click', function() {
+            var item = this.parentElement;
+            var answer = item.querySelector('.faq-answer');
+            var isOpen = item.classList.contains('open');
+            // 关闭所有
+            document.querySelectorAll('.faq-item').forEach(function(i) {
+                i.classList.remove('open');
+                i.querySelector('.faq-answer').style.maxHeight = '0';
+            });
+            // 打开当前
+            if (!isOpen) {
+                item.classList.add('open');
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+            }
+        });
+    });
+
+    // ===== 锚点导航高亮 =====
+    var anchorLinks = document.querySelectorAll('.anchor-nav a');
+    var sections = [];
+    anchorLinks.forEach(function(link) {
+        var id = link.getAttribute('href').substring(1);
+        var el = document.getElementById(id);
+        if (el) sections.push({ id: id, el: el, link: link });
+    });
+    window.addEventListener('scroll', function() {
+        var scrollPos = window.scrollY + 150;
+        var current = null;
+        sections.forEach(function(s) {
+            if (s.el.offsetTop <= scrollPos) current = s;
+        });
+        anchorLinks.forEach(function(l) { l.classList.remove('active'); });
+        if (current) current.link.classList.add('active');
+    });
+
+    // ===== 复制地址 =====
+    function copyAddress() {
+        var address = '北京市怀柔区渤海镇XX村XX号';
+        if (navigator.clipboard) {
+            navigator.clipboard.writeText(address).then(function() {
+                showToast('地址已复制到剪贴板');
+            });
+        } else {
+            var textarea = document.createElement('textarea');
+            textarea.value = address;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            showToast('地址已复制到剪贴板');
+        }
+    }
+
+    // ===== 一键导航（唤起地图APP） =====
+    function openNavigation() {
+        var address = '北京市怀柔区渤海镇XX村XX号';
+        var lat = 40.412, lng = 116.623;
+        var ua = navigator.userAgent.toLowerCase();
+        var url = '';
+        if (ua.indexOf('iphone') > -1 || ua.indexOf('ipad') > -1) {
+            // iOS优先尝试高德，再百度，最后系统地图
+            url = 'iosamap://navi?sourceApplication=农家乐.cn&poiname=' + encodeURIComponent(address) + '&lat=' + lat + '&lon=' + lng + '&dev=0&style=2';
+            window.location.href = url;
+            setTimeout(function() {
+                window.location.href = 'baidumap://map/direction?destination=name:' + encodeURIComponent(address) + '|latlng:' + lat + ',' + lng + '&coord_type=bd09ll&mode=driving';
+            }, 2000);
+        } else {
+            // Android
+            url = 'androidamap://navi?sourceApplication=农家乐.cn&poiname=' + encodeURIComponent(address) + '&lat=' + lat + '&lon=' + lng + '&dev=0&style=2';
+            window.location.href = url;
+            setTimeout(function() {
+                window.location.href = 'baidumap://map/direction?destination=name:' + encodeURIComponent(address) + '|latlng:' + lat + ',' + lng + '&coord_type=bd09ll&mode=driving';
+            }, 2000);
+        }
+        showToast('正在打开地图导航...');
+    }
+
+    // ===== 提交评价 =====
+    function submitReview() {
+        if (currentRating === 0) {
+            showToast('请先选择评分');
+            return;
+        }
+        showToast('评价提交成功，感谢您的分享！');
+        currentRating = 0;
+        updateStars(0);
+    }
+
+    // ===== 预订表单提交 =====
+    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        var phone = this.querySelector('input[type="tel"]').value;
+        if (!phone || phone.length < 11) {
+            showToast('请填写正确的手机号码');
+            return;
+        }
+        showToast('预订信息已提交，商家将尽快联系您！');
+    });
+
+    // ===== Toast提示 =====
+    function showToast(msg) {
+        var toast = document.getElementById('toast');
+        toast.textContent = msg;
+        toast.classList.add('show');
+        setTimeout(function() {
+            toast.classList.remove('show');
+        }, 2000);
+    }
+
+    // ===== 设置日期最小值为今天 =====
+    var today = new Date().toISOString().split('T')[0];
+    document.getElementById('bookDate').setAttribute('min', today);
+</script>
+
+</body>
+</html>
