@@ -66,9 +66,17 @@ python tools/sync_from_feishu.py              # 正式同步并回写飞书状�
 
 | 脚本 | 用途 |
 |---|---|
+| `deploy.py` | 发布：产物 → `gh-pages`，源码 → `main`（走 GitHub API，非 `git push`） |
+| `tools/verify_live.py` | 发布后验证：等 Pages 构建完成 + 破 CDN 缓存确认线上是新版 |
 | `tools/build_regions.py` | 由上游行政区划数据生成 `data/regions.json`，含 31 条地名读音回归断言 |
 | `tools/sync_from_feishu.py` | 飞书审核通过 → 站点数据的同步引擎 |
 | `tools/photo_store.py` | 照片处理与七牛上传（`--check` 看配置） |
 | `tools/selftest_photos.py` | 照片管道自检：EXIF 清零、尺寸限制、webp 格式 |
 | `tools/make_join_qr.py` | 由入驻表单地址生成站点用的二维码 |
 | `tools/bootstrap_demo_data.py` | 生成演示商家数据 |
+
+发布后的完整动作：
+
+```bash
+python build.py && python check.py && python deploy.py && python tools/verify_live.py
+```
