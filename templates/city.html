@@ -1,0 +1,49 @@
+<div class="wrap">
+  <nav class="crumb" aria-label="面包屑">
+    <a href="/">首页</a><span class="sep">/</span>
+    <a href="/cities/">热门城市</a><span class="sep">/</span><span>{{CITY_NAME}}</span>
+  </nav>
+
+  <div class="page-head" style="margin-top:20px">
+    <svg class="hero-deco" viewBox="0 0 1180 190" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 132 L148 58 L286 122 L432 38 L598 126 L762 68 L922 132 L1062 84 L1180 122 L1180 190 L0 190 Z" fill="#FFFFFF"/>
+    </svg>
+    <div class="page-head-inner">
+      <h1>{{CITY_NAME}}农家乐</h1>
+      <p>{{CITY_DESC}}</p>
+      <div class="hero-hots" style="margin-top:20px">
+        <span>{{CITY_PROVINCE}}</span>
+        {{CITY_TAG_CHIPS}}
+      </div>
+    </div>
+  </div>
+
+  <div class="sortbar">
+    <div class="result-count">已收录 <strong>{{CITY_COUNT}}</strong> 家 · 点击卡片查看房型、价格与真实评价</div>
+    <a class="sec-more" href="/list/">看全国 {{TOTAL}} 家 →</a>
+  </div>
+
+  <div class="stack-list">
+    {{SHOP_ROWS}}
+  </div>
+
+  <section class="panel">
+    <h2>关于{{CITY_NAME}}的农家乐</h2>
+    <div class="prose">
+      {{CITY_SEO}}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="sec-head">
+      <div>
+        <h2>换个城市看看</h2>
+        <p>附近的这些地方，也适合周末走一趟</p>
+      </div>
+      <a class="sec-more" href="/cities/">全部城市 →</a>
+    </div>
+    <div class="grid-cities">
+      {{OTHER_CITIES}}
+    </div>
+  </section>
+</div>

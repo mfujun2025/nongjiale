@@ -1,0 +1,19 @@
+<div class="wrap">
+  <nav class="crumb" aria-label="面包屑">
+    <a href="/">首页</a><span class="sep">/</span><span>网站地图</span>
+  </nav>
+
+  <div class="page-head" style="margin-top:20px">
+    <svg class="hero-deco" viewBox="0 0 1180 190" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 132 L148 58 L286 122 L432 38 L598 126 L762 68 L922 132 L1062 84 L1180 122 L1180 190 L0 190 Z" fill="#FFFFFF"/>
+    </svg>
+    <div class="page-head-inner">
+      <h1>网站地图</h1>
+      <p>本站全部 {{PAGE_TOTAL}} 个页面，按栏目列出。</p>
+    </div>
+  </div>
+
+  <section class="section">
+    {{SITEMAP_CONTENT}}
+  </section>
+</div>

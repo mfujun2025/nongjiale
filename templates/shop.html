@@ -1,0 +1,111 @@
+<div class="wrap">
+  <nav class="crumb" aria-label="面包屑">
+    <a href="/">首页</a><span class="sep">/</span>
+    <a href="/cities/">热门城市</a><span class="sep">/</span>
+    <a href="/city/{{CITY_SLUG}}/">{{CITY_NAME}}</a><span class="sep">/</span><span>{{SHOP_NAME}}</span>
+  </nav>
+
+  <div class="detail-head">
+    <h1>{{SHOP_NAME}}</h1>
+    <div class="detail-sub">{{HEAD_META}}</div>
+  </div>
+
+  <div class="gallery">
+    {{GALLERY}}
+  </div>
+
+  <div class="detail-layout" style="margin-top:36px">
+    <div>
+      <section class="panel" style="margin-top:0">
+        <h2>这家怎么样</h2>
+        <p>{{INTRO}}</p>
+      </section>
+
+      <section class="panel">
+        <h2>基础信息</h2>
+        <dl class="info-grid">
+          {{INFO_GRID}}
+        </dl>
+      </section>
+
+      <section class="panel">
+        <h2>设施与服务</h2>
+        <div class="fac-list">
+          {{FACILITIES}}
+        </div>
+      </section>
+
+      {{ROOMS_SECTION}}
+
+      {{REVIEWS_SECTION}}
+
+      {{NEARBY}}
+    </div>
+
+    <aside>
+      <div class="book-card">
+        {{BOOK_PRICE}}
+        {{BOOK_NOTE}}
+
+        <div class="book-actions">
+          <a class="btn btn-primary btn-lg btn-block" href="tel:{{PHONE_RAW}}">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8.1 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.9 2.2Z"/></svg>
+            {{PHONE}}
+          </a>
+          {{BOOK_ROOMS_BTN}}
+        </div>
+
+        <form class="book-form" data-form="inquiry" data-shop="{{SHOP_NAME}}" action="#" method="post">
+          <input type="text" name="company_url" tabindex="-1" autocomplete="off" aria-hidden="true"
+                 style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+          <div class="book-form-title">不方便打电话？留下号码，商家回拨</div>
+          <div class="book-form-row">
+            <input type="text" name="name" placeholder="怎么称呼" required maxlength="20">
+            <input type="tel" name="phone" placeholder="手机号码" required maxlength="20" inputmode="tel">
+          </div>
+          <button class="btn btn-ghost btn-sm btn-block" type="submit">提交，等商家联系我</button>
+          <div class="form-status" role="status"></div>
+        </form>
+
+        <div class="book-trust">
+          <div>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
+            商家资料已核验
+          </div>
+          <div>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            信息有误可反馈，我们会去核实
+          </div>
+          <div>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            收录不收费，价格由商家提供
+          </div>
+        </div>
+      </div>
+
+      <div class="panel" style="padding:0;overflow:hidden">
+        <div class="map-box" style="border:0;border-radius:0;height:200px">
+          <svg class="art art-{{CITY_ART}}" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <rect class="a-sky" width="400" height="300"/>
+            <path class="a-far" d="M0 150 L60 105 L120 150 L180 95 L250 150 L310 115 L400 155 L400 300 L0 300 Z"/>
+            <path class="a-near" d="M0 205 C60 188 120 225 180 205 C240 188 300 225 400 200 L400 300 L0 300 Z"/>
+            <path class="a-field" d="M0 250 C80 240 160 262 240 252 C310 245 360 260 400 252 L400 300 L0 300 Z"/>
+            <path d="M0 190 C100 175 200 200 400 178" stroke="#FFFFFF" stroke-width="3" fill="none" opacity=".55"/>
+          </svg>
+          <div class="map-pin">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+        </div>
+        <div style="padding:20px 24px">
+          <h4 style="margin-bottom:6px">位置与到达</h4>
+          <p style="font-size:13.5px;color:var(--text-2);line-height:1.75">{{LOCATION_NOTE}}</p>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<div class="mobile-bar">
+  {{BAR_PRICE}}
+  <a class="btn btn-primary btn-lg" href="tel:{{PHONE_RAW}}">电话咨询</a>
+</div>

@@ -1,0 +1,35 @@
+# ---- 密钥与本地配置：绝不进仓库 ----
+qiniu.config.json
+config.local.json
+
+# ---- 同步脚本的下载暂存区（飞书附件先落这儿，处理完即删）----
+static/uploads/.staging/
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# ---- 编辑器 / 系统 ----
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# ---- 无头验证时的页面 dump（排查用，别提交）----
+_feishu_check.html
+*.dump.html
+
+# ---- 构建中间产物（飞书字段定义、调试 dump 等，都可重新生成）----
+/build/
+
+# 自检脚本的临时照片（正常情况下落在 build/ 下，这里防旧版本残留）
+_selftest_tmp/
+
+# ---- 构建产物：只走 gh-pages 分支，不进源码分支 ----
+/public/
+
+# ---- WorkBuddy 会话数据 ----
+/.workbuddy/

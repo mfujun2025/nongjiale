@@ -1,0 +1,99 @@
+<div class="wrap">
+  <nav class="crumb" aria-label="面包屑">
+    <a href="/">首页</a><span class="sep">/</span><span>商家入驻</span>
+  </nav>
+
+  <div class="page-head" style="margin-top:20px">
+    <svg class="hero-deco" viewBox="0 0 1180 190" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 132 L148 58 L286 122 L432 38 L598 126 L762 68 L922 132 L1062 84 L1180 122 L1180 190 L0 190 Z" fill="#FFFFFF"/>
+    </svg>
+    <div class="page-head-inner">
+      <h1>你的农家乐，值得被更多人找到</h1>
+      <p>免费收录、按城市推荐、电话直连客人。不需要你会做网站，也不用懂推广——填个表和电话，剩下的交给平台。</p>
+      <div style="margin-top:28px">
+        <a class="btn btn-light btn-lg" href="#apply">立即免费入驻</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="sec-head">
+      <div>
+        <h2>入驻流程</h2>
+        <p>从提交到你能在平台上被搜到，最快一个工作日</p>
+      </div>
+    </div>
+    <div class="steps">
+      {{STEPS}}
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="band">
+      <div class="sec-head">
+        <div>
+          <h2>入驻能得到什么</h2>
+          <p>所有基础服务免费，收费项目都在明面上，不抽佣金</p>
+        </div>
+      </div>
+      <div class="grid-adv">
+        {{ADV_CARDS}}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="apply">
+    <div class="sec-head">
+      <div>
+        <h2>提交入驻申请</h2>
+        <p>填四项就能提交，其他资料可以上线后再补</p>
+      </div>
+    </div>
+
+    <div class="apply-card">
+      <div class="apply-main">
+        <h3>填表前，先准备好这三样</h3>
+        <ul class="apply-prep">
+          <li><b>店铺名称</b> —— 和门头招牌上写的一致，方便客人核对</li>
+          <li><b>能接通的经营电话</b> —— 我们会打一次确认，这也正是客人联系你的号码</li>
+          <li><b>三张现场照片</b> —— 门头 1 张、环境 2 张，手机现场拍就行</li>
+        </ul>
+
+        <p class="apply-city">
+          全国 <b>{{CITY_TOTAL}}</b> 个地级市（含自治州、地区、盟和直辖市）都能入驻 ——
+          城市那一栏按省份排好，下拉就能找到；区县、乡镇填在下一栏。
+        </p>
+
+        <div class="apply-actions">
+          <a class="btn btn-primary btn-lg" href="{{JOIN_FORM_URL}}"
+             target="_blank" rel="noopener noreferrer">打开入驻申请表</a>
+          <span class="apply-note">{{JOIN_FORM_NOTE}}</span>
+        </div>
+
+        <p class="apply-alt">
+          不方便填表？直接打 <a href="tel:{{PHONE_RAW}}">{{PHONE}}</a>，我们在电话里问几句就能帮你录入。
+        </p>
+      </div>
+
+      <aside class="apply-qr">
+        <img src="/img/join-qr.svg" alt="扫码打开农家乐入驻申请表" width="150" height="150">
+        <p>手机扫码填表</p>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="sec-head">
+      <div>
+        <h2>常见问题</h2>
+        <p>入驻前问得最多的几个问题</p>
+      </div>
+    </div>
+    <div class="faq">
+      {{FAQ}}
+    </div>
+    <p style="margin-top:24px;font-size:14px;color:var(--text-2)">
+      还有其他问题？直接打电话 <a href="tel:{{PHONE_RAW}}" style="color:var(--brand);font-weight:600">{{PHONE}}</a>，{{PHONE_NOTE}}。
+    </p>
+  </section>
+</div>

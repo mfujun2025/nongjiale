@@ -1,0 +1,36 @@
+<div class="wrap">
+  <nav class="crumb" aria-label="面包屑">
+    <a href="/">首页</a><span class="sep">/</span><span>热门城市</span>
+  </nav>
+
+  <div class="page-head" style="margin-top:20px">
+    <svg class="hero-deco" viewBox="0 0 1180 190" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 132 L148 58 L286 122 L432 38 L598 126 L762 68 L922 132 L1062 84 L1180 122 L1180 190 L0 190 Z" fill="#FFFFFF"/>
+    </svg>
+    <div class="page-head-inner">
+      <h1>热门城市</h1>
+      <p>目前覆盖 {{CITY_COUNT}} 座城市、{{TOTAL}} 家农家乐。每个城市都有独立页面，按玩法、人均价格和距离继续筛。</p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="grid-cities">
+      {{CITY_CARDS}}
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>城市是怎么选的</h2>
+    <div class="prose">
+      <p>我们先做的是「周末开车两小时内能到」的城市周边游。判断标准有三条：<strong>城区人口够多、近郊有成熟的农家乐聚集区、网络上的真实评价足够多</strong>。三条都满足，这座城市才会开独立页面。</p>
+      <p>现在上线的是 {{CITY_COUNT}} 座城市。整理其他城市的过程需要实地核实，所以进得慢一些。如果你所在的城市还没开，或者你正好在经营一家农家乐想被收录，<a href="/join/">点这里提交</a>，我们会优先处理。</p>
+      <h2>怎么用这些城市页</h2>
+      <ul>
+        <li><strong>先看距离</strong>——每个城市页的卡片上都标了距市中心的车程公里数，决定了你是不是当天能来回。</li>
+        <li><strong>再看玩法</strong>——带娃、朋友聚会、两人安静待两天，需要的农家乐完全不是同一类，按标签挑。</li>
+        <li><strong>最后看价格和评价</strong>——人均价用于横向比，评分和评价数用于判断靠不靠谱。评分高但评价数只有个位数的，建议再多看几家。</li>
+      </ul>
+      <p>选定之后直接打电话是最快的。农家乐大多没有专业预订系统，一个电话能问清当天空位、能不能带宠物、招牌菜要提前多久点。</p>
+    </div>
+  </section>
+</div>

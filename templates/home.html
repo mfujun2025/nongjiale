@@ -1,0 +1,132 @@
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-card">
+      <svg class="hero-deco" viewBox="0 0 1180 190" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 132 L148 58 L286 122 L432 38 L598 126 L762 68 L922 132 L1062 84 L1180 122 L1180 190 L0 190 Z" fill="#FFFFFF"/>
+      </svg>
+      <div class="hero-inner">
+        <div>
+          <span class="hero-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            已覆盖 6 座城市 · 数据持续更新
+          </span>
+          <h1>{{HERO_TITLE}}</h1>
+          <p class="hero-sub">{{HERO_SUB}}</p>
+
+          <form class="search-bar" action="/list/" method="get" role="search">
+            <label class="search-field">
+              <span class="sr-only">关键词</span>
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+              <input type="search" name="q" placeholder="搜名称或玩法，如「采摘」「垂钓」" autocomplete="off">
+            </label>
+            <label class="search-field search-field--city">
+              <span class="sr-only">城市</span>
+              <select name="city">
+                <option value="">全部城市</option>
+                {{CITY_OPTIONS}}
+              </select>
+            </label>
+            <button class="btn btn-primary" type="submit">搜索</button>
+          </form>
+
+          <div class="hero-hots">
+            <span>热门搜索</span>
+            {{HERO_HOTS}}
+          </div>
+        </div>
+
+        <aside class="hero-stat">
+          {{HERO_STAT_ROWS}}
+        </aside>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2>热门目的地</h2>
+        <p>挑一座城市，看看这个周末能往哪儿走</p>
+      </div>
+      <a class="sec-more" href="/cities/">全部城市 →</a>
+    </div>
+    <div class="grid-cities">
+      {{CITY_CARDS}}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="band">
+      <div class="sec-head">
+        <div>
+          <h2>特色农家体验</h2>
+          <p>不只是吃顿饭，农家乐真正好玩的地方在这里</p>
+        </div>
+        <a class="sec-more" href="/list/">按玩法找 →</a>
+      </div>
+      <div class="grid-exp">
+        {{EXP_CARDS}}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2>本周精选农家乐</h2>
+        <p>编辑实地筛选，评分与价格都摆在明面上</p>
+      </div>
+      <a class="sec-more" href="/list/">查看全部 {{TOTAL}} 家 →</a>
+    </div>
+    <div class="grid-shops">
+      {{SHOP_CARDS}}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="stats">
+      {{STATS}}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <h2>去过的客人怎么说</h2>
+        <p>评价来自实际到店的游客，一条都不删</p>
+      </div>
+    </div>
+    <div class="grid-reviews">
+      {{REVIEW_CARDS}}
+    </div>
+  </div>
+</section>
+
+<section class="section" id="join">
+  <div class="wrap">
+    <div class="cta-band">
+      <div class="cta-inner">
+        <div>
+          <h2>你开农家乐，我们帮你被找到</h2>
+          <p>免费收录、按城市推荐、电话直连。不抽佣金，不需要你会用电脑，留个电话就能上线。</p>
+          <div class="cta-points">
+            {{CTA_POINTS}}
+          </div>
+        </div>
+        <div>
+          <a class="btn btn-light btn-lg btn-block" href="/join/">免费入驻 →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

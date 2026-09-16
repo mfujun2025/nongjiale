@@ -1,0 +1,2703 @@
+{
+  "_note": "全国地级行政区基准表。来源：国家统计局统计用区划代码 / province-city-china。由 tools/build_regions.py 生成，不要手改。",
+  "count": 337,
+  "province_count": 31,
+  "regions": [
+    {
+      "adcode": "110000",
+      "name": "北京市",
+      "short": "北京",
+      "province": "北京市",
+      "province_code": "11",
+      "slug": "beijing"
+    },
+    {
+      "adcode": "120000",
+      "name": "天津市",
+      "short": "天津",
+      "province": "天津市",
+      "province_code": "12",
+      "slug": "tianjin"
+    },
+    {
+      "adcode": "130100",
+      "name": "石家庄市",
+      "short": "石家庄",
+      "province": "河北省",
+      "province_code": "13",
+      "slug": "shijiazhuang"
+    },
+    {
+      "adcode": "130200",
+      "name": "唐山市",
+      "short": "唐山",
+      "province": "河北省",
+      "province_code": "13",
+      "slug": "tangshan"
+    },
+    {
+      "adcode": "130300",
+      "name": "秦皇岛市",
+      "short": "秦皇岛",
+      "province": "河北省",
+      "province_code": "13",
+      "slug": "qinhuangdao"
+    },
+    {
+      "adcode": "130400",
+      "name": "邯郸市",
+      "short": "邯郸",
+      "province": "河北省",
+      "province_code": "13",
+      "slug": "handan"
+    },
+    {
+      "adcode": "130500",
+      "name": "邢台市",
+      "short": "邢台",
+      "province": "河北省",
+      "province_code": "13",
+      "slug": "xingtai"
+    },
+    {
+      "adcode": "130600",
+      "name": "保定市",
+      "short": "保定",
+      "province": "河北省",
+      "province_code": "13",
+      "slug": "baoding"
+    },
+    {
+      "adcode": "130700",
+      "name": "张家口市",
+      "short": "张家口",
+      "province": "河北省",
+      "province_code": "13",
+      "slug": "zhangjiakou"
+    },
+    {
+      "adcode": "130800",
+      "name": "承德市",
+      "short": "承德",
+      "province": "河北省",
+      "province_code": "13",
+      "slug": "chengde"
+    },
+    {
+      "adcode": "130900",
+      "name": "沧州市",
+      "short": "沧州",
+      "province": "河北省",
+      "province_code": "13",
+      "slug": "cangzhou"
+    },
+    {
+      "adcode": "131000",
+      "name": "廊坊市",
+      "short": "廊坊",
+      "province": "河北省",
+      "province_code": "13",
+      "slug": "langfang"
+    },
+    {
+      "adcode": "131100",
+      "name": "衡水市",
+      "short": "衡水",
+      "province": "河北省",
+      "province_code": "13",
+      "slug": "hengshui"
+    },
+    {
+      "adcode": "140100",
+      "name": "太原市",
+      "short": "太原",
+      "province": "山西省",
+      "province_code": "14",
+      "slug": "taiyuan"
+    },
+    {
+      "adcode": "140200",
+      "name": "大同市",
+      "short": "大同",
+      "province": "山西省",
+      "province_code": "14",
+      "slug": "datong"
+    },
+    {
+      "adcode": "140300",
+      "name": "阳泉市",
+      "short": "阳泉",
+      "province": "山西省",
+      "province_code": "14",
+      "slug": "yangquan"
+    },
+    {
+      "adcode": "140400",
+      "name": "长治市",
+      "short": "长治",
+      "province": "山西省",
+      "province_code": "14",
+      "slug": "changzhi"
+    },
+    {
+      "adcode": "140500",
+      "name": "晋城市",
+      "short": "晋城",
+      "province": "山西省",
+      "province_code": "14",
+      "slug": "jincheng"
+    },
+    {
+      "adcode": "140600",
+      "name": "朔州市",
+      "short": "朔州",
+      "province": "山西省",
+      "province_code": "14",
+      "slug": "shuozhou"
+    },
+    {
+      "adcode": "140700",
+      "name": "晋中市",
+      "short": "晋中",
+      "province": "山西省",
+      "province_code": "14",
+      "slug": "jinzhong"
+    },
+    {
+      "adcode": "140800",
+      "name": "运城市",
+      "short": "运城",
+      "province": "山西省",
+      "province_code": "14",
+      "slug": "yuncheng"
+    },
+    {
+      "adcode": "140900",
+      "name": "忻州市",
+      "short": "忻州",
+      "province": "山西省",
+      "province_code": "14",
+      "slug": "xinzhou"
+    },
+    {
+      "adcode": "141000",
+      "name": "临汾市",
+      "short": "临汾",
+      "province": "山西省",
+      "province_code": "14",
+      "slug": "linfen"
+    },
+    {
+      "adcode": "141100",
+      "name": "吕梁市",
+      "short": "吕梁",
+      "province": "山西省",
+      "province_code": "14",
+      "slug": "lvliang"
+    },
+    {
+      "adcode": "150100",
+      "name": "呼和浩特市",
+      "short": "呼和浩特",
+      "province": "内蒙古自治区",
+      "province_code": "15",
+      "slug": "huhehaote"
+    },
+    {
+      "adcode": "150200",
+      "name": "包头市",
+      "short": "包头",
+      "province": "内蒙古自治区",
+      "province_code": "15",
+      "slug": "baotou"
+    },
+    {
+      "adcode": "150300",
+      "name": "乌海市",
+      "short": "乌海",
+      "province": "内蒙古自治区",
+      "province_code": "15",
+      "slug": "wuhai"
+    },
+    {
+      "adcode": "150400",
+      "name": "赤峰市",
+      "short": "赤峰",
+      "province": "内蒙古自治区",
+      "province_code": "15",
+      "slug": "chifeng"
+    },
+    {
+      "adcode": "150500",
+      "name": "通辽市",
+      "short": "通辽",
+      "province": "内蒙古自治区",
+      "province_code": "15",
+      "slug": "tongliao"
+    },
+    {
+      "adcode": "150600",
+      "name": "鄂尔多斯市",
+      "short": "鄂尔多斯",
+      "province": "内蒙古自治区",
+      "province_code": "15",
+      "slug": "eerduosi"
+    },
+    {
+      "adcode": "150700",
+      "name": "呼伦贝尔市",
+      "short": "呼伦贝尔",
+      "province": "内蒙古自治区",
+      "province_code": "15",
+      "slug": "hulunbeier"
+    },
+    {
+      "adcode": "150800",
+      "name": "巴彦淖尔市",
+      "short": "巴彦淖尔",
+      "province": "内蒙古自治区",
+      "province_code": "15",
+      "slug": "bayannaoer"
+    },
+    {
+      "adcode": "150900",
+      "name": "乌兰察布市",
+      "short": "乌兰察布",
+      "province": "内蒙古自治区",
+      "province_code": "15",
+      "slug": "wulanchabu"
+    },
+    {
+      "adcode": "152200",
+      "name": "兴安盟",
+      "short": "兴安",
+      "province": "内蒙古自治区",
+      "province_code": "15",
+      "slug": "xingan"
+    },
+    {
+      "adcode": "152500",
+      "name": "锡林郭勒盟",
+      "short": "锡林郭勒",
+      "province": "内蒙古自治区",
+      "province_code": "15",
+      "slug": "xilinguole"
+    },
+    {
+      "adcode": "152900",
+      "name": "阿拉善盟",
+      "short": "阿拉善",
+      "province": "内蒙古自治区",
+      "province_code": "15",
+      "slug": "alashan"
+    },
+    {
+      "adcode": "210100",
+      "name": "沈阳市",
+      "short": "沈阳",
+      "province": "辽宁省",
+      "province_code": "21",
+      "slug": "shenyang"
+    },
+    {
+      "adcode": "210200",
+      "name": "大连市",
+      "short": "大连",
+      "province": "辽宁省",
+      "province_code": "21",
+      "slug": "dalian"
+    },
+    {
+      "adcode": "210300",
+      "name": "鞍山市",
+      "short": "鞍山",
+      "province": "辽宁省",
+      "province_code": "21",
+      "slug": "anshan"
+    },
+    {
+      "adcode": "210400",
+      "name": "抚顺市",
+      "short": "抚顺",
+      "province": "辽宁省",
+      "province_code": "21",
+      "slug": "fushun"
+    },
+    {
+      "adcode": "210500",
+      "name": "本溪市",
+      "short": "本溪",
+      "province": "辽宁省",
+      "province_code": "21",
+      "slug": "benxi"
+    },
+    {
+      "adcode": "210600",
+      "name": "丹东市",
+      "short": "丹东",
+      "province": "辽宁省",
+      "province_code": "21",
+      "slug": "dandong"
+    },
+    {
+      "adcode": "210700",
+      "name": "锦州市",
+      "short": "锦州",
+      "province": "辽宁省",
+      "province_code": "21",
+      "slug": "jinzhou"
+    },
+    {
+      "adcode": "210800",
+      "name": "营口市",
+      "short": "营口",
+      "province": "辽宁省",
+      "province_code": "21",
+      "slug": "yingkou"
+    },
+    {
+      "adcode": "210900",
+      "name": "阜新市",
+      "short": "阜新",
+      "province": "辽宁省",
+      "province_code": "21",
+      "slug": "fuxin"
+    },
+    {
+      "adcode": "211000",
+      "name": "辽阳市",
+      "short": "辽阳",
+      "province": "辽宁省",
+      "province_code": "21",
+      "slug": "liaoyang"
+    },
+    {
+      "adcode": "211100",
+      "name": "盘锦市",
+      "short": "盘锦",
+      "province": "辽宁省",
+      "province_code": "21",
+      "slug": "panjin"
+    },
+    {
+      "adcode": "211200",
+      "name": "铁岭市",
+      "short": "铁岭",
+      "province": "辽宁省",
+      "province_code": "21",
+      "slug": "tieling"
+    },
+    {
+      "adcode": "211300",
+      "name": "朝阳市",
+      "short": "朝阳",
+      "province": "辽宁省",
+      "province_code": "21",
+      "slug": "chaoyang"
+    },
+    {
+      "adcode": "211400",
+      "name": "葫芦岛市",
+      "short": "葫芦岛",
+      "province": "辽宁省",
+      "province_code": "21",
+      "slug": "huludao"
+    },
+    {
+      "adcode": "220100",
+      "name": "长春市",
+      "short": "长春",
+      "province": "吉林省",
+      "province_code": "22",
+      "slug": "changchun"
+    },
+    {
+      "adcode": "220200",
+      "name": "吉林市",
+      "short": "吉林",
+      "province": "吉林省",
+      "province_code": "22",
+      "slug": "jilin"
+    },
+    {
+      "adcode": "220300",
+      "name": "四平市",
+      "short": "四平",
+      "province": "吉林省",
+      "province_code": "22",
+      "slug": "siping"
+    },
+    {
+      "adcode": "220400",
+      "name": "辽源市",
+      "short": "辽源",
+      "province": "吉林省",
+      "province_code": "22",
+      "slug": "liaoyuan"
+    },
+    {
+      "adcode": "220500",
+      "name": "通化市",
+      "short": "通化",
+      "province": "吉林省",
+      "province_code": "22",
+      "slug": "tonghua"
+    },
+    {
+      "adcode": "220600",
+      "name": "白山市",
+      "short": "白山",
+      "province": "吉林省",
+      "province_code": "22",
+      "slug": "baishan"
+    },
+    {
+      "adcode": "220700",
+      "name": "松原市",
+      "short": "松原",
+      "province": "吉林省",
+      "province_code": "22",
+      "slug": "songyuan"
+    },
+    {
+      "adcode": "220800",
+      "name": "白城市",
+      "short": "白城",
+      "province": "吉林省",
+      "province_code": "22",
+      "slug": "baicheng"
+    },
+    {
+      "adcode": "222400",
+      "name": "延边朝鲜族自治州",
+      "short": "延边",
+      "province": "吉林省",
+      "province_code": "22",
+      "slug": "yanbian"
+    },
+    {
+      "adcode": "230100",
+      "name": "哈尔滨市",
+      "short": "哈尔滨",
+      "province": "黑龙江省",
+      "province_code": "23",
+      "slug": "haerbin"
+    },
+    {
+      "adcode": "230200",
+      "name": "齐齐哈尔市",
+      "short": "齐齐哈尔",
+      "province": "黑龙江省",
+      "province_code": "23",
+      "slug": "qiqihaer"
+    },
+    {
+      "adcode": "230300",
+      "name": "鸡西市",
+      "short": "鸡西",
+      "province": "黑龙江省",
+      "province_code": "23",
+      "slug": "jixi"
+    },
+    {
+      "adcode": "230400",
+      "name": "鹤岗市",
+      "short": "鹤岗",
+      "province": "黑龙江省",
+      "province_code": "23",
+      "slug": "hegang"
+    },
+    {
+      "adcode": "230500",
+      "name": "双鸭山市",
+      "short": "双鸭山",
+      "province": "黑龙江省",
+      "province_code": "23",
+      "slug": "shuangyashan"
+    },
+    {
+      "adcode": "230600",
+      "name": "大庆市",
+      "short": "大庆",
+      "province": "黑龙江省",
+      "province_code": "23",
+      "slug": "daqing"
+    },
+    {
+      "adcode": "230700",
+      "name": "伊春市",
+      "short": "伊春",
+      "province": "黑龙江省",
+      "province_code": "23",
+      "slug": "yichun"
+    },
+    {
+      "adcode": "230800",
+      "name": "佳木斯市",
+      "short": "佳木斯",
+      "province": "黑龙江省",
+      "province_code": "23",
+      "slug": "jiamusi"
+    },
+    {
+      "adcode": "230900",
+      "name": "七台河市",
+      "short": "七台河",
+      "province": "黑龙江省",
+      "province_code": "23",
+      "slug": "qitaihe"
+    },
+    {
+      "adcode": "231000",
+      "name": "牡丹江市",
+      "short": "牡丹江",
+      "province": "黑龙江省",
+      "province_code": "23",
+      "slug": "mudanjiang"
+    },
+    {
+      "adcode": "231100",
+      "name": "黑河市",
+      "short": "黑河",
+      "province": "黑龙江省",
+      "province_code": "23",
+      "slug": "heihe"
+    },
+    {
+      "adcode": "231200",
+      "name": "绥化市",
+      "short": "绥化",
+      "province": "黑龙江省",
+      "province_code": "23",
+      "slug": "suihua"
+    },
+    {
+      "adcode": "232700",
+      "name": "大兴安岭地区",
+      "short": "大兴安岭",
+      "province": "黑龙江省",
+      "province_code": "23",
+      "slug": "daxinganling"
+    },
+    {
+      "adcode": "310000",
+      "name": "上海市",
+      "short": "上海",
+      "province": "上海市",
+      "province_code": "31",
+      "slug": "shanghai"
+    },
+    {
+      "adcode": "320100",
+      "name": "南京市",
+      "short": "南京",
+      "province": "江苏省",
+      "province_code": "32",
+      "slug": "nanjing"
+    },
+    {
+      "adcode": "320200",
+      "name": "无锡市",
+      "short": "无锡",
+      "province": "江苏省",
+      "province_code": "32",
+      "slug": "wuxi"
+    },
+    {
+      "adcode": "320300",
+      "name": "徐州市",
+      "short": "徐州",
+      "province": "江苏省",
+      "province_code": "32",
+      "slug": "xuzhou"
+    },
+    {
+      "adcode": "320400",
+      "name": "常州市",
+      "short": "常州",
+      "province": "江苏省",
+      "province_code": "32",
+      "slug": "changzhou"
+    },
+    {
+      "adcode": "320500",
+      "name": "苏州市",
+      "short": "苏州",
+      "province": "江苏省",
+      "province_code": "32",
+      "slug": "suzhou"
+    },
+    {
+      "adcode": "320600",
+      "name": "南通市",
+      "short": "南通",
+      "province": "江苏省",
+      "province_code": "32",
+      "slug": "nantong"
+    },
+    {
+      "adcode": "320700",
+      "name": "连云港市",
+      "short": "连云港",
+      "province": "江苏省",
+      "province_code": "32",
+      "slug": "lianyungang"
+    },
+    {
+      "adcode": "320800",
+      "name": "淮安市",
+      "short": "淮安",
+      "province": "江苏省",
+      "province_code": "32",
+      "slug": "huaian"
+    },
+    {
+      "adcode": "320900",
+      "name": "盐城市",
+      "short": "盐城",
+      "province": "江苏省",
+      "province_code": "32",
+      "slug": "yancheng"
+    },
+    {
+      "adcode": "321000",
+      "name": "扬州市",
+      "short": "扬州",
+      "province": "江苏省",
+      "province_code": "32",
+      "slug": "yangzhou"
+    },
+    {
+      "adcode": "321100",
+      "name": "镇江市",
+      "short": "镇江",
+      "province": "江苏省",
+      "province_code": "32",
+      "slug": "zhenjiang"
+    },
+    {
+      "adcode": "321200",
+      "name": "泰州市",
+      "short": "泰州",
+      "province": "江苏省",
+      "province_code": "32",
+      "slug": "taizhou"
+    },
+    {
+      "adcode": "321300",
+      "name": "宿迁市",
+      "short": "宿迁",
+      "province": "江苏省",
+      "province_code": "32",
+      "slug": "suqian"
+    },
+    {
+      "adcode": "330100",
+      "name": "杭州市",
+      "short": "杭州",
+      "province": "浙江省",
+      "province_code": "33",
+      "slug": "hangzhou"
+    },
+    {
+      "adcode": "330200",
+      "name": "宁波市",
+      "short": "宁波",
+      "province": "浙江省",
+      "province_code": "33",
+      "slug": "ningbo"
+    },
+    {
+      "adcode": "330300",
+      "name": "温州市",
+      "short": "温州",
+      "province": "浙江省",
+      "province_code": "33",
+      "slug": "wenzhou"
+    },
+    {
+      "adcode": "330400",
+      "name": "嘉兴市",
+      "short": "嘉兴",
+      "province": "浙江省",
+      "province_code": "33",
+      "slug": "jiaxing"
+    },
+    {
+      "adcode": "330500",
+      "name": "湖州市",
+      "short": "湖州",
+      "province": "浙江省",
+      "province_code": "33",
+      "slug": "huzhou"
+    },
+    {
+      "adcode": "330600",
+      "name": "绍兴市",
+      "short": "绍兴",
+      "province": "浙江省",
+      "province_code": "33",
+      "slug": "shaoxing"
+    },
+    {
+      "adcode": "330700",
+      "name": "金华市",
+      "short": "金华",
+      "province": "浙江省",
+      "province_code": "33",
+      "slug": "jinhua"
+    },
+    {
+      "adcode": "330800",
+      "name": "衢州市",
+      "short": "衢州",
+      "province": "浙江省",
+      "province_code": "33",
+      "slug": "quzhou"
+    },
+    {
+      "adcode": "330900",
+      "name": "舟山市",
+      "short": "舟山",
+      "province": "浙江省",
+      "province_code": "33",
+      "slug": "zhoushan"
+    },
+    {
+      "adcode": "331000",
+      "name": "台州市",
+      "short": "台州",
+      "province": "浙江省",
+      "province_code": "33",
+      "slug": "taizhou-zhejiang"
+    },
+    {
+      "adcode": "331100",
+      "name": "丽水市",
+      "short": "丽水",
+      "province": "浙江省",
+      "province_code": "33",
+      "slug": "lishui"
+    },
+    {
+      "adcode": "340100",
+      "name": "合肥市",
+      "short": "合肥",
+      "province": "安徽省",
+      "province_code": "34",
+      "slug": "hefei"
+    },
+    {
+      "adcode": "340200",
+      "name": "芜湖市",
+      "short": "芜湖",
+      "province": "安徽省",
+      "province_code": "34",
+      "slug": "wuhu"
+    },
+    {
+      "adcode": "340300",
+      "name": "蚌埠市",
+      "short": "蚌埠",
+      "province": "安徽省",
+      "province_code": "34",
+      "slug": "bengbu"
+    },
+    {
+      "adcode": "340400",
+      "name": "淮南市",
+      "short": "淮南",
+      "province": "安徽省",
+      "province_code": "34",
+      "slug": "huainan"
+    },
+    {
+      "adcode": "340500",
+      "name": "马鞍山市",
+      "short": "马鞍山",
+      "province": "安徽省",
+      "province_code": "34",
+      "slug": "maanshan"
+    },
+    {
+      "adcode": "340600",
+      "name": "淮北市",
+      "short": "淮北",
+      "province": "安徽省",
+      "province_code": "34",
+      "slug": "huaibei"
+    },
+    {
+      "adcode": "340700",
+      "name": "铜陵市",
+      "short": "铜陵",
+      "province": "安徽省",
+      "province_code": "34",
+      "slug": "tongling"
+    },
+    {
+      "adcode": "340800",
+      "name": "安庆市",
+      "short": "安庆",
+      "province": "安徽省",
+      "province_code": "34",
+      "slug": "anqing"
+    },
+    {
+      "adcode": "341000",
+      "name": "黄山市",
+      "short": "黄山",
+      "province": "安徽省",
+      "province_code": "34",
+      "slug": "huangshan"
+    },
+    {
+      "adcode": "341100",
+      "name": "滁州市",
+      "short": "滁州",
+      "province": "安徽省",
+      "province_code": "34",
+      "slug": "chuzhou"
+    },
+    {
+      "adcode": "341200",
+      "name": "阜阳市",
+      "short": "阜阳",
+      "province": "安徽省",
+      "province_code": "34",
+      "slug": "fuyang"
+    },
+    {
+      "adcode": "341300",
+      "name": "宿州市",
+      "short": "宿州",
+      "province": "安徽省",
+      "province_code": "34",
+      "slug": "suzhou-anhui"
+    },
+    {
+      "adcode": "341500",
+      "name": "六安市",
+      "short": "六安",
+      "province": "安徽省",
+      "province_code": "34",
+      "slug": "luan"
+    },
+    {
+      "adcode": "341600",
+      "name": "亳州市",
+      "short": "亳州",
+      "province": "安徽省",
+      "province_code": "34",
+      "slug": "bozhou"
+    },
+    {
+      "adcode": "341700",
+      "name": "池州市",
+      "short": "池州",
+      "province": "安徽省",
+      "province_code": "34",
+      "slug": "chizhou"
+    },
+    {
+      "adcode": "341800",
+      "name": "宣城市",
+      "short": "宣城",
+      "province": "安徽省",
+      "province_code": "34",
+      "slug": "xuancheng"
+    },
+    {
+      "adcode": "350100",
+      "name": "福州市",
+      "short": "福州",
+      "province": "福建省",
+      "province_code": "35",
+      "slug": "fuzhou"
+    },
+    {
+      "adcode": "350200",
+      "name": "厦门市",
+      "short": "厦门",
+      "province": "福建省",
+      "province_code": "35",
+      "slug": "xiamen"
+    },
+    {
+      "adcode": "350300",
+      "name": "莆田市",
+      "short": "莆田",
+      "province": "福建省",
+      "province_code": "35",
+      "slug": "putian"
+    },
+    {
+      "adcode": "350400",
+      "name": "三明市",
+      "short": "三明",
+      "province": "福建省",
+      "province_code": "35",
+      "slug": "sanming"
+    },
+    {
+      "adcode": "350500",
+      "name": "泉州市",
+      "short": "泉州",
+      "province": "福建省",
+      "province_code": "35",
+      "slug": "quanzhou"
+    },
+    {
+      "adcode": "350600",
+      "name": "漳州市",
+      "short": "漳州",
+      "province": "福建省",
+      "province_code": "35",
+      "slug": "zhangzhou"
+    },
+    {
+      "adcode": "350700",
+      "name": "南平市",
+      "short": "南平",
+      "province": "福建省",
+      "province_code": "35",
+      "slug": "nanping"
+    },
+    {
+      "adcode": "350800",
+      "name": "龙岩市",
+      "short": "龙岩",
+      "province": "福建省",
+      "province_code": "35",
+      "slug": "longyan"
+    },
+    {
+      "adcode": "350900",
+      "name": "宁德市",
+      "short": "宁德",
+      "province": "福建省",
+      "province_code": "35",
+      "slug": "ningde"
+    },
+    {
+      "adcode": "360100",
+      "name": "南昌市",
+      "short": "南昌",
+      "province": "江西省",
+      "province_code": "36",
+      "slug": "nanchang"
+    },
+    {
+      "adcode": "360200",
+      "name": "景德镇市",
+      "short": "景德镇",
+      "province": "江西省",
+      "province_code": "36",
+      "slug": "jingdezhen"
+    },
+    {
+      "adcode": "360300",
+      "name": "萍乡市",
+      "short": "萍乡",
+      "province": "江西省",
+      "province_code": "36",
+      "slug": "pingxiang"
+    },
+    {
+      "adcode": "360400",
+      "name": "九江市",
+      "short": "九江",
+      "province": "江西省",
+      "province_code": "36",
+      "slug": "jiujiang"
+    },
+    {
+      "adcode": "360500",
+      "name": "新余市",
+      "short": "新余",
+      "province": "江西省",
+      "province_code": "36",
+      "slug": "xinyu"
+    },
+    {
+      "adcode": "360600",
+      "name": "鹰潭市",
+      "short": "鹰潭",
+      "province": "江西省",
+      "province_code": "36",
+      "slug": "yingtan"
+    },
+    {
+      "adcode": "360700",
+      "name": "赣州市",
+      "short": "赣州",
+      "province": "江西省",
+      "province_code": "36",
+      "slug": "ganzhou"
+    },
+    {
+      "adcode": "360800",
+      "name": "吉安市",
+      "short": "吉安",
+      "province": "江西省",
+      "province_code": "36",
+      "slug": "jian"
+    },
+    {
+      "adcode": "360900",
+      "name": "宜春市",
+      "short": "宜春",
+      "province": "江西省",
+      "province_code": "36",
+      "slug": "yichun-jiangxi"
+    },
+    {
+      "adcode": "361000",
+      "name": "抚州市",
+      "short": "抚州",
+      "province": "江西省",
+      "province_code": "36",
+      "slug": "fuzhou-jiangxi"
+    },
+    {
+      "adcode": "361100",
+      "name": "上饶市",
+      "short": "上饶",
+      "province": "江西省",
+      "province_code": "36",
+      "slug": "shangrao"
+    },
+    {
+      "adcode": "370100",
+      "name": "济南市",
+      "short": "济南",
+      "province": "山东省",
+      "province_code": "37",
+      "slug": "jinan"
+    },
+    {
+      "adcode": "370200",
+      "name": "青岛市",
+      "short": "青岛",
+      "province": "山东省",
+      "province_code": "37",
+      "slug": "qingdao"
+    },
+    {
+      "adcode": "370300",
+      "name": "淄博市",
+      "short": "淄博",
+      "province": "山东省",
+      "province_code": "37",
+      "slug": "zibo"
+    },
+    {
+      "adcode": "370400",
+      "name": "枣庄市",
+      "short": "枣庄",
+      "province": "山东省",
+      "province_code": "37",
+      "slug": "zaozhuang"
+    },
+    {
+      "adcode": "370500",
+      "name": "东营市",
+      "short": "东营",
+      "province": "山东省",
+      "province_code": "37",
+      "slug": "dongying"
+    },
+    {
+      "adcode": "370600",
+      "name": "烟台市",
+      "short": "烟台",
+      "province": "山东省",
+      "province_code": "37",
+      "slug": "yantai"
+    },
+    {
+      "adcode": "370700",
+      "name": "潍坊市",
+      "short": "潍坊",
+      "province": "山东省",
+      "province_code": "37",
+      "slug": "weifang"
+    },
+    {
+      "adcode": "370800",
+      "name": "济宁市",
+      "short": "济宁",
+      "province": "山东省",
+      "province_code": "37",
+      "slug": "jining"
+    },
+    {
+      "adcode": "370900",
+      "name": "泰安市",
+      "short": "泰安",
+      "province": "山东省",
+      "province_code": "37",
+      "slug": "taian"
+    },
+    {
+      "adcode": "371000",
+      "name": "威海市",
+      "short": "威海",
+      "province": "山东省",
+      "province_code": "37",
+      "slug": "weihai"
+    },
+    {
+      "adcode": "371100",
+      "name": "日照市",
+      "short": "日照",
+      "province": "山东省",
+      "province_code": "37",
+      "slug": "rizhao"
+    },
+    {
+      "adcode": "371300",
+      "name": "临沂市",
+      "short": "临沂",
+      "province": "山东省",
+      "province_code": "37",
+      "slug": "linyi"
+    },
+    {
+      "adcode": "371400",
+      "name": "德州市",
+      "short": "德州",
+      "province": "山东省",
+      "province_code": "37",
+      "slug": "dezhou"
+    },
+    {
+      "adcode": "371500",
+      "name": "聊城市",
+      "short": "聊城",
+      "province": "山东省",
+      "province_code": "37",
+      "slug": "liaocheng"
+    },
+    {
+      "adcode": "371600",
+      "name": "滨州市",
+      "short": "滨州",
+      "province": "山东省",
+      "province_code": "37",
+      "slug": "binzhou"
+    },
+    {
+      "adcode": "371700",
+      "name": "菏泽市",
+      "short": "菏泽",
+      "province": "山东省",
+      "province_code": "37",
+      "slug": "heze"
+    },
+    {
+      "adcode": "410100",
+      "name": "郑州市",
+      "short": "郑州",
+      "province": "河南省",
+      "province_code": "41",
+      "slug": "zhengzhou"
+    },
+    {
+      "adcode": "410200",
+      "name": "开封市",
+      "short": "开封",
+      "province": "河南省",
+      "province_code": "41",
+      "slug": "kaifeng"
+    },
+    {
+      "adcode": "410300",
+      "name": "洛阳市",
+      "short": "洛阳",
+      "province": "河南省",
+      "province_code": "41",
+      "slug": "luoyang"
+    },
+    {
+      "adcode": "410400",
+      "name": "平顶山市",
+      "short": "平顶山",
+      "province": "河南省",
+      "province_code": "41",
+      "slug": "pingdingshan"
+    },
+    {
+      "adcode": "410500",
+      "name": "安阳市",
+      "short": "安阳",
+      "province": "河南省",
+      "province_code": "41",
+      "slug": "anyang"
+    },
+    {
+      "adcode": "410600",
+      "name": "鹤壁市",
+      "short": "鹤壁",
+      "province": "河南省",
+      "province_code": "41",
+      "slug": "hebi"
+    },
+    {
+      "adcode": "410700",
+      "name": "新乡市",
+      "short": "新乡",
+      "province": "河南省",
+      "province_code": "41",
+      "slug": "xinxiang"
+    },
+    {
+      "adcode": "410800",
+      "name": "焦作市",
+      "short": "焦作",
+      "province": "河南省",
+      "province_code": "41",
+      "slug": "jiaozuo"
+    },
+    {
+      "adcode": "410900",
+      "name": "濮阳市",
+      "short": "濮阳",
+      "province": "河南省",
+      "province_code": "41",
+      "slug": "puyang"
+    },
+    {
+      "adcode": "411000",
+      "name": "许昌市",
+      "short": "许昌",
+      "province": "河南省",
+      "province_code": "41",
+      "slug": "xuchang"
+    },
+    {
+      "adcode": "411100",
+      "name": "漯河市",
+      "short": "漯河",
+      "province": "河南省",
+      "province_code": "41",
+      "slug": "luohe"
+    },
+    {
+      "adcode": "411200",
+      "name": "三门峡市",
+      "short": "三门峡",
+      "province": "河南省",
+      "province_code": "41",
+      "slug": "sanmenxia"
+    },
+    {
+      "adcode": "411300",
+      "name": "南阳市",
+      "short": "南阳",
+      "province": "河南省",
+      "province_code": "41",
+      "slug": "nanyang"
+    },
+    {
+      "adcode": "411400",
+      "name": "商丘市",
+      "short": "商丘",
+      "province": "河南省",
+      "province_code": "41",
+      "slug": "shangqiu"
+    },
+    {
+      "adcode": "411500",
+      "name": "信阳市",
+      "short": "信阳",
+      "province": "河南省",
+      "province_code": "41",
+      "slug": "xinyang"
+    },
+    {
+      "adcode": "411600",
+      "name": "周口市",
+      "short": "周口",
+      "province": "河南省",
+      "province_code": "41",
+      "slug": "zhoukou"
+    },
+    {
+      "adcode": "411700",
+      "name": "驻马店市",
+      "short": "驻马店",
+      "province": "河南省",
+      "province_code": "41",
+      "slug": "zhumadian"
+    },
+    {
+      "adcode": "420100",
+      "name": "武汉市",
+      "short": "武汉",
+      "province": "湖北省",
+      "province_code": "42",
+      "slug": "wuhan"
+    },
+    {
+      "adcode": "420200",
+      "name": "黄石市",
+      "short": "黄石",
+      "province": "湖北省",
+      "province_code": "42",
+      "slug": "huangshi"
+    },
+    {
+      "adcode": "420300",
+      "name": "十堰市",
+      "short": "十堰",
+      "province": "湖北省",
+      "province_code": "42",
+      "slug": "shiyan"
+    },
+    {
+      "adcode": "420500",
+      "name": "宜昌市",
+      "short": "宜昌",
+      "province": "湖北省",
+      "province_code": "42",
+      "slug": "yichang"
+    },
+    {
+      "adcode": "420600",
+      "name": "襄阳市",
+      "short": "襄阳",
+      "province": "湖北省",
+      "province_code": "42",
+      "slug": "xiangyang"
+    },
+    {
+      "adcode": "420700",
+      "name": "鄂州市",
+      "short": "鄂州",
+      "province": "湖北省",
+      "province_code": "42",
+      "slug": "ezhou"
+    },
+    {
+      "adcode": "420800",
+      "name": "荆门市",
+      "short": "荆门",
+      "province": "湖北省",
+      "province_code": "42",
+      "slug": "jingmen"
+    },
+    {
+      "adcode": "420900",
+      "name": "孝感市",
+      "short": "孝感",
+      "province": "湖北省",
+      "province_code": "42",
+      "slug": "xiaogan"
+    },
+    {
+      "adcode": "421000",
+      "name": "荆州市",
+      "short": "荆州",
+      "province": "湖北省",
+      "province_code": "42",
+      "slug": "jingzhou"
+    },
+    {
+      "adcode": "421100",
+      "name": "黄冈市",
+      "short": "黄冈",
+      "province": "湖北省",
+      "province_code": "42",
+      "slug": "huanggang"
+    },
+    {
+      "adcode": "421200",
+      "name": "咸宁市",
+      "short": "咸宁",
+      "province": "湖北省",
+      "province_code": "42",
+      "slug": "xianning"
+    },
+    {
+      "adcode": "421300",
+      "name": "随州市",
+      "short": "随州",
+      "province": "湖北省",
+      "province_code": "42",
+      "slug": "suizhou"
+    },
+    {
+      "adcode": "422800",
+      "name": "恩施土家族苗族自治州",
+      "short": "恩施",
+      "province": "湖北省",
+      "province_code": "42",
+      "slug": "enshi"
+    },
+    {
+      "adcode": "430100",
+      "name": "长沙市",
+      "short": "长沙",
+      "province": "湖南省",
+      "province_code": "43",
+      "slug": "changsha"
+    },
+    {
+      "adcode": "430200",
+      "name": "株洲市",
+      "short": "株洲",
+      "province": "湖南省",
+      "province_code": "43",
+      "slug": "zhuzhou"
+    },
+    {
+      "adcode": "430300",
+      "name": "湘潭市",
+      "short": "湘潭",
+      "province": "湖南省",
+      "province_code": "43",
+      "slug": "xiangtan"
+    },
+    {
+      "adcode": "430400",
+      "name": "衡阳市",
+      "short": "衡阳",
+      "province": "湖南省",
+      "province_code": "43",
+      "slug": "hengyang"
+    },
+    {
+      "adcode": "430500",
+      "name": "邵阳市",
+      "short": "邵阳",
+      "province": "湖南省",
+      "province_code": "43",
+      "slug": "shaoyang"
+    },
+    {
+      "adcode": "430600",
+      "name": "岳阳市",
+      "short": "岳阳",
+      "province": "湖南省",
+      "province_code": "43",
+      "slug": "yueyang"
+    },
+    {
+      "adcode": "430700",
+      "name": "常德市",
+      "short": "常德",
+      "province": "湖南省",
+      "province_code": "43",
+      "slug": "changde"
+    },
+    {
+      "adcode": "430800",
+      "name": "张家界市",
+      "short": "张家界",
+      "province": "湖南省",
+      "province_code": "43",
+      "slug": "zhangjiajie"
+    },
+    {
+      "adcode": "430900",
+      "name": "益阳市",
+      "short": "益阳",
+      "province": "湖南省",
+      "province_code": "43",
+      "slug": "yiyang"
+    },
+    {
+      "adcode": "431000",
+      "name": "郴州市",
+      "short": "郴州",
+      "province": "湖南省",
+      "province_code": "43",
+      "slug": "chenzhou"
+    },
+    {
+      "adcode": "431100",
+      "name": "永州市",
+      "short": "永州",
+      "province": "湖南省",
+      "province_code": "43",
+      "slug": "yongzhou"
+    },
+    {
+      "adcode": "431200",
+      "name": "怀化市",
+      "short": "怀化",
+      "province": "湖南省",
+      "province_code": "43",
+      "slug": "huaihua"
+    },
+    {
+      "adcode": "431300",
+      "name": "娄底市",
+      "short": "娄底",
+      "province": "湖南省",
+      "province_code": "43",
+      "slug": "loudi"
+    },
+    {
+      "adcode": "433100",
+      "name": "湘西土家族苗族自治州",
+      "short": "湘西",
+      "province": "湖南省",
+      "province_code": "43",
+      "slug": "xiangxi"
+    },
+    {
+      "adcode": "440100",
+      "name": "广州市",
+      "short": "广州",
+      "province": "广东省",
+      "province_code": "44",
+      "slug": "guangzhou"
+    },
+    {
+      "adcode": "440200",
+      "name": "韶关市",
+      "short": "韶关",
+      "province": "广东省",
+      "province_code": "44",
+      "slug": "shaoguan"
+    },
+    {
+      "adcode": "440300",
+      "name": "深圳市",
+      "short": "深圳",
+      "province": "广东省",
+      "province_code": "44",
+      "slug": "shenzhen"
+    },
+    {
+      "adcode": "440400",
+      "name": "珠海市",
+      "short": "珠海",
+      "province": "广东省",
+      "province_code": "44",
+      "slug": "zhuhai"
+    },
+    {
+      "adcode": "440500",
+      "name": "汕头市",
+      "short": "汕头",
+      "province": "广东省",
+      "province_code": "44",
+      "slug": "shantou"
+    },
+    {
+      "adcode": "440600",
+      "name": "佛山市",
+      "short": "佛山",
+      "province": "广东省",
+      "province_code": "44",
+      "slug": "foshan"
+    },
+    {
+      "adcode": "440700",
+      "name": "江门市",
+      "short": "江门",
+      "province": "广东省",
+      "province_code": "44",
+      "slug": "jiangmen"
+    },
+    {
+      "adcode": "440800",
+      "name": "湛江市",
+      "short": "湛江",
+      "province": "广东省",
+      "province_code": "44",
+      "slug": "zhanjiang"
+    },
+    {
+      "adcode": "440900",
+      "name": "茂名市",
+      "short": "茂名",
+      "province": "广东省",
+      "province_code": "44",
+      "slug": "maoming"
+    },
+    {
+      "adcode": "441200",
+      "name": "肇庆市",
+      "short": "肇庆",
+      "province": "广东省",
+      "province_code": "44",
+      "slug": "zhaoqing"
+    },
+    {
+      "adcode": "441300",
+      "name": "惠州市",
+      "short": "惠州",
+      "province": "广东省",
+      "province_code": "44",
+      "slug": "huizhou"
+    },
+    {
+      "adcode": "441400",
+      "name": "梅州市",
+      "short": "梅州",
+      "province": "广东省",
+      "province_code": "44",
+      "slug": "meizhou"
+    },
+    {
+      "adcode": "441500",
+      "name": "汕尾市",
+      "short": "汕尾",
+      "province": "广东省",
+      "province_code": "44",
+      "slug": "shanwei"
+    },
+    {
+      "adcode": "441600",
+      "name": "河源市",
+      "short": "河源",
+      "province": "广东省",
+      "province_code": "44",
+      "slug": "heyuan"
+    },
+    {
+      "adcode": "441700",
+      "name": "阳江市",
+      "short": "阳江",
+      "province": "广东省",
+      "province_code": "44",
+      "slug": "yangjiang"
+    },
+    {
+      "adcode": "441800",
+      "name": "清远市",
+      "short": "清远",
+      "province": "广东省",
+      "province_code": "44",
+      "slug": "qingyuan"
+    },
+    {
+      "adcode": "441900",
+      "name": "东莞市",
+      "short": "东莞",
+      "province": "广东省",
+      "province_code": "44",
+      "slug": "dongguan"
+    },
+    {
+      "adcode": "442000",
+      "name": "中山市",
+      "short": "中山",
+      "province": "广东省",
+      "province_code": "44",
+      "slug": "zhongshan"
+    },
+    {
+      "adcode": "445100",
+      "name": "潮州市",
+      "short": "潮州",
+      "province": "广东省",
+      "province_code": "44",
+      "slug": "chaozhou"
+    },
+    {
+      "adcode": "445200",
+      "name": "揭阳市",
+      "short": "揭阳",
+      "province": "广东省",
+      "province_code": "44",
+      "slug": "jieyang"
+    },
+    {
+      "adcode": "445300",
+      "name": "云浮市",
+      "short": "云浮",
+      "province": "广东省",
+      "province_code": "44",
+      "slug": "yunfu"
+    },
+    {
+      "adcode": "450100",
+      "name": "南宁市",
+      "short": "南宁",
+      "province": "广西壮族自治区",
+      "province_code": "45",
+      "slug": "nanning"
+    },
+    {
+      "adcode": "450200",
+      "name": "柳州市",
+      "short": "柳州",
+      "province": "广西壮族自治区",
+      "province_code": "45",
+      "slug": "liuzhou"
+    },
+    {
+      "adcode": "450300",
+      "name": "桂林市",
+      "short": "桂林",
+      "province": "广西壮族自治区",
+      "province_code": "45",
+      "slug": "guilin"
+    },
+    {
+      "adcode": "450400",
+      "name": "梧州市",
+      "short": "梧州",
+      "province": "广西壮族自治区",
+      "province_code": "45",
+      "slug": "wuzhou"
+    },
+    {
+      "adcode": "450500",
+      "name": "北海市",
+      "short": "北海",
+      "province": "广西壮族自治区",
+      "province_code": "45",
+      "slug": "beihai"
+    },
+    {
+      "adcode": "450600",
+      "name": "防城港市",
+      "short": "防城港",
+      "province": "广西壮族自治区",
+      "province_code": "45",
+      "slug": "fangchenggang"
+    },
+    {
+      "adcode": "450700",
+      "name": "钦州市",
+      "short": "钦州",
+      "province": "广西壮族自治区",
+      "province_code": "45",
+      "slug": "qinzhou"
+    },
+    {
+      "adcode": "450800",
+      "name": "贵港市",
+      "short": "贵港",
+      "province": "广西壮族自治区",
+      "province_code": "45",
+      "slug": "guigang"
+    },
+    {
+      "adcode": "450900",
+      "name": "玉林市",
+      "short": "玉林",
+      "province": "广西壮族自治区",
+      "province_code": "45",
+      "slug": "yulin"
+    },
+    {
+      "adcode": "451000",
+      "name": "百色市",
+      "short": "百色",
+      "province": "广西壮族自治区",
+      "province_code": "45",
+      "slug": "baise"
+    },
+    {
+      "adcode": "451100",
+      "name": "贺州市",
+      "short": "贺州",
+      "province": "广西壮族自治区",
+      "province_code": "45",
+      "slug": "hezhou"
+    },
+    {
+      "adcode": "451200",
+      "name": "河池市",
+      "short": "河池",
+      "province": "广西壮族自治区",
+      "province_code": "45",
+      "slug": "hechi"
+    },
+    {
+      "adcode": "451300",
+      "name": "来宾市",
+      "short": "来宾",
+      "province": "广西壮族自治区",
+      "province_code": "45",
+      "slug": "laibin"
+    },
+    {
+      "adcode": "451400",
+      "name": "崇左市",
+      "short": "崇左",
+      "province": "广西壮族自治区",
+      "province_code": "45",
+      "slug": "chongzuo"
+    },
+    {
+      "adcode": "460100",
+      "name": "海口市",
+      "short": "海口",
+      "province": "海南省",
+      "province_code": "46",
+      "slug": "haikou"
+    },
+    {
+      "adcode": "460200",
+      "name": "三亚市",
+      "short": "三亚",
+      "province": "海南省",
+      "province_code": "46",
+      "slug": "sanya"
+    },
+    {
+      "adcode": "460300",
+      "name": "三沙市",
+      "short": "三沙",
+      "province": "海南省",
+      "province_code": "46",
+      "slug": "sansha"
+    },
+    {
+      "adcode": "460400",
+      "name": "儋州市",
+      "short": "儋州",
+      "province": "海南省",
+      "province_code": "46",
+      "slug": "danzhou"
+    },
+    {
+      "adcode": "500000",
+      "name": "重庆市",
+      "short": "重庆",
+      "province": "重庆市",
+      "province_code": "50",
+      "slug": "chongqing"
+    },
+    {
+      "adcode": "510100",
+      "name": "成都市",
+      "short": "成都",
+      "province": "四川省",
+      "province_code": "51",
+      "slug": "chengdu"
+    },
+    {
+      "adcode": "510300",
+      "name": "自贡市",
+      "short": "自贡",
+      "province": "四川省",
+      "province_code": "51",
+      "slug": "zigong"
+    },
+    {
+      "adcode": "510400",
+      "name": "攀枝花市",
+      "short": "攀枝花",
+      "province": "四川省",
+      "province_code": "51",
+      "slug": "panzhihua"
+    },
+    {
+      "adcode": "510500",
+      "name": "泸州市",
+      "short": "泸州",
+      "province": "四川省",
+      "province_code": "51",
+      "slug": "luzhou"
+    },
+    {
+      "adcode": "510600",
+      "name": "德阳市",
+      "short": "德阳",
+      "province": "四川省",
+      "province_code": "51",
+      "slug": "deyang"
+    },
+    {
+      "adcode": "510700",
+      "name": "绵阳市",
+      "short": "绵阳",
+      "province": "四川省",
+      "province_code": "51",
+      "slug": "mianyang"
+    },
+    {
+      "adcode": "510800",
+      "name": "广元市",
+      "short": "广元",
+      "province": "四川省",
+      "province_code": "51",
+      "slug": "guangyuan"
+    },
+    {
+      "adcode": "510900",
+      "name": "遂宁市",
+      "short": "遂宁",
+      "province": "四川省",
+      "province_code": "51",
+      "slug": "suining"
+    },
+    {
+      "adcode": "511000",
+      "name": "内江市",
+      "short": "内江",
+      "province": "四川省",
+      "province_code": "51",
+      "slug": "neijiang"
+    },
+    {
+      "adcode": "511100",
+      "name": "乐山市",
+      "short": "乐山",
+      "province": "四川省",
+      "province_code": "51",
+      "slug": "leshan"
+    },
+    {
+      "adcode": "511300",
+      "name": "南充市",
+      "short": "南充",
+      "province": "四川省",
+      "province_code": "51",
+      "slug": "nanchong"
+    },
+    {
+      "adcode": "511400",
+      "name": "眉山市",
+      "short": "眉山",
+      "province": "四川省",
+      "province_code": "51",
+      "slug": "meishan"
+    },
+    {
+      "adcode": "511500",
+      "name": "宜宾市",
+      "short": "宜宾",
+      "province": "四川省",
+      "province_code": "51",
+      "slug": "yibin"
+    },
+    {
+      "adcode": "511600",
+      "name": "广安市",
+      "short": "广安",
+      "province": "四川省",
+      "province_code": "51",
+      "slug": "guangan"
+    },
+    {
+      "adcode": "511700",
+      "name": "达州市",
+      "short": "达州",
+      "province": "四川省",
+      "province_code": "51",
+      "slug": "dazhou"
+    },
+    {
+      "adcode": "511800",
+      "name": "雅安市",
+      "short": "雅安",
+      "province": "四川省",
+      "province_code": "51",
+      "slug": "yaan"
+    },
+    {
+      "adcode": "511900",
+      "name": "巴中市",
+      "short": "巴中",
+      "province": "四川省",
+      "province_code": "51",
+      "slug": "bazhong"
+    },
+    {
+      "adcode": "512000",
+      "name": "资阳市",
+      "short": "资阳",
+      "province": "四川省",
+      "province_code": "51",
+      "slug": "ziyang"
+    },
+    {
+      "adcode": "513200",
+      "name": "阿坝藏族羌族自治州",
+      "short": "阿坝",
+      "province": "四川省",
+      "province_code": "51",
+      "slug": "aba"
+    },
+    {
+      "adcode": "513300",
+      "name": "甘孜藏族自治州",
+      "short": "甘孜",
+      "province": "四川省",
+      "province_code": "51",
+      "slug": "ganzi"
+    },
+    {
+      "adcode": "513400",
+      "name": "凉山彝族自治州",
+      "short": "凉山",
+      "province": "四川省",
+      "province_code": "51",
+      "slug": "liangshan"
+    },
+    {
+      "adcode": "520100",
+      "name": "贵阳市",
+      "short": "贵阳",
+      "province": "贵州省",
+      "province_code": "52",
+      "slug": "guiyang"
+    },
+    {
+      "adcode": "520200",
+      "name": "六盘水市",
+      "short": "六盘水",
+      "province": "贵州省",
+      "province_code": "52",
+      "slug": "liupanshui"
+    },
+    {
+      "adcode": "520300",
+      "name": "遵义市",
+      "short": "遵义",
+      "province": "贵州省",
+      "province_code": "52",
+      "slug": "zunyi"
+    },
+    {
+      "adcode": "520400",
+      "name": "安顺市",
+      "short": "安顺",
+      "province": "贵州省",
+      "province_code": "52",
+      "slug": "anshun"
+    },
+    {
+      "adcode": "520500",
+      "name": "毕节市",
+      "short": "毕节",
+      "province": "贵州省",
+      "province_code": "52",
+      "slug": "bijie"
+    },
+    {
+      "adcode": "520600",
+      "name": "铜仁市",
+      "short": "铜仁",
+      "province": "贵州省",
+      "province_code": "52",
+      "slug": "tongren"
+    },
+    {
+      "adcode": "522300",
+      "name": "黔西南布依族苗族自治州",
+      "short": "黔西南",
+      "province": "贵州省",
+      "province_code": "52",
+      "slug": "qianxinan"
+    },
+    {
+      "adcode": "522600",
+      "name": "黔东南苗族侗族自治州",
+      "short": "黔东南",
+      "province": "贵州省",
+      "province_code": "52",
+      "slug": "qiandongnan"
+    },
+    {
+      "adcode": "522700",
+      "name": "黔南布依族苗族自治州",
+      "short": "黔南",
+      "province": "贵州省",
+      "province_code": "52",
+      "slug": "qiannan"
+    },
+    {
+      "adcode": "530100",
+      "name": "昆明市",
+      "short": "昆明",
+      "province": "云南省",
+      "province_code": "53",
+      "slug": "kunming"
+    },
+    {
+      "adcode": "530300",
+      "name": "曲靖市",
+      "short": "曲靖",
+      "province": "云南省",
+      "province_code": "53",
+      "slug": "qujing"
+    },
+    {
+      "adcode": "530400",
+      "name": "玉溪市",
+      "short": "玉溪",
+      "province": "云南省",
+      "province_code": "53",
+      "slug": "yuxi"
+    },
+    {
+      "adcode": "530500",
+      "name": "保山市",
+      "short": "保山",
+      "province": "云南省",
+      "province_code": "53",
+      "slug": "baoshan"
+    },
+    {
+      "adcode": "530600",
+      "name": "昭通市",
+      "short": "昭通",
+      "province": "云南省",
+      "province_code": "53",
+      "slug": "zhaotong"
+    },
+    {
+      "adcode": "530700",
+      "name": "丽江市",
+      "short": "丽江",
+      "province": "云南省",
+      "province_code": "53",
+      "slug": "lijiang"
+    },
+    {
+      "adcode": "530800",
+      "name": "普洱市",
+      "short": "普洱",
+      "province": "云南省",
+      "province_code": "53",
+      "slug": "puer"
+    },
+    {
+      "adcode": "530900",
+      "name": "临沧市",
+      "short": "临沧",
+      "province": "云南省",
+      "province_code": "53",
+      "slug": "lincang"
+    },
+    {
+      "adcode": "532300",
+      "name": "楚雄彝族自治州",
+      "short": "楚雄",
+      "province": "云南省",
+      "province_code": "53",
+      "slug": "chuxiong"
+    },
+    {
+      "adcode": "532500",
+      "name": "红河哈尼族彝族自治州",
+      "short": "红河",
+      "province": "云南省",
+      "province_code": "53",
+      "slug": "honghe"
+    },
+    {
+      "adcode": "532600",
+      "name": "文山壮族苗族自治州",
+      "short": "文山",
+      "province": "云南省",
+      "province_code": "53",
+      "slug": "wenshan"
+    },
+    {
+      "adcode": "532800",
+      "name": "西双版纳傣族自治州",
+      "short": "西双版纳",
+      "province": "云南省",
+      "province_code": "53",
+      "slug": "xishuangbanna"
+    },
+    {
+      "adcode": "532900",
+      "name": "大理白族自治州",
+      "short": "大理",
+      "province": "云南省",
+      "province_code": "53",
+      "slug": "dali"
+    },
+    {
+      "adcode": "533100",
+      "name": "德宏傣族景颇族自治州",
+      "short": "德宏",
+      "province": "云南省",
+      "province_code": "53",
+      "slug": "dehong"
+    },
+    {
+      "adcode": "533300",
+      "name": "怒江傈僳族自治州",
+      "short": "怒江",
+      "province": "云南省",
+      "province_code": "53",
+      "slug": "nujiang"
+    },
+    {
+      "adcode": "533400",
+      "name": "迪庆藏族自治州",
+      "short": "迪庆",
+      "province": "云南省",
+      "province_code": "53",
+      "slug": "diqing"
+    },
+    {
+      "adcode": "540100",
+      "name": "拉萨市",
+      "short": "拉萨",
+      "province": "西藏自治区",
+      "province_code": "54",
+      "slug": "lasa"
+    },
+    {
+      "adcode": "540200",
+      "name": "日喀则市",
+      "short": "日喀则",
+      "province": "西藏自治区",
+      "province_code": "54",
+      "slug": "rikaze"
+    },
+    {
+      "adcode": "540300",
+      "name": "昌都市",
+      "short": "昌都",
+      "province": "西藏自治区",
+      "province_code": "54",
+      "slug": "changdu"
+    },
+    {
+      "adcode": "540400",
+      "name": "林芝市",
+      "short": "林芝",
+      "province": "西藏自治区",
+      "province_code": "54",
+      "slug": "linzhi"
+    },
+    {
+      "adcode": "540500",
+      "name": "山南市",
+      "short": "山南",
+      "province": "西藏自治区",
+      "province_code": "54",
+      "slug": "shannan"
+    },
+    {
+      "adcode": "540600",
+      "name": "那曲市",
+      "short": "那曲",
+      "province": "西藏自治区",
+      "province_code": "54",
+      "slug": "naqu"
+    },
+    {
+      "adcode": "542500",
+      "name": "阿里地区",
+      "short": "阿里",
+      "province": "西藏自治区",
+      "province_code": "54",
+      "slug": "ali"
+    },
+    {
+      "adcode": "610100",
+      "name": "西安市",
+      "short": "西安",
+      "province": "陕西省",
+      "province_code": "61",
+      "slug": "xian"
+    },
+    {
+      "adcode": "610200",
+      "name": "铜川市",
+      "short": "铜川",
+      "province": "陕西省",
+      "province_code": "61",
+      "slug": "tongchuan"
+    },
+    {
+      "adcode": "610300",
+      "name": "宝鸡市",
+      "short": "宝鸡",
+      "province": "陕西省",
+      "province_code": "61",
+      "slug": "baoji"
+    },
+    {
+      "adcode": "610400",
+      "name": "咸阳市",
+      "short": "咸阳",
+      "province": "陕西省",
+      "province_code": "61",
+      "slug": "xianyang"
+    },
+    {
+      "adcode": "610500",
+      "name": "渭南市",
+      "short": "渭南",
+      "province": "陕西省",
+      "province_code": "61",
+      "slug": "weinan"
+    },
+    {
+      "adcode": "610600",
+      "name": "延安市",
+      "short": "延安",
+      "province": "陕西省",
+      "province_code": "61",
+      "slug": "yanan"
+    },
+    {
+      "adcode": "610700",
+      "name": "汉中市",
+      "short": "汉中",
+      "province": "陕西省",
+      "province_code": "61",
+      "slug": "hanzhong"
+    },
+    {
+      "adcode": "610800",
+      "name": "榆林市",
+      "short": "榆林",
+      "province": "陕西省",
+      "province_code": "61",
+      "slug": "yulin-shaanxi"
+    },
+    {
+      "adcode": "610900",
+      "name": "安康市",
+      "short": "安康",
+      "province": "陕西省",
+      "province_code": "61",
+      "slug": "ankang"
+    },
+    {
+      "adcode": "611000",
+      "name": "商洛市",
+      "short": "商洛",
+      "province": "陕西省",
+      "province_code": "61",
+      "slug": "shangluo"
+    },
+    {
+      "adcode": "620100",
+      "name": "兰州市",
+      "short": "兰州",
+      "province": "甘肃省",
+      "province_code": "62",
+      "slug": "lanzhou"
+    },
+    {
+      "adcode": "620200",
+      "name": "嘉峪关市",
+      "short": "嘉峪关",
+      "province": "甘肃省",
+      "province_code": "62",
+      "slug": "jiayuguan"
+    },
+    {
+      "adcode": "620300",
+      "name": "金昌市",
+      "short": "金昌",
+      "province": "甘肃省",
+      "province_code": "62",
+      "slug": "jinchang"
+    },
+    {
+      "adcode": "620400",
+      "name": "白银市",
+      "short": "白银",
+      "province": "甘肃省",
+      "province_code": "62",
+      "slug": "baiyin"
+    },
+    {
+      "adcode": "620500",
+      "name": "天水市",
+      "short": "天水",
+      "province": "甘肃省",
+      "province_code": "62",
+      "slug": "tianshui"
+    },
+    {
+      "adcode": "620600",
+      "name": "武威市",
+      "short": "武威",
+      "province": "甘肃省",
+      "province_code": "62",
+      "slug": "wuwei"
+    },
+    {
+      "adcode": "620700",
+      "name": "张掖市",
+      "short": "张掖",
+      "province": "甘肃省",
+      "province_code": "62",
+      "slug": "zhangye"
+    },
+    {
+      "adcode": "620800",
+      "name": "平凉市",
+      "short": "平凉",
+      "province": "甘肃省",
+      "province_code": "62",
+      "slug": "pingliang"
+    },
+    {
+      "adcode": "620900",
+      "name": "酒泉市",
+      "short": "酒泉",
+      "province": "甘肃省",
+      "province_code": "62",
+      "slug": "jiuquan"
+    },
+    {
+      "adcode": "621000",
+      "name": "庆阳市",
+      "short": "庆阳",
+      "province": "甘肃省",
+      "province_code": "62",
+      "slug": "qingyang"
+    },
+    {
+      "adcode": "621100",
+      "name": "定西市",
+      "short": "定西",
+      "province": "甘肃省",
+      "province_code": "62",
+      "slug": "dingxi"
+    },
+    {
+      "adcode": "621200",
+      "name": "陇南市",
+      "short": "陇南",
+      "province": "甘肃省",
+      "province_code": "62",
+      "slug": "longnan"
+    },
+    {
+      "adcode": "622900",
+      "name": "临夏回族自治州",
+      "short": "临夏",
+      "province": "甘肃省",
+      "province_code": "62",
+      "slug": "linxia"
+    },
+    {
+      "adcode": "623000",
+      "name": "甘南藏族自治州",
+      "short": "甘南",
+      "province": "甘肃省",
+      "province_code": "62",
+      "slug": "gannan"
+    },
+    {
+      "adcode": "630100",
+      "name": "西宁市",
+      "short": "西宁",
+      "province": "青海省",
+      "province_code": "63",
+      "slug": "xining"
+    },
+    {
+      "adcode": "630200",
+      "name": "海东市",
+      "short": "海东",
+      "province": "青海省",
+      "province_code": "63",
+      "slug": "haidong"
+    },
+    {
+      "adcode": "632200",
+      "name": "海北藏族自治州",
+      "short": "海北",
+      "province": "青海省",
+      "province_code": "63",
+      "slug": "haibei"
+    },
+    {
+      "adcode": "632300",
+      "name": "黄南藏族自治州",
+      "short": "黄南",
+      "province": "青海省",
+      "province_code": "63",
+      "slug": "huangnan"
+    },
+    {
+      "adcode": "632500",
+      "name": "海南藏族自治州",
+      "short": "海南",
+      "province": "青海省",
+      "province_code": "63",
+      "slug": "hainan"
+    },
+    {
+      "adcode": "632600",
+      "name": "果洛藏族自治州",
+      "short": "果洛",
+      "province": "青海省",
+      "province_code": "63",
+      "slug": "guoluo"
+    },
+    {
+      "adcode": "632700",
+      "name": "玉树藏族自治州",
+      "short": "玉树",
+      "province": "青海省",
+      "province_code": "63",
+      "slug": "yushu"
+    },
+    {
+      "adcode": "632800",
+      "name": "海西蒙古族藏族自治州",
+      "short": "海西",
+      "province": "青海省",
+      "province_code": "63",
+      "slug": "haixi"
+    },
+    {
+      "adcode": "640100",
+      "name": "银川市",
+      "short": "银川",
+      "province": "宁夏回族自治区",
+      "province_code": "64",
+      "slug": "yinchuan"
+    },
+    {
+      "adcode": "640200",
+      "name": "石嘴山市",
+      "short": "石嘴山",
+      "province": "宁夏回族自治区",
+      "province_code": "64",
+      "slug": "shizuishan"
+    },
+    {
+      "adcode": "640300",
+      "name": "吴忠市",
+      "short": "吴忠",
+      "province": "宁夏回族自治区",
+      "province_code": "64",
+      "slug": "wuzhong"
+    },
+    {
+      "adcode": "640400",
+      "name": "固原市",
+      "short": "固原",
+      "province": "宁夏回族自治区",
+      "province_code": "64",
+      "slug": "guyuan"
+    },
+    {
+      "adcode": "640500",
+      "name": "中卫市",
+      "short": "中卫",
+      "province": "宁夏回族自治区",
+      "province_code": "64",
+      "slug": "zhongwei"
+    },
+    {
+      "adcode": "650100",
+      "name": "乌鲁木齐市",
+      "short": "乌鲁木齐",
+      "province": "新疆维吾尔自治区",
+      "province_code": "65",
+      "slug": "wulumuqi"
+    },
+    {
+      "adcode": "650200",
+      "name": "克拉玛依市",
+      "short": "克拉玛依",
+      "province": "新疆维吾尔自治区",
+      "province_code": "65",
+      "slug": "kelamayi"
+    },
+    {
+      "adcode": "650400",
+      "name": "吐鲁番市",
+      "short": "吐鲁番",
+      "province": "新疆维吾尔自治区",
+      "province_code": "65",
+      "slug": "tulufan"
+    },
+    {
+      "adcode": "650500",
+      "name": "哈密市",
+      "short": "哈密",
+      "province": "新疆维吾尔自治区",
+      "province_code": "65",
+      "slug": "hami"
+    },
+    {
+      "adcode": "652300",
+      "name": "昌吉回族自治州",
+      "short": "昌吉",
+      "province": "新疆维吾尔自治区",
+      "province_code": "65",
+      "slug": "changji"
+    },
+    {
+      "adcode": "652700",
+      "name": "博尔塔拉蒙古自治州",
+      "short": "博尔塔拉",
+      "province": "新疆维吾尔自治区",
+      "province_code": "65",
+      "slug": "boertala"
+    },
+    {
+      "adcode": "652800",
+      "name": "巴音郭楞蒙古自治州",
+      "short": "巴音郭楞",
+      "province": "新疆维吾尔自治区",
+      "province_code": "65",
+      "slug": "bayinguoleng"
+    },
+    {
+      "adcode": "652900",
+      "name": "阿克苏地区",
+      "short": "阿克苏",
+      "province": "新疆维吾尔自治区",
+      "province_code": "65",
+      "slug": "akesu"
+    },
+    {
+      "adcode": "653000",
+      "name": "克孜勒苏柯尔克孜自治州",
+      "short": "克孜勒苏",
+      "province": "新疆维吾尔自治区",
+      "province_code": "65",
+      "slug": "kezilesu"
+    },
+    {
+      "adcode": "653100",
+      "name": "喀什地区",
+      "short": "喀什",
+      "province": "新疆维吾尔自治区",
+      "province_code": "65",
+      "slug": "kashi"
+    },
+    {
+      "adcode": "653200",
+      "name": "和田地区",
+      "short": "和田",
+      "province": "新疆维吾尔自治区",
+      "province_code": "65",
+      "slug": "hetian"
+    },
+    {
+      "adcode": "654000",
+      "name": "伊犁哈萨克自治州",
+      "short": "伊犁",
+      "province": "新疆维吾尔自治区",
+      "province_code": "65",
+      "slug": "yili"
+    },
+    {
+      "adcode": "654200",
+      "name": "塔城地区",
+      "short": "塔城",
+      "province": "新疆维吾尔自治区",
+      "province_code": "65",
+      "slug": "tacheng"
+    },
+    {
+      "adcode": "654300",
+      "name": "阿勒泰地区",
+      "short": "阿勒泰",
+      "province": "新疆维吾尔自治区",
+      "province_code": "65",
+      "slug": "aletai"
+    }
+  ]
+}

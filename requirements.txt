@@ -1,0 +1,16 @@
+# 站点构建本身零依赖（纯标准库），下面这些只有同步脚本才需要。
+#
+#   pip install -r requirements.txt
+
+# 中文店名 → 拼音 URL（tools/sync_from_feishu.py）
+# 缺了也能跑，只是 URL 会退化成 shop-xxxxxx 这种不好看的形态
+pypinyin>=0.51
+
+# 商家上传照片的压缩（长边 1600 / 质量 82）+ 剥离定位信息
+# 缺了也能跑，只是照片会以原图体积发布，首屏会变慢、EXIF（含 GPS）不会剥掉
+Pillow>=10.0
+
+# 照片上传七牛云对象存储（图床）
+# 缺了也能跑，照片会落到本地 static/uploads/，站点照样正常
+# 配好密钥后想启用，见 tools/photo_store.py 顶部的说明
+qiniu>=7.13

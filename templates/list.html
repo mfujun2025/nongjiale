@@ -1,0 +1,86 @@
+<div class="wrap">
+  <nav class="crumb" aria-label="面包屑">
+    <a href="/">首页</a><span class="sep">/</span><span>找农家乐</span>
+  </nav>
+
+  <div class="page-head" style="margin-top:20px">
+    <svg class="hero-deco" viewBox="0 0 1180 190" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 132 L148 58 L286 122 L432 38 L598 126 L762 68 L922 132 L1062 84 L1180 122 L1180 190 L0 190 Z" fill="#FFFFFF"/>
+    </svg>
+    <div class="page-head-inner">
+      <h1>找农家乐</h1>
+      <p>{{LIST_SUB}}</p>
+    </div>
+  </div>
+
+  <div class="chips" style="margin-top:24px" role="group" aria-label="按城市快速筛选">
+    <a class="chip" data-chip="city" data-value="" href="/list/">全部城市</a>
+    {{CITY_CHIPS}}
+  </div>
+
+  <div class="chips" style="margin-top:12px" role="group" aria-label="按玩法快速筛选">
+    {{TAG_CHIPS}}
+  </div>
+
+  <div class="filter-layout" style="margin-top:32px">
+    <aside class="filter-panel">
+      <div class="filter-group">
+        <div class="filter-title">人均价格</div>
+        <div class="filter-opts" data-filter="price">
+          <button class="filter-opt is-on" type="button" data-value="">不限</button>
+          <button class="filter-opt" type="button" data-value="0-120">120 元以下</button>
+          <button class="filter-opt" type="button" data-value="120-180">120–180 元</button>
+          <button class="filter-opt" type="button" data-value="180-9999">180 元以上</button>
+        </div>
+      </div>
+      <div class="filter-group">
+        <div class="filter-title">特色服务</div>
+        <div class="filter-opts" data-filter="tag">
+          {{FILTER_TAGS}}
+        </div>
+      </div>
+      <div class="filter-group">
+        <div class="filter-title">距市中心</div>
+        <div class="filter-opts" data-filter="distance">
+          <button class="filter-opt is-on" type="button" data-value="">不限</button>
+          <button class="filter-opt" type="button" data-value="0-50">50km 内</button>
+          <button class="filter-opt" type="button" data-value="50-80">50–80km</button>
+          <button class="filter-opt" type="button" data-value="80-999">80km 以上</button>
+        </div>
+      </div>
+      <div class="filter-group">
+        <button class="btn btn-ghost btn-sm btn-block" type="button" id="filterReset">清空筛选</button>
+      </div>
+    </aside>
+
+    <div>
+      <div class="sortbar">
+        <div class="sortbar-left">
+          <div class="result-count">共找到 <strong id="countNum">{{TOTAL}}</strong> 家农家乐</div>
+          <label class="list-search">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <span class="sr-only">在结果中搜索</span>
+            <input type="search" placeholder="在结果中搜索名称或玩法" autocomplete="off">
+          </label>
+        </div>
+        <div class="sorts" role="group" aria-label="排序方式">
+          <button class="sort-btn is-on" type="button" data-sort="default">综合排序</button>
+          <button class="sort-btn" type="button" data-sort="score">评分最高</button>
+          <button class="sort-btn" type="button" data-sort="price-asc">价格从低到高</button>
+          <button class="sort-btn" type="button" data-sort="distance">距离最近</button>
+        </div>
+      </div>
+
+      <!-- 商家卡由构建脚本服务端渲染（爬虫可抓），前端 JS 只做筛选与重排 -->
+      <div class="stack-list" id="shopList">
+        {{SHOP_ROWS}}
+      </div>
+
+      <div class="empty" id="emptyBox" hidden>
+        <h3>没有符合条件的农家乐</h3>
+        <p>试着放宽价格或距离范围，或者换个玩法看看。</p>
+        <p style="margin-top:16px"><button class="btn btn-primary" type="button" id="emptyReset">清空筛选条件</button></p>
+      </div>
+    </div>
+  </div>
+</div>
