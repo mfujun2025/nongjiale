@@ -871,6 +871,125 @@ input.is-bad, select.is-bad, textarea.is-bad { border-color: var(--error) !impor
 .book-form .form-status { font-size: 12.5px; margin-top: 12px; padding: 12px; }
 
 /* ==========================================================================
+   资讯
+   ========================================================================== */
+.grid-news {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--sp-5);
+}
+.news-card {
+  display: flex; flex-direction: column; gap: var(--sp-3);
+  padding: var(--sp-5); border-radius: var(--r-card);
+  background: var(--bg-card); border: 1px solid var(--border);
+  box-shadow: var(--sh-card);
+  transition: transform .25s, box-shadow .25s, border-color .25s;
+}
+.news-card:hover { transform: translateY(-4px); box-shadow: var(--sh-card-hover); border-color: var(--border-strong); }
+.news-cat {
+  align-self: flex-start; font-size: 12px; font-weight: 600;
+  color: var(--brand-deep); background: var(--brand-tint);
+  padding: 3px 10px; border-radius: var(--r-pill);
+}
+.news-card h3 {
+  font-family: var(--font-serif); font-size: 18.5px; line-height: 1.55;
+  color: var(--text-1); transition: color .2s;
+}
+.news-card:hover h3 { color: var(--brand-deep); }
+.news-card p { flex: 1; font-size: 14px; line-height: 1.78; color: var(--text-2); }
+.news-meta { font-size: 12.5px; color: var(--text-3); }
+
+.empty-note {
+  padding: var(--sp-7) var(--sp-5); text-align: center;
+  border: 1px dashed var(--border-strong); border-radius: var(--r-card);
+  color: var(--text-2); font-size: 15px; background: var(--bg-warm);
+}
+.empty-note a { color: var(--brand); font-weight: 600; }
+
+/* ---- 文章详情：阅读区收窄到 768，行动区保持整宽 ---- */
+/* 面包屑跟着正文一起收窄居中，否则它会孤零零贴在整宽的最左边 */
+.art-shell { max-width: 768px; margin: 0 auto; }
+.art { padding-top: var(--sp-5); }
+.art-head { padding-bottom: var(--sp-6); border-bottom: 1px solid var(--border); }
+.art-cat {
+  display: inline-block; font-size: 12.5px; font-weight: 600;
+  color: var(--brand-deep); background: var(--brand-tint);
+  padding: 4px 12px; border-radius: var(--r-pill);
+}
+.art-cat:hover { background: var(--brand); color: #fff; }
+.art-head h1 { font-size: 33px; line-height: 1.38; margin-top: var(--sp-4); }
+.art-meta { margin-top: var(--sp-4); font-size: 13.5px; color: var(--text-3); }
+.art-lead {
+  margin-top: var(--sp-5); padding-left: var(--sp-4);
+  border-left: 3px solid var(--brand-tint);
+  font-size: 16.5px; line-height: 1.9; color: var(--text-2);
+}
+
+.art-body { padding-top: var(--sp-6); }
+.art-body h2 {
+  font-family: var(--font-serif); font-size: 22px; line-height: 1.5;
+  padding-left: 14px; border-left: 4px solid var(--brand);
+  margin: var(--sp-7) 0 var(--sp-4);
+}
+.art-body h3 { font-size: 17.5px; margin: var(--sp-6) 0 var(--sp-3); }
+.art-body p { font-size: 15.5px; }
+.art-body > p:first-child { font-size: 16px; }
+.art-body ol { counter-reset: n; margin: 0 0 var(--sp-4); padding: 0; list-style: none; }
+.art-body ol li {
+  position: relative; counter-increment: n;
+  padding-left: 34px; margin-bottom: var(--sp-3);
+  color: var(--text-2); line-height: 1.85;
+}
+.art-body ol li::before {
+  content: counter(n); position: absolute; left: 0; top: 3px;
+  width: 22px; height: 22px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--brand-tint); color: var(--brand-deep);
+  font-size: 12px; font-weight: 700;
+}
+.art-body table {
+  width: 100%; border-collapse: collapse; margin: var(--sp-5) 0;
+  font-size: 14px;
+}
+.art-body th, .art-body td {
+  padding: 11px var(--sp-4); text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+.art-body th { background: var(--bg-warm); font-weight: 600; color: var(--text-1); }
+.art-body td { color: var(--text-2); }
+.art-body tr:last-child td { border-bottom: 0; }
+.art-body blockquote {
+  margin: var(--sp-5) 0; padding: var(--sp-4) var(--sp-5);
+  background: var(--bg-warm); border-radius: var(--r-input);
+  border-left: 3px solid var(--amber);
+  font-size: 15px; line-height: 1.85; color: var(--text-2);
+}
+
+.art-src {
+  margin-top: var(--sp-7); padding: var(--sp-5);
+  background: var(--bg-warm); border-radius: var(--r-input);
+  border: 1px solid var(--border);
+}
+.art-src h2 { font-size: 14px; color: var(--text-2); letter-spacing: .02em; }
+.art-src ul { margin: var(--sp-3) 0 0; }
+.art-src li { font-size: 13.5px; line-height: 1.8; margin-bottom: 6px; }
+.art-src a { color: var(--brand-deep); word-break: break-all; }
+.art-src a:hover { text-decoration: underline; }
+.art-src-note { margin-top: var(--sp-3); font-size: 12.5px; color: var(--text-3); line-height: 1.7; }
+
+.art-cta {
+  margin-top: var(--sp-8); padding: var(--sp-6);
+  border-radius: var(--r-card); background: var(--bg-card);
+  border: 1px solid var(--border); box-shadow: var(--sh-card);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: var(--sp-5); flex-wrap: wrap;
+}
+.art-cta h2 { font-size: 20px; }
+.art-cta p { margin-top: 8px; font-size: 14px; line-height: 1.75; color: var(--text-2); max-width: 46em; }
+
+.art-rel { margin-top: var(--sp-8); }
+.art-rel > h2 { font-size: 22px; margin-bottom: var(--sp-5); }
+
+/* ==========================================================================
    响应式
    ========================================================================== */
 @media (max-width: 1180px) {
@@ -947,6 +1066,16 @@ input.is-bad, select.is-bad, textarea.is-bad { border-color: var(--error) !impor
 
   .map-list li { flex-direction: column; gap: 2px; align-items: flex-start; }
   .map-list li a { white-space: normal; }
+
+  .grid-news { grid-template-columns: 1fr; }
+  .art-head h1 { font-size: 26px; line-height: 1.4; }
+  .art-lead { font-size: 15.5px; }
+  .art-body h2 { font-size: 20px; }
+  .art-body table { font-size: 13px; }
+  .art-body th, .art-body td { padding: 9px var(--sp-3); }
+  .art-cta { flex-direction: column; align-items: stretch; padding: var(--sp-5); }
+  .art-cta .btn { width: 100%; }
+  .art-rel > h2 { font-size: 20px; }
 
   /* 详情页与列表页用底部吸底栏，页面留出空间 */
   .mobile-bar { display: flex; }

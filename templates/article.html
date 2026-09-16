@@ -1,0 +1,29 @@
+<div class="wrap">
+  <div class="art-shell">
+    <nav class="crumb" aria-label="面包屑">
+      <a href="/">首页</a><span class="sep">/</span><a href="/news/">农家乐资讯</a>
+      <span class="sep">/</span><span>{{CAT}}</span>
+    </nav>
+
+    <article class="art">
+      <header class="art-head">
+        <a class="art-cat" href="{{CAT_URL}}">{{CAT}}</a>
+        <h1>{{TITLE}}</h1>
+        <p class="art-meta">{{META}}</p>
+        <p class="art-lead">{{SUMMARY}}</p>
+      </header>
+
+      <div class="prose art-body">
+        {{BODY}}
+      </div>
+
+      {{SOURCES}}
+    </article>
+  </div>
+
+  {{CTA}}
+
+  {{RELATED}}
+</div>
+
+

@@ -41,6 +41,26 @@ SITE = json.loads((DATA / "site.json").read_text(encoding="utf-8"))
 CITIES = json.loads((DATA / "cities.json").read_text(encoding="utf-8"))
 SHOPS = json.loads((DATA / "shops.json").read_text(encoding="utf-8"))
 
+
+def _load_news():
+    d = DATA / "news"
+    if not d.is_dir():
+        return []
+    out = []
+    for p in sorted(d.glob("*.json")):
+        try:
+            a = json.loads(p.read_text(encoding="utf-8"))
+        except Exception:                                          # noqa: BLE001
+            continue
+        a.setdefault("slug", p.stem)
+        a["_file"] = p.name
+        out.append(a)
+    out.sort(key=lambda a: (a.get("date") or "", a["slug"]), reverse=True)
+    return out
+
+
+NEWS = _load_news()
+
 HTML_FILES = sorted(PUB.rglob("*.html"))
 print("=" * 62)
 print(f"  农家乐.cn 构建自检 · {len(HTML_FILES)} 个 HTML 文件")
@@ -50,7 +70,7 @@ print("=" * 62)
 print("\n[1] 必备文件")
 REQUIRED = ["index.html", "404.html", "CNAME", ".nojekyll", "robots.txt", "sitemap.xml",
             "list/index.html", "cities/index.html", "join/index.html",
-            "about/index.html", "sitemap/index.html",
+            "about/index.html", "sitemap/index.html", "news/index.html",
             "css/style.css", "js/site.js", "js/list.js", "favicon.svg",
             "img/join-qr.svg"]
 for rel in REQUIRED:
@@ -130,11 +150,14 @@ else:
 print("\n[5] 站点地图一致性")
 xml = (PUB / "sitemap.xml").read_text(encoding="utf-8")
 locs = re.findall(r"<loc>([^<]+)</loc>", xml)
-expected_locs = 6 + len(CITIES) + len(SHOPS)
+# 从产物反推，而不是硬编码数字——每加一类页面都要改断言的话，
+# 这个检查早晚会被人改成「反正它就是过」，失去意义。
+# 每个 index.html 对应一条 sitemap URL（404.html 不是 index.html，天然排除）。
+expected_locs = len(list(PUB.rglob("index.html")))
 if len(locs) != expected_locs:
-    bad(f"sitemap.xml 有 {len(locs)} 条，应为 {expected_locs}")
+    bad(f"sitemap.xml 有 {len(locs)} 条，产物里有 {expected_locs} 个页面 → 有页面没进地图")
 else:
-    ok(f"sitemap.xml {len(locs)} 条 URL，与页面数一致")
+    ok(f"sitemap.xml {len(locs)} 条 URL，与产物页面数一致")
 
 base = SITE["base_url"].rstrip("/")
 if not all(u.startswith(base) for u in locs):
@@ -344,6 +367,117 @@ else:
             warn("飞书城市字段定义与基准表不一致 → 重跑 tools/build_regions.py --feishu")
         else:
             ok(f"飞书「所在城市」字段定义同源（{len(_names)} 个选项，含「其他城市」兜底）")
+
+# ------------------------------------------------------- 12 资讯栏目
+print("\n[12] 资讯栏目")
+
+CATS = {"recommend": "农家乐推荐", "experience": "特色体验",
+        "business": "经营动态", "trend": "行业趋势", "policy": "政策解读"}
+
+if not NEWS:
+    warn("还没有资讯文章（/news/ 会显示筹备中占位，导航入口不会断）")
+else:
+    ok(f"{len(NEWS)} 篇资讯，最新一篇：{NEWS[0].get('date')} {NEWS[0]['title'][:24]}…")
+
+    # 必填字段：缺一个，列表页或 meta 就会缺内容，而且是静默的
+    FIELD_NAMES = {"title": "标题", "date": "日期", "category": "分类",
+                   "summary": "摘要", "body": "正文"}
+    missing = []
+    for a in NEWS:
+        for k, cn in FIELD_NAMES.items():
+            if not a.get(k):
+                missing.append(f"{a['_file']} 缺{cn}")
+        if a.get("category") and a["category"] not in CATS:
+            missing.append(f"{a['_file']} 分类 {a['category']} 不在栏目表里（会退化成自由文本）")
+    if missing:
+        bad("资讯字段不完整：" + "；".join(missing[:4]))
+    else:
+        ok(f"每篇的 {len(FIELD_NAMES)} 个必填字段齐全，分类都在栏目表里")
+
+    # slug：与文件名一致、全局唯一。不一致会导致 URL 与文件对不上，排查很费劲
+    slug_bad = [a["_file"] for a in NEWS if a["slug"] != a["_file"][:-5]]
+    if slug_bad:
+        bad(f"slug 与文件名不一致：{slug_bad[:3]} → URL 会与文件对不上")
+    dup_slug = {a["slug"] for a in NEWS if [x["slug"] for x in NEWS].count(a["slug"]) > 1}
+    if dup_slug:
+        bad(f"slug 重复：{sorted(dup_slug)[:3]} → 页面会互相覆盖")
+    if not slug_bad and not dup_slug:
+        ok(f"{len(NEWS)} 个 slug 与文件名一致且唯一")
+
+    # 日期：格式合法 + 一天只能一篇（「每日一篇」的硬约束，同日两篇说明去重没做好）
+    date_bad = [a["_file"] for a in NEWS
+                if not re.match(r"^\d{4}-\d{2}-\d{2}$", a.get("date") or "")]
+    dup_date = {a["date"] for a in NEWS if [x["date"] for x in NEWS].count(a["date"]) > 1}
+    if date_bad:
+        bad(f"日期格式不是 YYYY-MM-DD：{date_bad[:3]}")
+    elif dup_date:
+        bad(f"同一天有多篇：{sorted(dup_date)} → 每日一篇，同日重复说明选题去重失效")
+    else:
+        ok("日期格式合法，无同日重复")
+
+    # 字数：需求是 800~1200 字。明显偏离才 FAIL，边缘区间只提醒，
+    # 免得某天写了 1230 字就把整条发布链卡住
+    def _body_text(a):
+        b = a.get("body")
+        if isinstance(b, list):
+            b = "\n".join(str(x) for x in b)
+        return str(b or "")
+
+    too_short, too_long, edge = [], [], []
+    for a in NEWS:
+        n = len(re.findall(r"[\u4e00-\u9fff]", re.sub(r"<[^>]+>", "", _body_text(a))))
+        a["_chars"] = n
+        if n < 700:
+            too_short.append(f"{a['slug']}({n})")
+        elif n > 1400:
+            too_long.append(f"{a['slug']}({n})")
+        elif not (800 <= n <= 1200):
+            edge.append(f"{a['slug']}({n})")
+    if too_short or too_long:
+        bad(f"正文字数明显偏离 800~1200：偏短 {too_short[:2]} 偏长 {too_long[:2]}")
+    elif edge:
+        warn(f"字数在边缘（{edge[:3]}），需求是 800~1200 字")
+    else:
+        ok(f"正文字数都在 800~1200 区间")
+
+    # 正文里的未替换占位符会原样显示给读者，必须扫
+    tok = [a["slug"] for a in NEWS if "{{" in _body_text(a)]
+    if tok:
+        bad(f"正文含未替换的占位符：{tok[:3]}")
+    else:
+        ok("正文无未替换的占位符")
+
+    # 每篇文章的产物页面必须在，且标题写进了 <title>
+    miss_page = []
+    for a in NEWS:
+        p = PUB / "news" / a["slug"] / "index.html"
+        if not p.is_file():
+            miss_page.append(a["slug"])
+        elif a["title"][:12] not in p.read_text(encoding="utf-8"):
+            miss_page.append(f"{a['slug']}(标题未渲染)")
+    if miss_page:
+        bad(f"文章页缺失或标题未渲染：{miss_page[:3]}")
+    else:
+        ok(f"{len(NEWS)} 篇文章页都在，标题已渲染")
+
+    # 栏目归档页：有文章的栏目必须能点进去
+    for key in CATS:
+        if any(a.get("category") == key for a in NEWS):
+            if not (PUB / "news" / "cat" / key / "index.html").is_file():
+                bad(f"栏目 {CATS[key]}（{key}）有文章，但归档页 /news/cat/{key}/ 不存在")
+
+# 首页必须挂上资讯入口，否则新文章只能靠 sitemap 被找到
+home = (PUB / "index.html").read_text(encoding="utf-8")
+if 'href="/news/"' not in home:
+    bad("首页没有资讯入口")
+else:
+    ok("首页已挂资讯区块与入口")
+
+nav_labels = [i["label"] for i in SITE.get("nav", [])]
+if not any(i["url"] == "/news/" for i in SITE.get("nav", [])):
+    bad(f"导航里没有资讯入口（当前导航：{nav_labels}）")
+else:
+    ok("导航含资讯入口")
 
 # ---------------------------------------------------------------- 汇总
 print("\n" + "=" * 62)

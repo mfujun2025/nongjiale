@@ -182,6 +182,43 @@ CITIES = sorted(
 CITY_MAP = {c["slug"]: c for c in CITIES}
 SHOP_BY_SLUG = {s["slug"]: s for s in SHOPS}
 
+# ---- 资讯栏目：一篇一个 JSON，文件名即 slug。
+# 正文用 HTML 片段数组存（["<h2>..</h2>", "<p>..</p>"]），
+# 这样零依赖、排版可控，不用在构建器里塞一个 markdown 解析器。
+NEWS_DIR = DATA / "news"
+NEWS_CATS = {
+    "recommend": "农家乐推荐",
+    "experience": "特色体验",
+    "business": "经营动态",
+    "trend": "行业趋势",
+    "policy": "政策解读",
+}
+
+
+def _load_news():
+    if not NEWS_DIR.is_dir():
+        return []
+    out = []
+    for p in sorted(NEWS_DIR.glob("*.json")):
+        try:
+            a = read_json(p)
+        except Exception as e:                                    # noqa: BLE001
+            print(f"  [警告] 资讯 {p.name} 解析失败，已跳过：{e}")
+            continue
+        a.setdefault("slug", p.stem)
+        if not a.get("title"):
+            print(f"  [警告] 资讯 {p.name} 缺 title，已跳过")
+            continue
+        out.append(a)
+    # 新的在前。同比日期时按 slug 倒序——保证构建可复现，不依赖文件系统顺序
+    out.sort(key=lambda a: (a.get("date") or "", a["slug"]), reverse=True)
+    return out
+
+
+NEWS = _load_news()
+NEWS_BY_SLUG = {a["slug"]: a for a in NEWS}
+NEWS_DATES = sorted({a.get("date") for a in NEWS if a.get("date")}, reverse=True)
+
 # config.local.json > 环境变量 > site.json（webhook 绝不硬编码在前端源码里）
 LOCAL_CFG = {}
 _cfg_path = BASE / "config.local.json"
@@ -606,6 +643,93 @@ def exp_cards():
 </a>''' for e in SITE["experiences"])
 
 
+# ============================================================ 资讯
+def news_body(a):
+    """正文：数组按顺序拼；也容忍直接给字符串（单段）。"""
+    b = a.get("body")
+    if isinstance(b, list):
+        return "\n".join(str(x) for x in b)
+    return str(b or "")
+
+
+def news_plain(a):
+    """剥掉标签的纯文本，用来数中文字数。"""
+    return re.sub(r"<[^>]+>", "", news_body(a))
+
+
+def news_chars(a):
+    return len(re.findall(r"[\u4e00-\u9fff]", news_plain(a)))
+
+
+def news_read_min(a):
+    """按中文 400 字/分钟估。少于 1 分钟一律显示 1——「0 分钟」很蠢。"""
+    return max(1, round(news_chars(a) / 400))
+
+
+def news_date(a, style="full"):
+    m = re.match(r"^(\d{4})-(\d{2})-(\d{2})$", a.get("date") or "")
+    if not m:
+        return a.get("date") or ""
+    y, mo, da = m.groups()
+    if style == "md":
+        return f"{mo}-{da}"
+    if style == "short":
+        return f"{int(mo)} 月 {int(da)} 日"
+    return f"{y} 年 {int(mo)} 月 {int(da)} 日"
+
+
+def news_cat(a):
+    return NEWS_CATS.get(a.get("category") or "", a.get("category_name") or "资讯")
+
+
+def news_card(a):
+    return f'''<a class="news-card" href="/news/{a['slug']}/">
+  <span class="news-cat">{esc(news_cat(a))}</span>
+  <h3>{esc(a['title'])}</h3>
+  <p>{esc(a.get('summary') or '')}</p>
+  <span class="news-meta">{esc(news_date(a))} · 约 {news_read_min(a)} 分钟读完</span>
+</a>'''
+
+
+def news_cat_chips(active=""):
+    """只列出真正有文章的栏目——点进去发现是空列表最伤体验。"""
+    used = {a.get("category") for a in NEWS if a.get("category") in NEWS_CATS}
+    chips = [f'<a class="chip{" is-on" if not active else ""}" href="/news/">全部</a>']
+    for key, name in NEWS_CATS.items():
+        if key in used:
+            on = " is-on" if key == active else ""
+            chips.append(f'<a class="chip{on}" href="/news/cat/{key}/">{esc(name)}</a>')
+    return "".join(chips)
+
+
+def news_sources(a):
+    src = a.get("sources") or []
+    if not src:
+        return ""
+    lis = "".join(
+        f'<li><a href="{esc(s.get("url", ""))}" target="_blank" rel="noopener nofollow">'
+        f'{esc(s.get("name", ""))}</a></li>' for s in src if s.get("url")
+    )
+    return f'''<div class="art-src">
+  <h2>信息来源</h2>
+  <ul>{lis}</ul>
+  <p class="art-src-note">以上为本文引用的公开资料。政策与数据以官方原文为准，本站不代为解读未明确的内容。</p>
+</div>'''
+
+
+def news_related(a, limit=3):
+    """延伸阅读：同栏目优先，不足用最新的补。"""
+    same = [x for x in NEWS if x["slug"] != a["slug"] and x.get("category") == a.get("category")]
+    others = [x for x in NEWS if x["slug"] != a["slug"] and x not in same]
+    picked = (same + others)[:limit]
+    if not picked:
+        return ""
+    return f'''<div class="art-rel">
+  <h2>延伸阅读</h2>
+  <div class="grid-news">{''.join(news_card(x) for x in picked)}</div>
+</div>'''
+
+
 # ============================================================ 页面：首页
 def build_home():
     city_options = "".join(
@@ -644,6 +768,8 @@ def build_home():
         "SHOP_CARDS": "".join(shop_card(s) for s in FEATURED[:6]),
         "STATS": stats_html(),
         "REVIEW_CARDS": review_cards(),
+        "NEWS_CARDS": ('<div class="grid-news">' + "".join(news_card(a) for a in NEWS[:3]) + "</div>")
+                       if NEWS else '<p class="empty-note">资讯栏目正在筹备，敬请期待。</p>',
         "CTA_POINTS": cta_points,
         "TOTAL": TOTAL,
     })
@@ -1144,6 +1270,97 @@ def build_about():
                 BASE_URL + "/about/", active="/about/")
 
 
+# ============================================================ 页面：资讯
+NEWS_DESC = ("农家乐行业资讯与实用指南：农家乐推荐、特色体验玩法、经营动态、行业趋势与政策解读。"
+             "每周更新，写给想出门的人，也写给开农家乐的人。")
+
+
+def build_news(items=None, cat_key="", cat_name=""):
+    items = NEWS if items is None else items
+    title = f"{cat_name} - 农家乐资讯" if cat_key else "农家乐资讯"
+    h1 = cat_name if cat_key else "农家乐资讯"
+    sub = (f"共 {len(items)} 篇" if items else "内容准备中")
+    if cat_key:
+        sub += " · 返回全部资讯请看下方导航"
+
+    if items:
+        cards = '<div class="grid-news">' + "".join(news_card(a) for a in items) + "</div>"
+    else:
+        cards = ('<p class="empty-note">这个栏目还在筹备，先去 '
+                 '<a href="/news/">看看其他资讯</a>，或者直接 <a href="/list/">按城市找农家乐</a>。</p>')
+
+    content = render(tpl("news.html"), {
+        "H1": esc(h1),
+        "SUB": esc(sub),
+        "CATS": news_cat_chips(cat_key),
+        "NEWS_CARDS": cards,
+    })
+
+    canonical = BASE_URL + (f"/news/cat/{cat_key}/" if cat_key else "/news/")
+    return page(content, f"{title} - 农家乐.cn", NEWS_DESC, canonical,
+                active="/news/", json_ld=breadcrumb(
+                    [("首页", "/"), ("农家乐资讯", "/news/")] +
+                    ([(cat_name, f"/news/cat/{cat_key}/")] if cat_key else [])))
+
+
+def build_article(a):
+    chars = news_chars(a)
+    head_bits = [news_date(a), f"约 {news_read_min(a)} 分钟读完", f"{chars} 字"]
+
+    cta = f'''<div class="art-cta">
+  <div>
+    <h2>想找一家能去的农家乐？</h2>
+    <p>按城市和玩法筛，看人均价格、真实评价，看中直接打电话给老板。</p>
+  </div>
+  <a class="btn btn-primary btn-lg" href="/list/">按城市找农家乐 →</a>
+</div>'''
+
+    content = render(tpl("article.html"), {
+        "CAT": esc(news_cat(a)),
+        "CAT_URL": f"/news/cat/{a['category']}/" if a.get("category") in NEWS_CATS else "/news/",
+        "TITLE": esc(a["title"]),
+        "META": esc(" · ".join(head_bits)),
+        "SUMMARY": esc(a.get("summary") or ""),
+        "BODY": news_body(a),
+        "SOURCES": news_sources(a),
+        "RELATED": news_related(a),
+        "CTA": cta,
+    })
+
+    ld = json_ld({
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Article",
+                "headline": a["title"],
+                "description": a.get("summary") or "",
+                "datePublished": a.get("date") or "",
+                "dateModified": a.get("updated") or a.get("date") or "",
+                "inLanguage": "zh-CN",
+                "mainEntityOfPage": {"@type": "WebPage",
+                                     "@id": f"{BASE_URL}/news/{a['slug']}/"},
+                "author": {"@type": "Organization", "name": SITE["name"], "url": BASE_URL + "/"},
+                "publisher": {"@type": "Organization", "name": SITE["name"], "url": BASE_URL + "/"},
+                "articleSection": news_cat(a),
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {"@type": "ListItem", "position": i + 1, "name": n, "item": BASE_URL + u}
+                    for i, (n, u) in enumerate(
+                        [("首页", "/"), ("农家乐资讯", "/news/"),
+                         (a["title"], f"/news/{a['slug']}/")])
+                ],
+            },
+        ],
+    })
+
+    desc = a.get("summary") or news_plain(a)[:110]
+    return page(content, f"{a['title']} - 农家乐.cn资讯", desc,
+                f"{BASE_URL}/news/{a['slug']}/", active="/news/",
+                og_type="article", json_ld=ld)
+
+
 # ============================================================ 页面：网站地图
 def build_sitemap_page():
     def group(title, items):
@@ -1157,6 +1374,7 @@ def build_sitemap_page():
         ("首页", "/", ""),
         ("找农家乐", "/list/", f"{TOTAL} 家"),
         ("热门城市", "/cities/", f"{CITY_COUNT} 座城市"),
+        ("农家乐资讯", "/news/", f"{len(NEWS)} 篇"),
         ("商家入驻", "/join/", ""),
         ("关于我们", "/about/", ""),
         ("网站地图", "/sitemap/", ""),
@@ -1177,14 +1395,20 @@ def build_sitemap_page():
     shop_items = [(s["name"], f"/shop/{s['slug']}/", _shop_note(s)) for s in SHOPS]
     shops_block = group("农家乐详情（按城市分组）", shop_items)
 
-    total_pages = 6 + CITY_COUNT + TOTAL
+    news_block = ""
+    if NEWS:
+        news_items = [(a["title"], f"/news/{a['slug']}/",
+                       f"{news_cat(a)} · {news_date(a, 'short')}") for a in NEWS]
+        news_block = group("资讯文章", news_items)
+
+    total_pages = 7 + CITY_COUNT + TOTAL + (len(NEWS) if NEWS else 0)
     content = render(tpl("sitemap.html"), {
-        "SITEMAP_CONTENT": main + cities_block + shops_block,
+        "SITEMAP_CONTENT": main + news_block + cities_block + shops_block,
         "PAGE_TOTAL": total_pages,
     })
     return page(content, f"网站地图 - 农家乐.cn｜全部 {total_pages} 个页面",
-                f"农家乐.cn 全部 {total_pages} 个页面的索引，含 {CITY_COUNT} 座城市页与 "
-                f"{TOTAL} 个农家乐详情页。",
+                f"农家乐.cn 全部 {total_pages} 个页面的索引，含 {CITY_COUNT} 座城市页、"
+                f"{TOTAL} 个农家乐详情页与 {len(NEWS)} 篇资讯文章。",
                 BASE_URL + "/sitemap/")
 
 
@@ -1211,6 +1435,13 @@ def build_sitemap_xml():
         urls.append((f"/city/{c['slug']}/", "0.8", "weekly"))
     for s in SHOPS:
         urls.append((f"/shop/{s['slug']}/", "0.7", "monthly"))
+    # 资讯：栏目页 daily（每天有新文章），文章页 weekly（进站的新链接要靠它被抓）
+    urls.append(("/news/", "0.8", "daily"))
+    for a in NEWS:
+        urls.append((f"/news/{a['slug']}/", "0.7", "weekly"))
+    for key in NEWS_CATS:
+        if any(a.get("category") == key for a in NEWS):
+            urls.append((f"/news/cat/{key}/", "0.5", "weekly"))
 
     body = "".join(
         f"  <url>\n    <loc>{BASE_URL}{u}</loc>\n"
@@ -1272,6 +1503,18 @@ def main():
         w(f"shop/{s['slug']}/index.html", build_shop(s))
     w("join/index.html", build_join())
     w("about/index.html", build_about())
+
+    # 资讯：栏目页无条件生成（导航挂着入口，缺了就是死链），文章页按内容出
+    w("news/index.html", build_news())
+    for a in NEWS:
+        w(f"news/{a['slug']}/index.html", build_article(a))
+    n_news_cat = 0
+    for key, name in NEWS_CATS.items():
+        sub = [a for a in NEWS if a.get("category") == key]
+        if sub:
+            w(f"news/cat/{key}/index.html", build_news(sub, key, name))
+            n_news_cat += 1
+
     w("sitemap/index.html", build_sitemap_page())
     w("404.html", build_404())
 
@@ -1296,6 +1539,7 @@ def main():
     print(f"  农家乐.cn 构建完成")
     print("=" * 58)
     print(f"  商家 {TOTAL} 家 · 城市 {CITY_COUNT} 座 · 评价 {fmt(REVIEW_TOTAL)} 条 · 均分 {AVG_SCORE}")
+    print(f"  资讯 {len(NEWS)} 篇 · 栏目 {n_news_cat} 个")
     print(f"  生成 {n_html} 个 HTML 页面 + {len(written) - n_html} 个站点文件 + {n_static} 个静态资源")
     print(f"  收录标签 {len(ALL_TAGS)} 个：{'、'.join(ALL_TAGS[:10])}…")
     print(f"  接收端 {'已配置 → ' + FEISHU_WEBHOOK[:46] + '…' if FEISHU_WEBHOOK else '未配置（表单进演示模式）'}")
