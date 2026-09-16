@@ -50,10 +50,6 @@
       </div>
     </div>
 
-    <p id="cityEcho" hidden
-       style="margin-bottom:18px;padding:14px 18px;border-radius:14px;background:var(--brand-tint);
-              border:1px solid var(--brand);color:var(--brand-deep);font-size:14.5px;line-height:1.7"></p>
-
     <div class="apply-card">
       <div class="apply-main">
         <h3>填表前，先准备好这三样</h3>
@@ -63,17 +59,45 @@
           <li><b>三张现场照片</b> —— 门头 1 张、环境 2 张，手机现场拍就行</li>
         </ul>
 
+        <!-- 城市先在这儿选好。飞书表单里的「所在城市」有三百多个选项、且是纵向平铺的，
+             填表人得滚几百行。从下面选完再跳过去，表单会自动填上并把它隐藏掉，
+             那串长列表就永远不用出现了。 -->
+        <div class="city-pick">
+          <div class="city-pick-head">
+            <span class="city-pick-step">第 1 步</span>
+            <b>先选你所在的城市</b>
+          </div>
+          <p class="city-pick-tip">
+            选好之后打开申请表，「所在城市」会自动填好 ——
+            全国 {{CITY_TOTAL}} 个地级市，一个都不用你在表单里翻。
+          </p>
+          <div class="city-pick-fields">
+            <label class="cp-field">
+              <span>省份 / 直辖市</span>
+              <select id="cpProvince" aria-label="选择省份">
+                <option value="">请选择省份</option>
+              </select>
+            </label>
+            <label class="cp-field">
+              <span>城市</span>
+              <select id="cpCity" aria-label="选择城市" disabled>
+                <option value="">请先选省份</option>
+              </select>
+            </label>
+          </div>
+          <p class="city-pick-result" id="cpResult" role="status" hidden></p>
+        </div>
+
         <p class="apply-city">
-          全国 <b>{{CITY_TOTAL}}</b> 个地级市（含自治州、地区、盟和直辖市）都能入驻 ——
-          城市那一栏按省份排好，下拉就能找到；区县、乡镇填在下一栏。
-          平台上已开通 <a href="/regions/">{{CITY_COUNT}} 座城市</a>，你所在的城市如果还没开通，
+          全国 <b>{{CITY_TOTAL}}</b> 个地级市（含自治州、地区、盟和直辖市）都能入驻；
+          平台上已开通 <a href="/regions/">{{CITY_COUNT}} 座城市</a>。你所在的城市如果还没开通，
           提交后审核通过就同步开出来。
         </p>
 
         <div class="apply-actions">
-          <a class="btn btn-primary btn-lg" href="{{JOIN_FORM_URL}}"
+          <a class="btn btn-primary btn-lg" id="cpSubmit" href="{{JOIN_FORM_URL}}"
              target="_blank" rel="noopener noreferrer">打开入驻申请表</a>
-          <span class="apply-note">{{JOIN_FORM_NOTE}}</span>
+          <span class="apply-note" id="cpNote">{{JOIN_FORM_NOTE}}</span>
         </div>
 
         <p class="apply-alt">
@@ -104,18 +128,131 @@
   </section>
 </div>
 
-<!-- 从「全国城市目录」点未开通城市跳过来时会带 ?city=城市名，
-     把用户来自哪儿回显出来，省得他自己再找一遍。城市名只做文本插入，不拼 HTML。 -->
+<!-- 城市两级选择器。数据由 build.py 注入，前端只负责联动与拼参数。
+     跳转链接形如 <表单地址>?prefill_所在城市=杭州&hide_所在城市=1 ——
+     prefill 负责填好，hide 负责不显示，两个缺一不可。 -->
+<script type="application/json" id="cpData">{{REGION_JSON}}</script>
 <script>
 (function () {
-  var el = document.getElementById('cityEcho');
-  if (!el) return;
-  var city = new URLSearchParams(location.search).get('city');
-  if (!city) return;
-  city = city.replace(/[<>]/g, '').trim().slice(0, 24);
-  if (!city) return;
-  el.textContent = '你是' + city + '的？现在' + city + '还没有商家入驻 —— '
-    + '这份申请我们会优先看，核验通过就把这座城市的页面开出来。';
-  el.hidden = false;
+  var dataEl   = document.getElementById('cpData');
+  var provSel  = document.getElementById('cpProvince');
+  var citySel  = document.getElementById('cpCity');
+  var resultEl = document.getElementById('cpResult');
+  var submitEl = document.getElementById('cpSubmit');
+  var noteEl   = document.getElementById('cpNote');
+  if (!dataEl || !provSel || !citySel || !submitEl) return;
+
+  var DATA;
+  try { DATA = JSON.parse(dataEl.textContent); } catch (e) { return; }
+  if (!DATA || !DATA.provinces || !DATA.provinces.length) return;
+
+  var FORM = DATA.form || submitEl.getAttribute('href') || '';
+  var NOTE_DEFAULT = noteEl ? noteEl.textContent : '';
+  var FIELD = '所在城市';   // 必须与飞书表单里的题目名完全一致，否则预填不生效
+  var EMPTY = '';
+
+  function esc(s) {
+    return String(s).replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  }
+
+  DATA.provinces.forEach(function (p) {
+    var o = document.createElement('option');
+    o.value = p.name;
+    o.textContent = p.short;
+    provSel.appendChild(o);
+  });
+
+  function provOf(name) {
+    for (var i = 0; i < DATA.provinces.length; i++) {
+      if (DATA.provinces[i].name === name) return DATA.provinces[i];
+    }
+    return null;
+  }
+
+  function cityOf(p, short) {
+    if (!p) return null;
+    for (var i = 0; i < p.cities.length; i++) {
+      if (p.cities[i].short === short) return p.cities[i];
+    }
+    return null;
+  }
+
+  function fillCities(provName) {
+    var p = provOf(provName);
+    citySel.innerHTML = EMPTY;
+    if (!p) {
+      citySel.disabled = true;
+      var d = document.createElement('option');
+      d.value = EMPTY; d.textContent = '请先选省份';
+      citySel.appendChild(d);
+      return;
+    }
+    citySel.disabled = false;
+    var ph = document.createElement('option');
+    ph.value = EMPTY; ph.textContent = '请选择城市';
+    citySel.appendChild(ph);
+    p.cities.forEach(function (c) {
+      var o = document.createElement('option');
+      o.value = c.short;
+      o.textContent = c.short;
+      citySel.appendChild(o);
+    });
+    // 直辖市这种只有一个城市的，直接选上，省一步
+    if (p.cities.length === 1) citySel.value = p.cities[0].short;
+  }
+
+  function withPrefill(city) {
+    if (!FORM) return EMPTY;
+    var key = encodeURIComponent(FIELD);
+    var sep = FORM.indexOf('?') === -1 ? '?' : '&';
+    return FORM + sep + 'prefill_' + key + '=' + encodeURIComponent(city)
+      + '&hide_' + key + '=1';
+  }
+
+  function sync() {
+    var p = provOf(provSel.value);
+    var c = cityOf(p, citySel.value);
+    if (!c) {
+      resultEl.hidden = true;
+      submitEl.href = FORM || submitEl.getAttribute('href');
+      if (noteEl) noteEl.textContent = NOTE_DEFAULT;
+      return;
+    }
+    var label = (p.short === c.short) ? c.short : p.short + ' · ' + c.short;
+    var tick = '<span class="cp-check" aria-hidden="true">✓</span>';
+    if (c.open) {
+      resultEl.className = 'city-pick-result';
+      resultEl.innerHTML = tick + '<span><b>' + esc(label) + '</b> 已经在平台上开通，'
+        + '目前有 <b>' + c.count + '</b> 家农家乐。提交后我们会优先核验你的资料。</span>';
+    } else {
+      resultEl.className = 'city-pick-result is-soon';
+      resultEl.innerHTML = tick + '<span><b>' + esc(label) + '</b> 还没有商家入驻 —— '
+        + '提交后核验通过，就把这座城市的页面开出来。</span>';
+    }
+    resultEl.hidden = false;
+    submitEl.href = withPrefill(c.short);
+    if (noteEl) noteEl.textContent = '「所在城市」已经填好，打开表单直接填其他内容。';
+  }
+
+  provSel.addEventListener('change', function () { fillCities(provSel.value); sync(); });
+  citySel.addEventListener('change', sync);
+
+  // 从「全国城市目录」点过来会带 ?city=城市名，直接替用户选好
+  var want = EMPTY;
+  try { want = new URLSearchParams(location.search).get('city') || EMPTY; } catch (e) { want = EMPTY; }
+  want = want.replace(/[<>]/g, '').trim().slice(0, 24);
+  if (want) {
+    for (var i = 0; i < DATA.provinces.length; i++) {
+      var p = DATA.provinces[i];
+      if (!cityOf(p, want)) continue;
+      provSel.value = p.name;
+      fillCities(p.name);
+      citySel.value = want;
+      break;
+    }
+  }
+  sync();
 })();
 </script>

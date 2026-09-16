@@ -539,6 +539,68 @@ if _no_entry:
 else:
     ok("城市目录在导航 / 首页 / 热门城市页 / sitemap 都有入口")
 
+# ------------------------------------------------------- 14 入驻页城市选择器
+print("\n[14] 入驻页城市选择器")
+# 飞书表单里「所在城市」是 337 个纵向平铺的选项，填表人要滚几百行。
+# /join/ 改成先在站内选「省 + 市」，跳转时拼 prefill_/hide_ 把那一项填好并隐藏。
+# 这里守三件事：城市全、名字对得上、参数拼得出来 —— 破一个就又滚回长列表。
+_REGS = json.loads((DATA / "regions.json").read_text(encoding="utf-8"))["regions"]
+_join_h = (PUB / "join" / "index.html").read_text(encoding="utf-8")
+_m = re.search(r'<script type="application/json" id="cpData">(.*?)</script>', _join_h, re.S)
+if not _m:
+    bad("入驻页没有城市选择器数据（cpData）")
+else:
+    try:
+        _cp = json.loads(_m.group(1))
+    except Exception as e:
+        _cp = None
+        bad(f"cpData 不是合法 JSON：{e}")
+    if _cp:
+        _want_c = {r["short"] for r in _REGS}
+        _got_c = {c["short"] for p in _cp["provinces"] for c in p["cities"]}
+        if _got_c != _want_c:
+            bad("选择器城市与基准表不一致：缺 "
+                f"{sorted(_want_c - _got_c)[:6]}，多 {sorted(_got_c - _want_c)[:6]}")
+        else:
+            ok(f"选择器覆盖全部 {len(_got_c)} 个城市")
+
+        _want_p = {r["province"] for r in _REGS}
+        _got_p = {p["name"] for p in _cp["provinces"]}
+        if _got_p != _want_p:
+            bad(f"选择器省份与基准表不一致：缺 {sorted(_want_p - _got_p)}，"
+                f"多 {sorted(_got_p - _want_p)}")
+        else:
+            ok(f"选择器覆盖全部 {len(_got_p)} 个省级分组")
+
+        # 「已开通」标记必须与商家数据同源，否则会出现「标了已开通、点进去没商家」
+        _hits = {}
+        for _s in SHOPS:
+            _hits[_s["city"]] = _hits.get(_s["city"], 0) + 1
+        _slug2short = {r["slug"]: r["short"] for r in _REGS}
+        _want_open = {_slug2short[k]: v for k, v in _hits.items() if k in _slug2short}
+        _got_open = {c["short"]: c["count"]
+                     for p in _cp["provinces"] for c in p["cities"] if c["open"]}
+        if _want_open != _got_open:
+            bad(f"「已开通」标记与商家数据不符：页面 {_got_open}，应为 {_want_open}")
+        else:
+            ok(f"「已开通」标记与商家数据一致（{len(_want_open)} 座）")
+
+if "prefill_" not in _join_h or "hide_" not in _join_h:
+    bad("入驻页缺少 prefill_/hide_ 跳转参数构造")
+else:
+    ok("跳转参数含 prefill_ 与 hide_（缺一个那 337 行就会重新出现）")
+
+# 题目名要与飞书表单里的一字不差，否则 prefill 不生效
+if "var FIELD = '所在城市'" not in _join_h:
+    bad("入驻页的预填字段名常量丢了（应为「所在城市」）")
+else:
+    ok("预填字段名锁定为「所在城市」")
+
+if 'id="cpSubmit"' not in _join_h or 'id="cpProvince"' not in _join_h:
+    bad("入驻页缺少选择器或提交按钮节点")
+else:
+    ok("选择器与提交按钮节点齐全")
+
 # ---------------------------------------------------------------- 汇总
 print("\n" + "=" * 62)
 if FAIL:

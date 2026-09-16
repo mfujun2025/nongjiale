@@ -1302,6 +1302,12 @@ def build_shop(s):
 
 
 # ============================================================ 页面：入驻
+def prov_short(name):
+    """省份显示名：河北省 → 河北，内蒙古自治区 → 内蒙古，北京市 → 北京。
+    顺序要紧：长后缀必须先匹配，否则「内蒙古自治区」会被切成「内蒙古自治」。"""
+    return re.sub(r"(维吾尔自治区|壮族自治区|回族自治区|自治区|省|市)$", "", name)
+
+
 def build_join():
     steps = [
         ("01", "填表提交", "必填五项：名称、城市、经营电话、三张照片、确认授权。全程不用注册账号。"),
@@ -1328,6 +1334,26 @@ def build_join():
         for f in SITE["faq"]
     )
 
+    # 城市两级选择器：省 → 城市，带上「已开通 / 家数」。
+    # 前端选好后跳飞书表单时拼 prefill_所在城市=X&hide_所在城市=1，
+    # 把表单里那 337 个平铺选项直接绕过去。
+    open_hits = {}
+    for s in SHOPS:
+        open_hits[s["city"]] = open_hits.get(s["city"], 0) + 1
+    provs = {}
+    for r in REGIONS:
+        provs.setdefault(r["province"], []).append({
+            "short": r["short"],
+            "open": open_hits.get(r["slug"], 0) > 0,
+            "count": open_hits.get(r["slug"], 0),
+        })
+    region_json = json.dumps({
+        "form": SITE.get("join_form_url", ""),
+        "provinces": [
+            {"name": p, "short": prov_short(p), "cities": cs} for p, cs in provs.items()
+        ],
+    }, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c")
+
     content = render(tpl("join.html"), {
         "STEPS": steps_html,
         "ADV_CARDS": adv_html,
@@ -1339,6 +1365,7 @@ def build_join():
         # 商家会以为网站已经有 337 座城市的流量；只写后者，他会以为自己城市不能填。
         "CITY_TOTAL": str(len(REGIONS)),
         "CITY_COUNT": CITY_COUNT,
+        "REGION_JSON": region_json,
         "PHONE": esc(PHONE),
         "PHONE_RAW": PHONE_RAW,
         "PHONE_NOTE": esc(SITE.get("phone_note", "")),

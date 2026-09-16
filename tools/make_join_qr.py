@@ -38,9 +38,13 @@ def main() -> int:
         return 1
 
     site = json.loads(SITE.read_text(encoding="utf-8"))
-    url = (site.get("join_form_url") or "").strip()
+    # 二维码落在站内的入驻页，不直接落在飞书表单上：
+    # 表单里「所在城市」是 337 个纵向平铺的选项，扫码直进要滚几百行；
+    # 落在入驻页可以先把城市选好，跳过去时那一项会被自动填好并隐藏。
+    base = (site.get("base_url") or "").rstrip("/")
+    url = (base + "/join/") if base else (site.get("join_form_url") or "").strip()
     if not url:
-        print("× data/site.json 里没有 join_form_url，无法生成二维码")
+        print("× data/site.json 里没有 base_url / join_form_url，无法生成二维码")
         return 1
 
     img = qrcode.make(url, image_factory=qrcode.image.svg.SvgPathImage, box_size=10, border=2)
