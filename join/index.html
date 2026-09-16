@@ -108,10 +108,6 @@
       </div>
     </div>
 
-    <p id="cityEcho" hidden
-       style="margin-bottom:18px;padding:14px 18px;border-radius:14px;background:var(--brand-tint);
-              border:1px solid var(--brand);color:var(--brand-deep);font-size:14.5px;line-height:1.7"></p>
-
     <div class="apply-card">
       <div class="apply-main">
         <h3>填表前，先准备好这三样</h3>
@@ -121,17 +117,45 @@
           <li><b>三张现场照片</b> —— 门头 1 张、环境 2 张，手机现场拍就行</li>
         </ul>
 
+        <!-- 城市先在这儿选好。飞书表单里的「所在城市」有三百多个选项、且是纵向平铺的，
+             填表人得滚几百行。从下面选完再跳过去，表单会自动填上并把它隐藏掉，
+             那串长列表就永远不用出现了。 -->
+        <div class="city-pick">
+          <div class="city-pick-head">
+            <span class="city-pick-step">第 1 步</span>
+            <b>先选你所在的城市</b>
+          </div>
+          <p class="city-pick-tip">
+            选好之后打开申请表，「所在城市」会自动填好 ——
+            全国 337 个地级市，一个都不用你在表单里翻。
+          </p>
+          <div class="city-pick-fields">
+            <label class="cp-field">
+              <span>省份 / 直辖市</span>
+              <select id="cpProvince" aria-label="选择省份">
+                <option value="">请选择省份</option>
+              </select>
+            </label>
+            <label class="cp-field">
+              <span>城市</span>
+              <select id="cpCity" aria-label="选择城市" disabled>
+                <option value="">请先选省份</option>
+              </select>
+            </label>
+          </div>
+          <p class="city-pick-result" id="cpResult" role="status" hidden></p>
+        </div>
+
         <p class="apply-city">
-          全国 <b>337</b> 个地级市（含自治州、地区、盟和直辖市）都能入驻 ——
-          城市那一栏按省份排好，下拉就能找到；区县、乡镇填在下一栏。
-          平台上已开通 <a href="/regions/">6 座城市</a>，你所在的城市如果还没开通，
+          全国 <b>337</b> 个地级市（含自治州、地区、盟和直辖市）都能入驻；
+          平台上已开通 <a href="/regions/">6 座城市</a>。你所在的城市如果还没开通，
           提交后审核通过就同步开出来。
         </p>
 
         <div class="apply-actions">
-          <a class="btn btn-primary btn-lg" href="https://my.feishu.cn/share/base/shrcn40DcDMKyUa802NUUb0rROB"
+          <a class="btn btn-primary btn-lg" id="cpSubmit" href="https://my.feishu.cn/share/base/shrcn40DcDMKyUa802NUUb0rROB"
              target="_blank" rel="noopener noreferrer">打开入驻申请表</a>
-          <span class="apply-note">表单由飞书提供，免注册、免登录，填完直接进入审核队列</span>
+          <span class="apply-note" id="cpNote">表单由飞书提供，免注册、免登录，填完直接进入审核队列</span>
         </div>
 
         <p class="apply-alt">
@@ -162,19 +186,132 @@
   </section>
 </div>
 
-<!-- 从「全国城市目录」点未开通城市跳过来时会带 ?city=城市名，
-     把用户来自哪儿回显出来，省得他自己再找一遍。城市名只做文本插入，不拼 HTML。 -->
+<!-- 城市两级选择器。数据由 build.py 注入，前端只负责联动与拼参数。
+     跳转链接形如 <表单地址>?prefill_所在城市=杭州&hide_所在城市=1 ——
+     prefill 负责填好，hide 负责不显示，两个缺一不可。 -->
+<script type="application/json" id="cpData">{"form":"https://my.feishu.cn/share/base/shrcn40DcDMKyUa802NUUb0rROB","provinces":[{"name":"北京市","short":"北京","cities":[{"short":"北京","open":true,"count":5}]},{"name":"天津市","short":"天津","cities":[{"short":"天津","open":false,"count":0}]},{"name":"河北省","short":"河北","cities":[{"short":"石家庄","open":false,"count":0},{"short":"唐山","open":false,"count":0},{"short":"秦皇岛","open":false,"count":0},{"short":"邯郸","open":false,"count":0},{"short":"邢台","open":false,"count":0},{"short":"保定","open":false,"count":0},{"short":"张家口","open":false,"count":0},{"short":"承德","open":false,"count":0},{"short":"沧州","open":false,"count":0},{"short":"廊坊","open":false,"count":0},{"short":"衡水","open":false,"count":0}]},{"name":"山西省","short":"山西","cities":[{"short":"太原","open":false,"count":0},{"short":"大同","open":false,"count":0},{"short":"阳泉","open":false,"count":0},{"short":"长治","open":false,"count":0},{"short":"晋城","open":false,"count":0},{"short":"朔州","open":false,"count":0},{"short":"晋中","open":false,"count":0},{"short":"运城","open":false,"count":0},{"short":"忻州","open":false,"count":0},{"short":"临汾","open":false,"count":0},{"short":"吕梁","open":false,"count":0}]},{"name":"内蒙古自治区","short":"内蒙古","cities":[{"short":"呼和浩特","open":false,"count":0},{"short":"包头","open":false,"count":0},{"short":"乌海","open":false,"count":0},{"short":"赤峰","open":false,"count":0},{"short":"通辽","open":false,"count":0},{"short":"鄂尔多斯","open":false,"count":0},{"short":"呼伦贝尔","open":false,"count":0},{"short":"巴彦淖尔","open":false,"count":0},{"short":"乌兰察布","open":false,"count":0},{"short":"兴安","open":false,"count":0},{"short":"锡林郭勒","open":false,"count":0},{"short":"阿拉善","open":false,"count":0}]},{"name":"辽宁省","short":"辽宁","cities":[{"short":"沈阳","open":false,"count":0},{"short":"大连","open":false,"count":0},{"short":"鞍山","open":false,"count":0},{"short":"抚顺","open":false,"count":0},{"short":"本溪","open":false,"count":0},{"short":"丹东","open":false,"count":0},{"short":"锦州","open":false,"count":0},{"short":"营口","open":false,"count":0},{"short":"阜新","open":false,"count":0},{"short":"辽阳","open":false,"count":0},{"short":"盘锦","open":false,"count":0},{"short":"铁岭","open":false,"count":0},{"short":"朝阳","open":false,"count":0},{"short":"葫芦岛","open":false,"count":0}]},{"name":"吉林省","short":"吉林","cities":[{"short":"长春","open":false,"count":0},{"short":"吉林","open":false,"count":0},{"short":"四平","open":false,"count":0},{"short":"辽源","open":false,"count":0},{"short":"通化","open":false,"count":0},{"short":"白山","open":false,"count":0},{"short":"松原","open":false,"count":0},{"short":"白城","open":false,"count":0},{"short":"延边","open":false,"count":0}]},{"name":"黑龙江省","short":"黑龙江","cities":[{"short":"哈尔滨","open":false,"count":0},{"short":"齐齐哈尔","open":false,"count":0},{"short":"鸡西","open":false,"count":0},{"short":"鹤岗","open":false,"count":0},{"short":"双鸭山","open":false,"count":0},{"short":"大庆","open":false,"count":0},{"short":"伊春","open":false,"count":0},{"short":"佳木斯","open":false,"count":0},{"short":"七台河","open":false,"count":0},{"short":"牡丹江","open":false,"count":0},{"short":"黑河","open":false,"count":0},{"short":"绥化","open":false,"count":0},{"short":"大兴安岭","open":false,"count":0}]},{"name":"上海市","short":"上海","cities":[{"short":"上海","open":false,"count":0}]},{"name":"江苏省","short":"江苏","cities":[{"short":"南京","open":false,"count":0},{"short":"无锡","open":false,"count":0},{"short":"徐州","open":false,"count":0},{"short":"常州","open":false,"count":0},{"short":"苏州","open":true,"count":5},{"short":"南通","open":false,"count":0},{"short":"连云港","open":false,"count":0},{"short":"淮安","open":false,"count":0},{"short":"盐城","open":false,"count":0},{"short":"扬州","open":false,"count":0},{"short":"镇江","open":false,"count":0},{"short":"泰州","open":false,"count":0},{"short":"宿迁","open":false,"count":0}]},{"name":"浙江省","short":"浙江","cities":[{"short":"杭州","open":true,"count":6},{"short":"宁波","open":false,"count":0},{"short":"温州","open":false,"count":0},{"short":"嘉兴","open":false,"count":0},{"short":"湖州","open":false,"count":0},{"short":"绍兴","open":false,"count":0},{"short":"金华","open":false,"count":0},{"short":"衢州","open":false,"count":0},{"short":"舟山","open":false,"count":0},{"short":"台州","open":false,"count":0},{"short":"丽水","open":false,"count":0}]},{"name":"安徽省","short":"安徽","cities":[{"short":"合肥","open":false,"count":0},{"short":"芜湖","open":false,"count":0},{"short":"蚌埠","open":false,"count":0},{"short":"淮南","open":false,"count":0},{"short":"马鞍山","open":false,"count":0},{"short":"淮北","open":false,"count":0},{"short":"铜陵","open":false,"count":0},{"short":"安庆","open":false,"count":0},{"short":"黄山","open":false,"count":0},{"short":"滁州","open":false,"count":0},{"short":"阜阳","open":false,"count":0},{"short":"宿州","open":false,"count":0},{"short":"六安","open":false,"count":0},{"short":"亳州","open":false,"count":0},{"short":"池州","open":false,"count":0},{"short":"宣城","open":false,"count":0}]},{"name":"福建省","short":"福建","cities":[{"short":"福州","open":false,"count":0},{"short":"厦门","open":false,"count":0},{"short":"莆田","open":false,"count":0},{"short":"三明","open":false,"count":0},{"short":"泉州","open":false,"count":0},{"short":"漳州","open":false,"count":0},{"short":"南平","open":false,"count":0},{"short":"龙岩","open":false,"count":0},{"short":"宁德","open":false,"count":0}]},{"name":"江西省","short":"江西","cities":[{"short":"南昌","open":false,"count":0},{"short":"景德镇","open":false,"count":0},{"short":"萍乡","open":false,"count":0},{"short":"九江","open":false,"count":0},{"short":"新余","open":false,"count":0},{"short":"鹰潭","open":false,"count":0},{"short":"赣州","open":false,"count":0},{"short":"吉安","open":false,"count":0},{"short":"宜春","open":false,"count":0},{"short":"抚州","open":false,"count":0},{"short":"上饶","open":false,"count":0}]},{"name":"山东省","short":"山东","cities":[{"short":"济南","open":false,"count":0},{"short":"青岛","open":false,"count":0},{"short":"淄博","open":false,"count":0},{"short":"枣庄","open":false,"count":0},{"short":"东营","open":false,"count":0},{"short":"烟台","open":false,"count":0},{"short":"潍坊","open":false,"count":0},{"short":"济宁","open":false,"count":0},{"short":"泰安","open":false,"count":0},{"short":"威海","open":false,"count":0},{"short":"日照","open":false,"count":0},{"short":"临沂","open":false,"count":0},{"short":"德州","open":false,"count":0},{"short":"聊城","open":false,"count":0},{"short":"滨州","open":false,"count":0},{"short":"菏泽","open":false,"count":0}]},{"name":"河南省","short":"河南","cities":[{"short":"郑州","open":false,"count":0},{"short":"开封","open":false,"count":0},{"short":"洛阳","open":false,"count":0},{"short":"平顶山","open":false,"count":0},{"short":"安阳","open":false,"count":0},{"short":"鹤壁","open":false,"count":0},{"short":"新乡","open":false,"count":0},{"short":"焦作","open":false,"count":0},{"short":"濮阳","open":false,"count":0},{"short":"许昌","open":false,"count":0},{"short":"漯河","open":false,"count":0},{"short":"三门峡","open":false,"count":0},{"short":"南阳","open":false,"count":0},{"short":"商丘","open":false,"count":0},{"short":"信阳","open":false,"count":0},{"short":"周口","open":false,"count":0},{"short":"驻马店","open":false,"count":0}]},{"name":"湖北省","short":"湖北","cities":[{"short":"武汉","open":false,"count":0},{"short":"黄石","open":false,"count":0},{"short":"十堰","open":false,"count":0},{"short":"宜昌","open":false,"count":0},{"short":"襄阳","open":false,"count":0},{"short":"鄂州","open":false,"count":0},{"short":"荆门","open":false,"count":0},{"short":"孝感","open":false,"count":0},{"short":"荆州","open":false,"count":0},{"short":"黄冈","open":false,"count":0},{"short":"咸宁","open":false,"count":0},{"short":"随州","open":false,"count":0},{"short":"恩施","open":false,"count":0}]},{"name":"湖南省","short":"湖南","cities":[{"short":"长沙","open":false,"count":0},{"short":"株洲","open":false,"count":0},{"short":"湘潭","open":false,"count":0},{"short":"衡阳","open":false,"count":0},{"short":"邵阳","open":false,"count":0},{"short":"岳阳","open":false,"count":0},{"short":"常德","open":false,"count":0},{"short":"张家界","open":false,"count":0},{"short":"益阳","open":false,"count":0},{"short":"郴州","open":false,"count":0},{"short":"永州","open":false,"count":0},{"short":"怀化","open":false,"count":0},{"short":"娄底","open":false,"count":0},{"short":"湘西","open":false,"count":0}]},{"name":"广东省","short":"广东","cities":[{"short":"广州","open":true,"count":5},{"short":"韶关","open":false,"count":0},{"short":"深圳","open":false,"count":0},{"short":"珠海","open":false,"count":0},{"short":"汕头","open":false,"count":0},{"short":"佛山","open":false,"count":0},{"short":"江门","open":false,"count":0},{"short":"湛江","open":false,"count":0},{"short":"茂名","open":false,"count":0},{"short":"肇庆","open":false,"count":0},{"short":"惠州","open":false,"count":0},{"short":"梅州","open":false,"count":0},{"short":"汕尾","open":false,"count":0},{"short":"河源","open":false,"count":0},{"short":"阳江","open":false,"count":0},{"short":"清远","open":false,"count":0},{"short":"东莞","open":false,"count":0},{"short":"中山","open":false,"count":0},{"short":"潮州","open":false,"count":0},{"short":"揭阳","open":false,"count":0},{"short":"云浮","open":false,"count":0}]},{"name":"广西壮族自治区","short":"广西","cities":[{"short":"南宁","open":false,"count":0},{"short":"柳州","open":false,"count":0},{"short":"桂林","open":false,"count":0},{"short":"梧州","open":false,"count":0},{"short":"北海","open":false,"count":0},{"short":"防城港","open":false,"count":0},{"short":"钦州","open":false,"count":0},{"short":"贵港","open":false,"count":0},{"short":"玉林","open":false,"count":0},{"short":"百色","open":false,"count":0},{"short":"贺州","open":false,"count":0},{"short":"河池","open":false,"count":0},{"short":"来宾","open":false,"count":0},{"short":"崇左","open":false,"count":0}]},{"name":"海南省","short":"海南","cities":[{"short":"海口","open":false,"count":0},{"short":"三亚","open":false,"count":0},{"short":"三沙","open":false,"count":0},{"short":"儋州","open":false,"count":0}]},{"name":"重庆市","short":"重庆","cities":[{"short":"重庆","open":false,"count":0}]},{"name":"四川省","short":"四川","cities":[{"short":"成都","open":true,"count":5},{"short":"自贡","open":false,"count":0},{"short":"攀枝花","open":false,"count":0},{"short":"泸州","open":false,"count":0},{"short":"德阳","open":false,"count":0},{"short":"绵阳","open":false,"count":0},{"short":"广元","open":false,"count":0},{"short":"遂宁","open":false,"count":0},{"short":"内江","open":false,"count":0},{"short":"乐山","open":false,"count":0},{"short":"南充","open":false,"count":0},{"short":"眉山","open":false,"count":0},{"short":"宜宾","open":false,"count":0},{"short":"广安","open":false,"count":0},{"short":"达州","open":false,"count":0},{"short":"雅安","open":false,"count":0},{"short":"巴中","open":false,"count":0},{"short":"资阳","open":false,"count":0},{"short":"阿坝","open":false,"count":0},{"short":"甘孜","open":false,"count":0},{"short":"凉山","open":false,"count":0}]},{"name":"贵州省","short":"贵州","cities":[{"short":"贵阳","open":false,"count":0},{"short":"六盘水","open":false,"count":0},{"short":"遵义","open":false,"count":0},{"short":"安顺","open":false,"count":0},{"short":"毕节","open":false,"count":0},{"short":"铜仁","open":false,"count":0},{"short":"黔西南","open":false,"count":0},{"short":"黔东南","open":false,"count":0},{"short":"黔南","open":false,"count":0}]},{"name":"云南省","short":"云南","cities":[{"short":"昆明","open":false,"count":0},{"short":"曲靖","open":false,"count":0},{"short":"玉溪","open":false,"count":0},{"short":"保山","open":false,"count":0},{"short":"昭通","open":false,"count":0},{"short":"丽江","open":false,"count":0},{"short":"普洱","open":false,"count":0},{"short":"临沧","open":false,"count":0},{"short":"楚雄","open":false,"count":0},{"short":"红河","open":false,"count":0},{"short":"文山","open":false,"count":0},{"short":"西双版纳","open":false,"count":0},{"short":"大理","open":false,"count":0},{"short":"德宏","open":false,"count":0},{"short":"怒江","open":false,"count":0},{"short":"迪庆","open":false,"count":0}]},{"name":"西藏自治区","short":"西藏","cities":[{"short":"拉萨","open":false,"count":0},{"short":"日喀则","open":false,"count":0},{"short":"昌都","open":false,"count":0},{"short":"林芝","open":false,"count":0},{"short":"山南","open":false,"count":0},{"short":"那曲","open":false,"count":0},{"short":"阿里","open":false,"count":0}]},{"name":"陕西省","short":"陕西","cities":[{"short":"西安","open":true,"count":5},{"short":"铜川","open":false,"count":0},{"short":"宝鸡","open":false,"count":0},{"short":"咸阳","open":false,"count":0},{"short":"渭南","open":false,"count":0},{"short":"延安","open":false,"count":0},{"short":"汉中","open":false,"count":0},{"short":"榆林","open":false,"count":0},{"short":"安康","open":false,"count":0},{"short":"商洛","open":false,"count":0}]},{"name":"甘肃省","short":"甘肃","cities":[{"short":"兰州","open":false,"count":0},{"short":"嘉峪关","open":false,"count":0},{"short":"金昌","open":false,"count":0},{"short":"白银","open":false,"count":0},{"short":"天水","open":false,"count":0},{"short":"武威","open":false,"count":0},{"short":"张掖","open":false,"count":0},{"short":"平凉","open":false,"count":0},{"short":"酒泉","open":false,"count":0},{"short":"庆阳","open":false,"count":0},{"short":"定西","open":false,"count":0},{"short":"陇南","open":false,"count":0},{"short":"临夏","open":false,"count":0},{"short":"甘南","open":false,"count":0}]},{"name":"青海省","short":"青海","cities":[{"short":"西宁","open":false,"count":0},{"short":"海东","open":false,"count":0},{"short":"海北","open":false,"count":0},{"short":"黄南","open":false,"count":0},{"short":"海南","open":false,"count":0},{"short":"果洛","open":false,"count":0},{"short":"玉树","open":false,"count":0},{"short":"海西","open":false,"count":0}]},{"name":"宁夏回族自治区","short":"宁夏","cities":[{"short":"银川","open":false,"count":0},{"short":"石嘴山","open":false,"count":0},{"short":"吴忠","open":false,"count":0},{"short":"固原","open":false,"count":0},{"short":"中卫","open":false,"count":0}]},{"name":"新疆维吾尔自治区","short":"新疆","cities":[{"short":"乌鲁木齐","open":false,"count":0},{"short":"克拉玛依","open":false,"count":0},{"short":"吐鲁番","open":false,"count":0},{"short":"哈密","open":false,"count":0},{"short":"昌吉","open":false,"count":0},{"short":"博尔塔拉","open":false,"count":0},{"short":"巴音郭楞","open":false,"count":0},{"short":"阿克苏","open":false,"count":0},{"short":"克孜勒苏","open":false,"count":0},{"short":"喀什","open":false,"count":0},{"short":"和田","open":false,"count":0},{"short":"伊犁","open":false,"count":0},{"short":"塔城","open":false,"count":0},{"short":"阿勒泰","open":false,"count":0}]}]}</script>
 <script>
 (function () {
-  var el = document.getElementById('cityEcho');
-  if (!el) return;
-  var city = new URLSearchParams(location.search).get('city');
-  if (!city) return;
-  city = city.replace(/[<>]/g, '').trim().slice(0, 24);
-  if (!city) return;
-  el.textContent = '你是' + city + '的？现在' + city + '还没有商家入驻 —— '
-    + '这份申请我们会优先看，核验通过就把这座城市的页面开出来。';
-  el.hidden = false;
+  var dataEl   = document.getElementById('cpData');
+  var provSel  = document.getElementById('cpProvince');
+  var citySel  = document.getElementById('cpCity');
+  var resultEl = document.getElementById('cpResult');
+  var submitEl = document.getElementById('cpSubmit');
+  var noteEl   = document.getElementById('cpNote');
+  if (!dataEl || !provSel || !citySel || !submitEl) return;
+
+  var DATA;
+  try { DATA = JSON.parse(dataEl.textContent); } catch (e) { return; }
+  if (!DATA || !DATA.provinces || !DATA.provinces.length) return;
+
+  var FORM = DATA.form || submitEl.getAttribute('href') || '';
+  var NOTE_DEFAULT = noteEl ? noteEl.textContent : '';
+  var FIELD = '所在城市';   // 必须与飞书表单里的题目名完全一致，否则预填不生效
+  var EMPTY = '';
+
+  function esc(s) {
+    return String(s).replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  }
+
+  DATA.provinces.forEach(function (p) {
+    var o = document.createElement('option');
+    o.value = p.name;
+    o.textContent = p.short;
+    provSel.appendChild(o);
+  });
+
+  function provOf(name) {
+    for (var i = 0; i < DATA.provinces.length; i++) {
+      if (DATA.provinces[i].name === name) return DATA.provinces[i];
+    }
+    return null;
+  }
+
+  function cityOf(p, short) {
+    if (!p) return null;
+    for (var i = 0; i < p.cities.length; i++) {
+      if (p.cities[i].short === short) return p.cities[i];
+    }
+    return null;
+  }
+
+  function fillCities(provName) {
+    var p = provOf(provName);
+    citySel.innerHTML = EMPTY;
+    if (!p) {
+      citySel.disabled = true;
+      var d = document.createElement('option');
+      d.value = EMPTY; d.textContent = '请先选省份';
+      citySel.appendChild(d);
+      return;
+    }
+    citySel.disabled = false;
+    var ph = document.createElement('option');
+    ph.value = EMPTY; ph.textContent = '请选择城市';
+    citySel.appendChild(ph);
+    p.cities.forEach(function (c) {
+      var o = document.createElement('option');
+      o.value = c.short;
+      o.textContent = c.short;
+      citySel.appendChild(o);
+    });
+    // 直辖市这种只有一个城市的，直接选上，省一步
+    if (p.cities.length === 1) citySel.value = p.cities[0].short;
+  }
+
+  function withPrefill(city) {
+    if (!FORM) return EMPTY;
+    var key = encodeURIComponent(FIELD);
+    var sep = FORM.indexOf('?') === -1 ? '?' : '&';
+    return FORM + sep + 'prefill_' + key + '=' + encodeURIComponent(city)
+      + '&hide_' + key + '=1';
+  }
+
+  function sync() {
+    var p = provOf(provSel.value);
+    var c = cityOf(p, citySel.value);
+    if (!c) {
+      resultEl.hidden = true;
+      submitEl.href = FORM || submitEl.getAttribute('href');
+      if (noteEl) noteEl.textContent = NOTE_DEFAULT;
+      return;
+    }
+    var label = (p.short === c.short) ? c.short : p.short + ' · ' + c.short;
+    var tick = '<span class="cp-check" aria-hidden="true">✓</span>';
+    if (c.open) {
+      resultEl.className = 'city-pick-result';
+      resultEl.innerHTML = tick + '<span><b>' + esc(label) + '</b> 已经在平台上开通，'
+        + '目前有 <b>' + c.count + '</b> 家农家乐。提交后我们会优先核验你的资料。</span>';
+    } else {
+      resultEl.className = 'city-pick-result is-soon';
+      resultEl.innerHTML = tick + '<span><b>' + esc(label) + '</b> 还没有商家入驻 —— '
+        + '提交后核验通过，就把这座城市的页面开出来。</span>';
+    }
+    resultEl.hidden = false;
+    submitEl.href = withPrefill(c.short);
+    if (noteEl) noteEl.textContent = '「所在城市」已经填好，打开表单直接填其他内容。';
+  }
+
+  provSel.addEventListener('change', function () { fillCities(provSel.value); sync(); });
+  citySel.addEventListener('change', sync);
+
+  // 从「全国城市目录」点过来会带 ?city=城市名，直接替用户选好
+  var want = EMPTY;
+  try { want = new URLSearchParams(location.search).get('city') || EMPTY; } catch (e) { want = EMPTY; }
+  want = want.replace(/[<>]/g, '').trim().slice(0, 24);
+  if (want) {
+    for (var i = 0; i < DATA.provinces.length; i++) {
+      var p = DATA.provinces[i];
+      if (!cityOf(p, want)) continue;
+      provSel.value = p.name;
+      fillCities(p.name);
+      citySel.value = want;
+      break;
+    }
+  }
+  sync();
 })();
 </script>
 
