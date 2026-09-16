@@ -16,6 +16,7 @@
   <div class="chips" style="margin-top:24px" role="group" aria-label="按城市快速筛选">
     <a class="chip" data-chip="city" data-value="" href="/list/">全部城市</a>
     {{CITY_CHIPS}}
+    <a class="chip chip-more" href="/regions/">全国 {{REGION_COUNT}} 个城市 →</a>
   </div>
 
   <div class="chips" style="margin-top:12px" role="group" aria-label="按玩法快速筛选">
@@ -76,11 +77,34 @@
         {{SHOP_ROWS}}
       </div>
 
+      <!-- 空状态分两支，出口完全不同：
+           ① 这座城市压根没开通 —— 说「放宽筛选」是答非所问，该给的是入驻入口
+           ② 城市有商家、只是条件筛太严 —— 才是放宽 + 清空 -->
       <div class="empty" id="emptyBox" hidden>
-        <h3>没有符合条件的农家乐</h3>
-        <p>试着放宽价格或距离范围，或者换个玩法看看。</p>
-        <p style="margin-top:16px"><button class="btn btn-primary" type="button" id="emptyReset">清空筛选条件</button></p>
+        <div id="emptyCityGate" hidden>
+          <h3><span id="emptyCityName">这座城市</span>还没有农家乐入驻</h3>
+          <p>平台目前开通了 <b>{{CITY_COUNT}}</b> 座城市，其他城市的商家正在陆续进来。
+            你如果就在当地经营，先把店报上来 —— 核验通过后这座城市的页面就开出来。</p>
+          <p class="empty-acts">
+            <a class="btn btn-primary" id="emptyJoinLink" href="/join/">这家店我来报</a>
+            <a class="btn btn-ghost" href="/regions/">看看全国城市目录</a>
+          </p>
+        </div>
+
+        <div id="emptyFilterGate">
+          <h3>没有符合条件的农家乐</h3>
+          <p>试着放宽价格或距离范围，或者换个玩法看看。</p>
+          <p class="empty-acts">
+            <button class="btn btn-primary" type="button" id="emptyReset">清空筛选条件</button>
+          </p>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
+<!-- 已开通城市映射（slug → 名称）。前端据此区分「城市没开通」与「筛得太严」——
+     两张出口不一样。数据由构建脚本注入，与城市页、入驻页选择器同源。 -->
+<script type="application/json" id="openCitiesData">{{OPEN_CITY_JSON}}</script>
+<!-- 全量 337 城（slug → 中文名），用来把 URL 里的 slug 还原成城市名回显 -->
+<script type="application/json" id="allCitiesData">{{ALL_CITY_JSON}}</script>

@@ -601,6 +601,67 @@ if 'id="cpSubmit"' not in _join_h or 'id="cpProvince"' not in _join_h:
 else:
     ok("选择器与提交按钮节点齐全")
 
+print("\n[15] 列表页城市分布守卫")
+# /list/ 的空结果有两种成因，出口完全不同：
+#   ① 城市压根没开通 → 引导入驻（带城市名回填）
+#   ② 城市有商家、条件筛太严 → 放宽 + 清空
+# 另外 [hidden] 必须真的隐藏：.shop-row / .stack-list 都显式写了 display，
+# 作者样式优先级高于浏览器自带的 [hidden]{display:none}，少了兜底规则，
+# 筛掉的城市会照常留在页面上，只有「找到 N 家」的数字在变。
+_list_h = (PUB / "list" / "index.html").read_text(encoding="utf-8")
+_css_h = (PUB / "css" / "style.css").read_text(encoding="utf-8")
+
+
+def _inline_map(html, dom_id):
+    m = re.search(r'<script type="application/json" id="%s">(.*?)</script>' % dom_id,
+                  html, re.S)
+    if not m:
+        return None
+    try:
+        return json.loads(m.group(1))
+    except Exception:
+        return None
+
+
+_open_map = _inline_map(_list_h, "openCitiesData")
+_all_map = _inline_map(_list_h, "allCitiesData")
+
+if _open_map is None:
+    bad("列表页缺少已开通城市映射 openCitiesData —— 前端分不清两种空结果")
+else:
+    _used = {s["city"] for s in SHOPS}
+    if set(_open_map) != _used:
+        bad(f"已开通城市表与商家数据不符：页面 {sorted(_open_map)}，商家 {sorted(_used)}")
+    else:
+        ok(f"已开通城市表与商家数据一致（{len(_open_map)} 座）")
+
+if _all_map is None:
+    bad("列表页缺少全量城市表 allCitiesData —— URL 里的 slug 还原不出中文名")
+else:
+    _want_all = {r["slug"]: r["short"] for r in _REGS}
+    if _all_map != _want_all:
+        bad("全量城市表与基准表不一致")
+    else:
+        ok(f"全量城市表与基准表一致（{len(_all_map)} 城，slug → 中文名）")
+
+_missing = [i for i in ("emptyCityGate", "emptyFilterGate", "emptyCityName", "emptyJoinLink")
+            if 'id="%s"' % i not in _list_h]
+if _missing:
+    bad(f"列表页空状态节点缺失：{_missing}")
+else:
+    ok("空状态双出口节点齐全（城市引导 + 筛选引导）")
+
+if 'class="chip chip-more" href="/regions/"' not in _list_h:
+    bad("列表页城市筛选没有「全国城市目录」出口")
+else:
+    ok("城市筛选带「全国城市目录」出口")
+
+if not re.search(r'\[hidden\]\s*\{[^}]*display:\s*none', _css_h):
+    bad("style.css 缺 [hidden]{display:none} 兜底 —— 列表筛选会失效但仍显示全部商家")
+else:
+    ok("[hidden] 兜底规则在位（少了它列表筛选形同虚设）")
+
+
 # ---------------------------------------------------------------- 汇总
 print("\n" + "=" * 62)
 if FAIL:

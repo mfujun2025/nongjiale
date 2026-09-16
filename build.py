@@ -52,6 +52,16 @@ def render(s, mapping):
     return TOKEN_RE.sub(lambda m: str(mapping.get(m.group(1), m.group(0))), s)
 
 
+def _json_for_inline(obj):
+    """内联进 <script type="application/json"> 的数据。
+
+    转义 < 是防注入的老规矩：万一哪天城市名里带上 </script>，
+    标签会被提前闭合，后面的页面结构就全乱了。
+    """
+    return (json.dumps(obj, ensure_ascii=False, separators=(",", ":"))
+            .replace("<", "\\u003c").replace("\u2028", "\\u2028").replace("\u2029", "\\u2029"))
+
+
 def tpl(name):
     with open(TPL / name, "r", encoding="utf-8") as f:
         return f.read()
@@ -829,6 +839,14 @@ def build_list():
         "FILTER_TAGS": filter_tags(),
         "SHOP_ROWS": "".join(shop_row(s) for s in ordered),
         "TOTAL": TOTAL,
+        "CITY_COUNT": CITY_COUNT,
+        "REGION_COUNT": len(REGIONS),
+        # 前端据此判断「这个城市压根没开通」还是「条件筛得太严」——
+        # 两种情况要给的出口完全不同，别混成一句"没有符合条件的农家乐"。
+        "OPEN_CITY_JSON": _json_for_inline({c["slug"]: c["name"] for c in CITIES}),
+        # 全量表：URL 里带的是 slug 时，靠它反查出中文名再回显。
+        # 只用已开通城市那张表的话，未开通城市就只能把 "shijiazhuang" 甩给用户看。
+        "ALL_CITY_JSON": _json_for_inline({r["slug"]: r["short"] for r in REGIONS}),
     })
     scripts = '<script src="/js/list.js" defer></script>'
     ld = json_ld({
