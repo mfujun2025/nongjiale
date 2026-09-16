@@ -4,6 +4,13 @@
    所有 token 与设计稿一一对应，改这里就能整站换肤
    ========================================================================== */
 
+/* hidden 属性必须真的隐藏。
+   .shop-row / .stack-list 上都写了 display: grid/flex，作者样式的优先级高于
+   浏览器自带的 [hidden]{display:none}，于是 el.hidden = true 形同虚设 ——
+   列表页筛掉的城市会照常留在页面上，只有「找到 N 家」的数字在变。
+   这条兜底不能省。 */
+[hidden] { display: none !important; }
+
 :root {
   /* ---- 品牌色 ---- */
   --brand:          #3D8A5A;   /* 主色 */
@@ -615,6 +622,11 @@ a.region-chip.is-soon:hover {
 }
 .empty h3 { margin-bottom: var(--sp-2); }
 .empty p { color: var(--text-2); }
+.empty-acts {
+  display: flex; flex-wrap: wrap; gap: var(--sp-3);
+  justify-content: center; margin-top: var(--sp-5);
+}
+.empty-acts .btn { text-decoration: none; }
 
 /* ==========================================================================
    详情页
@@ -1117,6 +1129,10 @@ input.is-bad, select.is-bad, textarea.is-bad { border-color: var(--error) !impor
   h1 { font-size: 34px; }
   h2 { font-size: 26px; }
   .page-head h1 { font-size: 28px; }
+
+  /* 空状态的两个出口：窄屏上下叠并拉满，避免一宽一窄 */
+  .empty-acts { flex-direction: column; align-items: stretch; }
+  .empty-acts .btn { width: 100%; }
 
   /* 导航折叠 */
   .nav-burger { display: inline-flex; }

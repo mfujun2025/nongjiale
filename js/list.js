@@ -13,6 +13,17 @@
   var countNum = document.getElementById('countNum');
   var params = new URLSearchParams(location.search);
 
+  // 构建时注入的两张表：
+  //   openCities —— 已开通城市（slug → 名称），判断「城市没开通」用
+  //   allCities  —— 全量 337 城（slug → 中文名），把 URL 里的 slug 还原成城市名用
+  function readMap(id) {
+    var el = document.getElementById(id);
+    if (!el) return {};
+    try { return JSON.parse(el.textContent) || {}; } catch (e) { return {}; }
+  }
+  var openCities = readMap('openCitiesData');
+  var allCities = readMap('allCitiesData');
+
   var state = {
     q: (params.get('q') || '').trim().toLowerCase(),
     city: params.get('city') || '',
@@ -21,6 +32,16 @@
     distance: '',
     sort: 'default'
   };
+
+  // 外链/手输可能带的是中文城市名而不是 slug（?city=杭州）。先归一化成 slug，
+  // 否则既认不出是哪座城市，也匹配不上任何商家。
+  (function normalizeCity() {
+    if (!state.city || allCities[state.city]) return;
+    var hit = Object.keys(allCities).filter(function (k) {
+      return allCities[k] === state.city;
+    })[0];
+    if (hit) state.city = hit;
+  })();
 
   /* ------------------------------------------------------------ 数据读取 */
   rows.forEach(function (el) {
@@ -79,6 +100,7 @@
     if (countNum) countNum.textContent = hits.length;
     if (emptyBox) emptyBox.hidden = hits.length !== 0;
     list.hidden = hits.length === 0;
+    showEmptyReason(hits.length === 0);
 
     // 同步筛选按钮与快捷标签的选中态
     document.querySelectorAll('.filter-opts').forEach(function (box) {
@@ -97,6 +119,32 @@
     document.querySelectorAll('.sort-btn').forEach(function (b) {
       b.classList.toggle('is-on', b.getAttribute('data-sort') === state.sort);
     });
+  }
+
+  /* 空结果的原因不止一种，出口也不该只有「清空筛选」。
+     URL 里带的城市如果不在已开通名单里，说明是这座城市还没有商家 ——
+     这时候提示「放宽价格或距离」是答非所问：用户根本没设过这些条件。
+     直接给入驻入口，并把城市名一起带过去。 */
+  function showEmptyReason(isEmpty) {
+    var cityGate = document.getElementById('emptyCityGate');
+    var filterGate = document.getElementById('emptyFilterGate');
+    if (!isEmpty || !cityGate || !filterGate) return;
+
+    var city = state.city;
+    // 认得出这是哪座城市、但它还没开通 —— 才是「城市引导」。
+    // 认不出的参数值按普通筛选失败处理，别硬说「这城市没商家」。
+    var name = openCities[city] || allCities[city] || '';
+    var notOpen = !!name && !openCities[city];
+
+    if (notOpen) {
+      var nameEl = document.getElementById('emptyCityName');
+      var joinEl = document.getElementById('emptyJoinLink');
+      if (nameEl) nameEl.textContent = name;
+      if (joinEl) joinEl.href = '/join/?city=' + encodeURIComponent(name);
+    }
+
+    cityGate.hidden = !notOpen;
+    filterGate.hidden = notOpen;
   }
 
   /* ------------------------------------------------------------ 地址同步 */
