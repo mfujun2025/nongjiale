@@ -37,11 +37,38 @@ python deploy.py --dry-run    # 只报告将要发生什么
 |---|---|
 | `data/site.json` | 站点级配置：域名、电话、导航、首页文案、FAQ |
 | `data/shops.json` | 商家数据，**站点的唯一数据源** |
+| `data/news/` | 资讯文章，一篇一个 JSON，**文件名即 URL slug** |
 | `data/cities.json` | 有内容简介的城市（只放想认真做的城市） |
 | `data/regions.json` | 全国 337 个地级行政区基准表（存在性判定，不建空页） |
 | `data/_source/` | 行政区划上游数据缓存，供 `tools/build_regions.py` 复现 |
 
 城市页只给**有商家**的城市生成，避免产出空页拉低整站质量。
+
+## 资讯栏目
+
+`data/news/` 下一篇文章一个 JSON，构建器自动生成列表页、分类归档页、详情页、首页区块与
+sitemap——**新增文章不需要改模板或 sitemap**。
+
+```json
+{
+  "slug": "与文件名完全一致",
+  "title": "标题",
+  "date": "YYYY-MM-DD",
+  "category": "recommend | experience | business | trend | policy",
+  "summary": "60~80 字，用于列表卡片与 meta description",
+  "keywords": "长尾词，逗号分隔",
+  "body": ["<p>段落</p>", "<h2>一、小标题</h2>"],
+  "sources": [{"name": "机构｜文件标题（发布日期）", "url": "https://…"}]
+}
+```
+
+注意 `body` 是 **HTML 片段数组，不是 markdown**——构建器零依赖，没有 md 解析器。
+
+页面路径：`/news/`（全部）、`/news/cat/<category>/`（归档，有文章才生成）、`/news/<slug>/`。
+`check.py` 第 [12] 节守着:字段完整性、正文字数 800~1200、日期不重复（每天一篇）、
+slug 与文件名一致、正文无未替换占位符。
+
+日更由自动化「农家乐.cn 资讯日更」驱动（每天 09:00），写作规范见技能 `nongjiale-cn-news-update`。
 
 ## 商家入驻
 
