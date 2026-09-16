@@ -320,9 +320,14 @@ def footer_html():
     city_links = "".join(
         f'<li><a href="/city/{c["slug"]}/">{esc(c["name"])}农家乐</a></li>' for c in CITIES
     )
+    # 全量城市目录挂在「按城市找」这一列的末尾：找不到自己城市的访客，
+    # 视线最后会落到这里；这是页脚里唯一能接住长尾城市名的入口。
+    city_links += (f'<li><a href="/regions/">'
+                   f'<strong>全部 {len(REGIONS)} 个城市 →</strong></a></li>')
     nav_links = "".join(
         f'<li><a href="{it["url"]}">{esc(it["label"])}</a></li>'
-        for it in SITE["nav"] if it["url"] != "/"
+        # 城市类入口已经在上面那一列里了，这里别重复列一遍
+        for it in SITE["nav"] if it["url"] not in ("/", "/cities/", "/regions/")
     )
     beian = ""
     if SITE.get("icp"):
@@ -761,6 +766,8 @@ def build_home():
         "HERO_TITLE": esc(SITE["hero_title"]),
         "HERO_SUB": esc(SITE["hero_sub"]),
         "CITY_OPTIONS": city_options,
+        "CITY_COUNT": CITY_COUNT,
+        "REGION_COUNT": len(REGIONS),
         "HERO_HOTS": hero_hots,
         "HERO_STAT_ROWS": hero_stat,
         "CITY_CARDS": "".join(city_card(c) for c in CITIES),
@@ -843,6 +850,7 @@ def build_list():
 def build_cities():
     content = render(tpl("cities.html"), {
         "CITY_COUNT": CITY_COUNT,
+        "REGION_COUNT": len(REGIONS),
         "TOTAL": TOTAL,
         "CITY_CARDS": "".join(city_card(c) for c in CITIES),
     })
@@ -857,6 +865,101 @@ def build_cities():
                 f"农家乐.cn 目前覆盖 {CITY_COUNT} 座城市、{TOTAL} 家农家乐，"
                 f"每座城市都有独立页面，可按玩法、人均价格和距离继续筛选。",
                 BASE_URL + "/cities/", active="/cities/", json_ld=ld)
+
+
+# ============================================================ 页面：全国城市目录
+def _province_short(name):
+    """省份简称，用于顶部快捷跳转：黑龙江省 → 黑龙江，广西壮族自治区 → 广西。"""
+    for suf in ("维吾尔自治区", "壮族自治区", "回族自治区", "自治区", "特别行政区", "省", "市"):
+        if name.endswith(suf):
+            return name[: -len(suf)]
+    return name
+
+
+def build_region_directory():
+    """全量城市目录：337 个地级行政区一个不落。
+
+    跟 /cities/ 的分工说清楚 —— 那边是「已开通城市」的门面（有什么内容、多少家），
+    这边回答的是「我所在的城市到底有没有」。之前只有前者，导致可入驻的 337 城
+    在站上一个入口都没有，看着像功能缺失。
+
+    取数原则不变：**没商家的城市仍然不建页**（空页拖累整站质量），
+    但在这里必须列出来，而且能点 —— 点了去入驻引导，把「我熟悉的店」
+    变成入驻线索。这是这个页面真正的用处。
+    """
+    live = {c["slug"] for c in CITIES}
+
+    # 按省份分组。REGIONS 由 build_regions.py 按 adcode 生成，同省必然连续，
+    # 顺序扫一遍就分好，不需要额外排序或建索引。
+    groups = []
+    for r in REGIONS:
+        if not groups or groups[-1]["province"] != r["province"]:
+            groups.append({"province": r["province"],
+                           "code": r["province_code"],
+                           "regions": []})
+        groups[-1]["regions"].append(r)
+
+    jumps = "".join(
+        f'<a href="#p{g["code"]}">{esc(_province_short(g["province"]))}</a>'
+        for g in groups
+    )
+
+    blocks = []
+    for g in groups:
+        chips = []
+        for r in g["regions"]:
+            if r["slug"] in live:
+                n = _city_hits.get(r["slug"], 0)
+                chips.append(
+                    f'<a class="region-chip is-live" href="/city/{r["slug"]}/">'
+                    f'{esc(r["short"])}<em>{n} 家</em></a>'
+                )
+            else:
+                # 未开通城市也能点：落到入驻页并带上城市名，表单上方会回显，
+                # 用户不用自己再找一遍，我们也知道该优先联系哪一带的商家。
+                q = urllib.parse.quote(r["short"])
+                chips.append(
+                    f'<a class="region-chip is-soon" href="/join/?city={q}" '
+                    f'title="{esc(r["short"])}还没有商家，点这里推荐或入驻">'
+                    f'{esc(r["short"])}</a>'
+                )
+        n_live = sum(1 for r in g["regions"] if r["slug"] in live)
+        note = f'{len(g["regions"])} 城' + (f' · 已开通 {n_live}' if n_live else '')
+        blocks.append(
+            f'<div class="region-group" id="p{g["code"]}">\n'
+            f'  <h2>{esc(g["province"])}<span class="region-group-n">{note}</span></h2>\n'
+            f'  <div class="region-chips">{"".join(chips)}</div>\n'
+            f'</div>'
+        )
+
+    content = render(tpl("regions.html"), {
+        "REGION_COUNT": len(REGIONS),
+        "LIVE_COUNT": CITY_COUNT,
+        "SOON_COUNT": len(REGIONS) - CITY_COUNT,
+        "TOTAL": TOTAL,
+        "PROVINCE_JUMPS": jumps,
+        "REGION_GROUPS": "\n".join(blocks),
+        "PHONE": esc(PHONE),
+        "PHONE_RAW": PHONE_RAW,
+        "PHONE_NOTE": esc(SITE.get("phone_note", "")),
+    })
+    ld = json_ld({
+        "@context": "https://schema.org",
+        "@graph": [
+            {"@type": "CollectionPage",
+             "name": "全国城市目录",
+             "url": BASE_URL + "/regions/",
+             "description": f"全国 {len(REGIONS)} 个地级行政区完整目录，已开通 {CITY_COUNT} 座城市。",
+             "inLanguage": "zh-CN"},
+            json.loads(breadcrumb([("首页", "/"), ("全国城市", "/regions/")])),
+        ],
+    })
+    return page(content,
+                f"全国城市目录 - {len(REGIONS)} 个地级行政区，已开通 {CITY_COUNT} 城",
+                f"全国 {len(REGIONS)} 个地级行政区（地级市、自治州、地区、盟、直辖市）完整目录。"
+                f"已收录 {CITY_COUNT} 座城市、{TOTAL} 家农家乐；其余城市还没有商家入驻，"
+                f"点进去可以推荐你熟悉的农家乐，或让商家自己免费提交。",
+                BASE_URL + "/regions/", active="/regions/", json_ld=ld)
 
 
 # ============================================================ 页面：城市落地页
@@ -1231,9 +1334,11 @@ def build_join():
         "FAQ": faq_html,
         "JOIN_FORM_URL": esc(SITE.get("join_form_url", "")),
         "JOIN_FORM_NOTE": esc(SITE.get("join_form_note", "")),
-        # 入驻可选项是全域的（337 个地级行政区），跟站点已收录的城市数不是一回事。
-        # 商家最关心「我的城市能不能填」，所以在这儿明确给个数。
+        # 两个数必须一起给：CITY_TOTAL 是「可入驻的地级行政区」（337），
+        # CITY_COUNT 是「网站上已开通的城市」（跟着商家数走）。只写前者，
+        # 商家会以为网站已经有 337 座城市的流量；只写后者，他会以为自己城市不能填。
         "CITY_TOTAL": str(len(REGIONS)),
+        "CITY_COUNT": CITY_COUNT,
         "PHONE": esc(PHONE),
         "PHONE_RAW": PHONE_RAW,
         "PHONE_NOTE": esc(SITE.get("phone_note", "")),
@@ -1370,15 +1475,19 @@ def build_sitemap_page():
         )
         return f'<div class="map-group"><h2>{esc(title)}</h2><ul class="map-list">{lis}</ul></div>'
 
-    main = group("主要页面", [
+    # 页数一律按实际列出的条目算。之前这里写死 7，新加一页就会和自检对不上 ——
+    # 「声明多少页」和「列出多少条」本来就该是同一个数，不该有第二个来源。
+    main_items = [
         ("首页", "/", ""),
         ("找农家乐", "/list/", f"{TOTAL} 家"),
         ("热门城市", "/cities/", f"{CITY_COUNT} 座城市"),
+        ("全部城市", "/regions/", f"{len(REGIONS)} 个地级行政区"),
         ("农家乐资讯", "/news/", f"{len(NEWS)} 篇"),
         ("商家入驻", "/join/", ""),
         ("关于我们", "/about/", ""),
         ("网站地图", "/sitemap/", ""),
-    ])
+    ]
+    main = group("主要页面", main_items)
 
     city_items = [(f"{c['name']}农家乐", f"/city/{c['slug']}/",
                    f"{sum(1 for s in SHOPS if s['city'] == c['slug'])} 家") for c in CITIES]
@@ -1396,12 +1505,13 @@ def build_sitemap_page():
     shops_block = group("农家乐详情（按城市分组）", shop_items)
 
     news_block = ""
+    news_items = []
     if NEWS:
         news_items = [(a["title"], f"/news/{a['slug']}/",
                        f"{news_cat(a)} · {news_date(a, 'short')}") for a in NEWS]
         news_block = group("资讯文章", news_items)
 
-    total_pages = 7 + CITY_COUNT + TOTAL + (len(NEWS) if NEWS else 0)
+    total_pages = len(main_items) + len(city_items) + len(shop_items) + len(news_items)
     content = render(tpl("sitemap.html"), {
         "SITEMAP_CONTENT": main + news_block + cities_block + shops_block,
         "PAGE_TOTAL": total_pages,
@@ -1427,6 +1537,9 @@ def build_sitemap_xml():
         ("/", "1.0", "daily"),
         ("/list/", "0.9", "daily"),
         ("/cities/", "0.8", "weekly"),
+        # 城市目录页：全量 337 个地级行政区都在这儿，是「我所在的城市有没有」的落点，
+        # 也是这个站唯一能覆盖长尾城市名搜索的入口 —— 给和 /cities/ 同级权重。
+        ("/regions/", "0.8", "weekly"),
         ("/join/", "0.7", "monthly"),
         ("/about/", "0.4", "monthly"),
         ("/sitemap/", "0.3", "monthly"),
@@ -1497,6 +1610,7 @@ def main():
     w("index.html", build_home())
     w("list/index.html", build_list())
     w("cities/index.html", build_cities())
+    w("regions/index.html", build_region_directory())
     for c in CITIES:
         w(f"city/{c['slug']}/index.html", build_city(c))
     for s in SHOPS:

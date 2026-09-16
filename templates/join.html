@@ -50,6 +50,10 @@
       </div>
     </div>
 
+    <p id="cityEcho" hidden
+       style="margin-bottom:18px;padding:14px 18px;border-radius:14px;background:var(--brand-tint);
+              border:1px solid var(--brand);color:var(--brand-deep);font-size:14.5px;line-height:1.7"></p>
+
     <div class="apply-card">
       <div class="apply-main">
         <h3>填表前，先准备好这三样</h3>
@@ -62,6 +66,8 @@
         <p class="apply-city">
           全国 <b>{{CITY_TOTAL}}</b> 个地级市（含自治州、地区、盟和直辖市）都能入驻 ——
           城市那一栏按省份排好，下拉就能找到；区县、乡镇填在下一栏。
+          平台上已开通 <a href="/regions/">{{CITY_COUNT}} 座城市</a>，你所在的城市如果还没开通，
+          提交后审核通过就同步开出来。
         </p>
 
         <div class="apply-actions">
@@ -97,3 +103,19 @@
     </p>
   </section>
 </div>
+
+<!-- 从「全国城市目录」点未开通城市跳过来时会带 ?city=城市名，
+     把用户来自哪儿回显出来，省得他自己再找一遍。城市名只做文本插入，不拼 HTML。 -->
+<script>
+(function () {
+  var el = document.getElementById('cityEcho');
+  if (!el) return;
+  var city = new URLSearchParams(location.search).get('city');
+  if (!city) return;
+  city = city.replace(/[<>]/g, '').trim().slice(0, 24);
+  if (!city) return;
+  el.textContent = '你是' + city + '的？现在' + city + '还没有商家入驻 —— '
+    + '这份申请我们会优先看，核验通过就把这座城市的页面开出来。';
+  el.hidden = false;
+})();
+</script>

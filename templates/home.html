@@ -8,7 +8,7 @@
         <div>
           <span class="hero-badge">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-            已覆盖 6 座城市 · 数据持续更新
+            已覆盖 {{CITY_COUNT}} 座城市 · 全国 {{REGION_COUNT}} 城可入驻
           </span>
           <h1>{{HERO_TITLE}}</h1>
           <p class="hero-sub">{{HERO_SUB}}</p>
@@ -28,6 +28,10 @@
             </label>
             <button class="btn btn-primary" type="submit">搜索</button>
           </form>
+
+          <p style="margin-top:12px;font-size:13.5px;color:rgba(255,255,255,.68)">
+            下拉里只有已开通的城市。没找到你的？<a href="/regions/" style="color:#fff;font-weight:600;text-decoration:underline;text-underline-offset:3px">查看全国 {{REGION_COUNT}} 个地级行政区 →</a>
+          </p>
 
           <div class="hero-hots">
             <span>热门搜索</span>
@@ -50,7 +54,7 @@
         <h2>热门目的地</h2>
         <p>挑一座城市，看看这个周末能往哪儿走</p>
       </div>
-      <a class="sec-more" href="/cities/">全部城市 →</a>
+      <a class="sec-more" href="/regions/">全国 {{REGION_COUNT}} 个城市 →</a>
     </div>
     <div class="grid-cities">
       {{CITY_CARDS}}

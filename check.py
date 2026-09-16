@@ -479,6 +479,66 @@ if not any(i["url"] == "/news/" for i in SITE.get("nav", [])):
 else:
     ok("导航含资讯入口")
 
+# ------------------------------------------------------- 13 全国城市目录
+print("\n[13] 全国城市目录")
+_regf = DATA / "regions.json"
+_rows = (json.loads(_regf.read_text(encoding="utf-8")).get("regions") or []
+         if _regf.is_file() else [])
+_reg_page = PUB / "regions" / "index.html"
+
+if not _reg_page.is_file():
+    bad("public/regions/index.html 缺失 → 全国 337 个城市在站上一个入口都没有。"
+        "build.py 的 main() 里要调 build_region_directory()")
+else:
+    _rh = _reg_page.read_text(encoding="utf-8")
+
+    # 1) 基准城市一个都不能少 —— 这个页面存在的唯一理由就是回答「我的城市在不在」
+    _miss = [r["short"] for r in _rows if f'>{r["short"]}<' not in _rh]
+    if _miss:
+        bad(f"城市目录漏了 {len(_miss)} 个城市（{'、'.join(_miss[:8])}…）"
+            f"→ 查 build_region_directory 的省份分组与 chip 渲染")
+    else:
+        ok(f"{len(_rows)} 个地级行政区在目录页全部列出")
+
+    # 2) 有商家的城市必须可点：列出来了却没链接，等于白丢入口
+    _live = sorted({s["city"] for s in SHOPS})
+    _dead = [sl for sl in _live if f'href="/city/{sl}/"' not in _rh]
+    if _dead:
+        bad(f"已开通城市在目录页点不进去：{'、'.join(_dead)}")
+    else:
+        ok(f"{len(_live)} 座已开通城市都能点进城市页")
+
+    # 3) 未开通城市要落到入驻引导 —— 点了没反应比不可点更糟
+    _soon = re.findall(r'class="region-chip is-soon" href="/join/\?city=', _rh)
+    if not _soon:
+        bad("未开通城市没有指向入驻引导 → 点上去会没反应")
+    else:
+        ok(f"{len(_soon)} 个未开通城市指向入驻引导（带城市名回显）")
+
+    # 4) 两个口径必须同时出现，否则「已开通 6」和「可入驻 337」又会互相打脸
+    if "已开通城市" not in _rh:
+        bad("目录页没写「已开通城市」口径 → 访客会把 337 当成已覆盖的城市数")
+    else:
+        ok("目录页同时标明了地级行政区总数与已开通城市数")
+
+# 全站入口：四处缺任一个，这个页面就等于孤岛
+_home_h = (PUB / "index.html").read_text(encoding="utf-8")
+_cities_h = (PUB / "cities" / "index.html").read_text(encoding="utf-8")
+_sitemap_h = (PUB / "sitemap.xml").read_text(encoding="utf-8")
+_no_entry = []
+if not any(i["url"] == "/regions/" for i in SITE.get("nav", [])):
+    _no_entry.append("导航")
+if 'href="/regions/"' not in _home_h:
+    _no_entry.append("首页")
+if 'href="/regions/"' not in _cities_h:
+    _no_entry.append("热门城市页")
+if "/regions/" not in _sitemap_h:
+    _no_entry.append("sitemap.xml")
+if _no_entry:
+    bad(f"城市目录缺入口：{'、'.join(_no_entry)}")
+else:
+    ok("城市目录在导航 / 首页 / 热门城市页 / sitemap 都有入口")
+
 # ---------------------------------------------------------------- 汇总
 print("\n" + "=" * 62)
 if FAIL:

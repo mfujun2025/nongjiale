@@ -1,0 +1,62 @@
+<div class="wrap">
+  <nav class="crumb" aria-label="面包屑">
+    <a href="/">首页</a><span class="sep">/</span><span>全国城市</span>
+  </nav>
+
+  <div class="page-head" style="margin-top:20px">
+    <svg class="hero-deco" viewBox="0 0 1180 190" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 132 L148 58 L286 122 L432 38 L598 126 L762 68 L922 132 L1062 84 L1180 122 L1180 190 L0 190 Z" fill="#FFFFFF"/>
+    </svg>
+    <div class="page-head-inner">
+      <h1>全国城市目录</h1>
+      <p>{{REGION_COUNT}} 个地级行政区（含自治州、地区、盟和直辖市）全在这儿。绿色城市已收录商家，点进去就能找；灰色城市暂时还没有商家，点它可以把你知道的好店推荐上来。</p>
+    </div>
+  </div>
+
+  <div class="region-summary">
+    <div class="region-summary-item">
+      <span class="region-summary-num">{{REGION_COUNT}}</span>
+      <span class="region-summary-label">地级行政区</span>
+    </div>
+    <div class="region-summary-item">
+      <span class="region-summary-num">{{LIVE_COUNT}}</span>
+      <span class="region-summary-label">已开通城市</span>
+    </div>
+    <div class="region-summary-item">
+      <span class="region-summary-num">{{SOON_COUNT}}</span>
+      <span class="region-summary-label">等待商家入驻</span>
+    </div>
+    <div class="region-summary-item">
+      <span class="region-summary-num">{{TOTAL}}</span>
+      <span class="region-summary-label">收录农家乐</span>
+    </div>
+  </div>
+
+  <div class="region-jump" role="navigation" aria-label="按省份快速跳转">
+    {{PROVINCE_JUMPS}}
+  </div>
+
+  <div class="region-list">
+    {{REGION_GROUPS}}
+  </div>
+
+  <section class="panel">
+    <h2>为什么有的城市还是灰的</h2>
+    <div class="prose">
+      <p>灰色的城市不是不收录，是<strong>还没有商家把资料交上来</strong>——没有真实商家，就没有照片、价格和电话可以给你看。</p>
+      <p>所以我们定了一条规矩：<strong>一个城市有真实商家，才开这个城市的页面</strong>。宁可先空着，也不拿模板内容凑数让你点进去扑空。现在已开通的 {{LIVE_COUNT}} 座城市，每一家店的电话和价格都是老板自己给的。</p>
+      <h2>想让你的城市亮起来</h2>
+      <ul>
+        <li><strong>你在经营农家乐</strong>——把店名、城市和联系电话留下，核验通过当天就能上线，免费收录、不抽佣金，客人点一下直接打你电话。</li>
+        <li><strong>你只是个吃过好店的人</strong>——把店名和大概位置发给我们，我们自己去联系核实，上线后会在页面上注明来源。</li>
+      </ul>
+      <p style="margin-top:var(--sp-5)">
+        <a class="btn btn-primary" href="/join/">提交农家乐信息</a>
+        <a class="btn btn-ghost" href="tel:{{PHONE_RAW}}" style="margin-left:10px">电话咨询 {{PHONE}}</a>
+      </p>
+      <p style="margin-top:var(--sp-4);font-size:13.5px;color:var(--text-3)">
+        {{PHONE_NOTE}}。提交后 1 个工作日内完成人工核验，结果我们会回电话告诉你。
+      </p>
+    </div>
+  </section>
+</div>

@@ -25,6 +25,7 @@
     { "label": "首页", "url": "/" },
     { "label": "找农家乐", "url": "/list/" },
     { "label": "热门城市", "url": "/cities/" },
+    { "label": "全部城市", "url": "/regions/" },
     { "label": "资讯", "url": "/news/" },
     { "label": "商家入驻", "url": "/join/" },
     { "label": "关于我们", "url": "/about/" }
