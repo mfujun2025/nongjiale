@@ -1,4 +1,5 @@
 {
+  "slug": "guoqing-benxie-nongjiayuan-xingjiabi",
   "title": "国庆不赶路：本地休闲农家乐成主流，性价比反而更高",
   "summary": "国庆不赶路，本地休闲农家乐成主流：北京周边人均36-188元、青岛包吃住220元/天，长沙银川本地农庄同样走俏，县域乡村游订单同比大幅增长，性价比反而比热门景区更高。",
   "keywords": ["农家乐", "国庆假期", "乡村游", "本地休闲", "性价比"],
@@ -35,22 +36,16 @@
   ],
   "sources": [
     {
-      "title": "北京周边一日游农家乐去哪？5大区域实测推荐",
-      "url": "https://travel.sina.cn/2026-10-03/detail-initwzsp5040120.d.html",
-      "source": "新浪旅游",
-      "date": "2026-10-03"
+      "name": "新浪旅游｜北京周边一日游农家乐去哪？5大区域实测推荐（2026-10-03）",
+      "url": "https://travel.sina.cn/2026-10-03/detail-initwzsp5040120.d.html"
     },
     {
-      "title": "青岛仰口+青山渔村片区农家乐住宿价格",
-      "url": "https://travel.sina.cn/2026-10-04/detail-initzkxm4032951.d.html",
-      "source": "新浪旅游",
-      "date": "2026-10-04"
+      "name": "新浪旅游｜青岛仰口+青山渔村片区农家乐住宿价格（2026-10-04）",
+      "url": "https://travel.sina.cn/2026-10-04/detail-initzkxm4032951.d.html"
     },
     {
-      "title": "国庆数据：县域乡村游订单大幅增长",
-      "url": "https://news.qq.com/rain/a/20261003A065T500",
-      "source": "上海证券报",
-      "date": "2026-10-03"
+      "name": "上海证券报｜国庆数据：县域乡村游订单大幅增长（2026-10-03）",
+      "url": "https://news.qq.com/rain/a/20261003A065T500"
     }
   ]
 }
