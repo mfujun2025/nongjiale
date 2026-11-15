@@ -18,7 +18,7 @@ from pathlib import Path
 sys.stdout.reconfigure(encoding="utf-8")
 
 ROOT = Path(__file__).resolve().parent.parent
-PHONE = "400-123-4567"
+PHONE = "13764427878"
 
 # ---------------------------------------------------------------- 核心商家表
 # (slug, 名称, 城市, 区县, 距市中心km, 人均, 评分, 评价数, 标签, 介绍, 是否精选, 画面编号1-8)
